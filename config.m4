@@ -7,10 +7,6 @@ dnl If your extension references something external, use with:
 PHP_ARG_WITH(cubrid, for CUBRID support,
 [  --with-cubrid           Include CUBRID support.], yes)
 
-dnl Check PHP version:
-AC_MSG_CHECKING(PHP version)
-PHP_MAJOR_VERSION=`grep 'PHP_MAJOR_VERSION' $phpincludedir/main/php_version.h | grep -oP '\d+'`
-
 if test "$PHP_CUBRID" != "no"; then
 
     cubrid_dir=`dirname $0`
@@ -31,7 +27,7 @@ if test "$PHP_CUBRID" != "no"; then
      	BROKER_INCDIR="$cubrid_dir/cci-src/src/broker"
         CUBRID_LIBDIR="$cubrid_dir/cci-src/cci/.libs"
         CCISRC_DIR="$cubrid_dir/cci-src"
-        #tar xvjf cci-src.tar.bz2
+
         AC_CHECK_SIZEOF([int *])
 
         if test "$ac_cv_sizeof_int_p" = "8"; then
@@ -58,7 +54,7 @@ if test "$PHP_CUBRID" != "no"; then
      	BROKER_INCDIR="$cubrid_dir/cci-src/src/broker"
         CUBRID_LIBDIR="$cubrid_dir/cci-src/cci/.libs"
         CCISRC_DIR="$cubrid_dir/cci-src"
-        #tar xvjf cci-src.tar.bz2
+
         AC_CHECK_SIZEOF([int *])
 
         if test "$ac_cv_sizeof_int_p" = "8"; then
@@ -111,12 +107,8 @@ if test "$PHP_CUBRID" != "no"; then
 
     PHP_ADD_LIBRARY(stdc++,,CUBRID_SHARED_LIBADD)
     PHP_ADD_LIBRARY(pthread,,CUBRID_SHARED_LIBADD)
-    LDFLAGS="$LDFLAGS $CUBRID_LIBDIR/libcascci.a -lpthread"
+    LDFLAGS="$LDFLAGS $CUBRID_LIBDIR/libcascci.a"
 
     PHP_SUBST(CUBRID_SHARED_LIBADD)
-    if test "$PHP_MAJOR_VERSION" = "7"; then
-        PHP_NEW_EXTENSION(cubrid, php_cubrid7.c, $ext_shared)
-    else
-        PHP_NEW_EXTENSION(cubrid, php_cubrid.c, $ext_shared)
-    fi
+    PHP_NEW_EXTENSION(cubrid, php_cubrid.c, $ext_shared)
 fi

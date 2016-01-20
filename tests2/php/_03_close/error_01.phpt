@@ -75,19 +75,19 @@ Notice: Undefined variable: conn in %s on line %d
 Warning: cubrid_error_msg() expects exactly 0 parameters, 1 given in %s on line %d
 [002]Expect: return value false, [-165] []
 
-Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s in %s on line %d
+Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost%s in %s on line %d
 
 Warning: cubrid_errno() expects parameter 1 to be resource, null given in %s on line %d
-[003]Expect: return value false, [0] [Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s]
+[003]Expect: return value false, [0] [Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost%s]
 
-Warning: Error: DBMS, -677, Failed to connect to database server, 'demodbb', on the following host(s): test-db-server:test-db-server%s in %s on line %d
+Warning: Error: DBMS, -677, Failed to connect to database server, 'demodbb', on the following host(s): localhost:localhost%s in %s on line %d
 
 Warning: cubrid_error() expects parameter 1 to be resource, null given in %s on line %d
 [004]No Expect: return value false, [-677] []
 
-Warning: Error: DBMS, -677, Failed to connect to database server, 'phpdbd', on the following host(s): test-db-server:test-db-server%s in %s on line 40
+Warning: Error: DBMS, -677, Failed to connect to database server, 'phpdbd', on the following host(s): localhost:localhost%s in %s on line 40
 conn5: 0
 
 Warning: cubrid_error_code_facility() expects exactly 0 parameters, 1 given in %s on line %d
-[005]Expect: return value false, [0] [Failed to connect to database server, 'phpdbd', on the following host(s): test-db-server:test-db-server%s]
+[005]Expect: return value false, [0] [Failed to connect to database server, 'phpdbd', on the following host(s): localhost:localhost%s]
 Finished!

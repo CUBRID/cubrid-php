@@ -186,7 +186,6 @@ static struct cubrid_type2name_st{
     {CCI_U_TYPE_MONETARY,     "monetary"},
     {CCI_U_TYPE_FLOAT,     "float"},
     {CCI_U_TYPE_DOUBLE,     "double"},
-    {CCI_U_TYPE_DATE,     "date"},
     {CCI_U_TYPE_TIME,     "time"},
     {CCI_U_TYPE_TIMESTAMP,     "timestamp"},
     {CCI_U_TYPE_SET,     "set"},
@@ -512,13 +511,6 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_cubrid_execute, 0, 0, 1)
     ZEND_ARG_INFO(0, sql_stmt)
     ZEND_ARG_INFO(0, option)
 ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_cubrid_batch_execute, 0, 0, 1)
-    ZEND_ARG_INFO(0, id)
-    ZEND_ARG_INFO(0, sql_stmt)
-    ZEND_ARG_INFO(0, option)
-ZEND_END_ARG_INFO()
-
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_cubrid_next_result, 0, 0, 1)
     ZEND_ARG_INFO(0, req_id)
@@ -932,7 +924,6 @@ zend_function_entry cubrid_functions[] = {
     ZEND_FE(cubrid_prepare, arginfo_cubrid_prepare)
     ZEND_FE(cubrid_bind, arginfo_cubrid_bind)
     ZEND_FE(cubrid_execute, arginfo_cubrid_execute)
-    ZEND_FE(cubrid_batch_execute, arginfo_cubrid_batch_execute)
     ZEND_FE(cubrid_next_result, arginfo_cubrid_next_result)
     ZEND_FE(cubrid_affected_rows, arginfo_cubrid_affected_rows)
     ZEND_FE(cubrid_close_request, arginfo_cubrid_close_request)
@@ -1098,6 +1089,9 @@ ZEND_MINIT_FUNCTION(cubrid)
     REGISTER_LONG_CONSTANT("CUBRID_AUTOCOMMIT_FALSE", CUBRID_AUTOCOMMIT_FALSE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("CUBRID_AUTOCOMMIT_TRUE", CUBRID_AUTOCOMMIT_TRUE, CONST_CS | CONST_PERSISTENT);
 
+    REGISTER_LONG_CONSTANT("TRAN_COMMIT_CLASS_UNCOMMIT_INSTANCE", TRAN_COMMIT_CLASS_UNCOMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
+    REGISTER_LONG_CONSTANT("TRAN_COMMIT_CLASS_COMMIT_INSTANCE", TRAN_COMMIT_CLASS_COMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
+    REGISTER_LONG_CONSTANT("TRAN_REP_CLASS_UNCOMMIT_INSTANCE", TRAN_REP_CLASS_UNCOMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("TRAN_REP_CLASS_COMMIT_INSTANCE", TRAN_REP_CLASS_COMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("TRAN_REP_CLASS_REP_INSTANCE", TRAN_REP_CLASS_REP_INSTANCE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("TRAN_SERIALIZABLE", TRAN_SERIALIZABLE, CONST_CS | CONST_PERSISTENT);
@@ -1889,68 +1883,6 @@ ZEND_FUNCTION(cubrid_bind)
     request->l_bind[bind_index - 1] = 1;
 
     RETURN_TRUE;
-}
-
-ZEND_FUNCTION(cubrid_batch_execute)
-{
-    char exec_flag = 0;
-    int count = 0, i = 0, n_executed = 0, err_code = 0;
-    T_CUBRID_CONNECT *connect = NULL;
-    T_CCI_ERROR error;    
-    T_CCI_QUERY_RESULT *result;
-    zval *id = NULL, *param = NULL;
-    zval **z_item;
-    char** sql = NULL;
-    
-    init_error(); 
-	if (zend_parse_parameters(2 TSRMLS_CC, "rz", &id, &param) == FAILURE) {
-        handle_error(CUBRID_ER_INVALID_PARAM_TYPE, NULL, connect);
-	    RETURN_FALSE;
-	}
-    ZEND_FETCH_RESOURCE2(connect, T_CUBRID_CONNECT *, &id, -1, "CUBRID-Connect", le_connect, le_pconnect);
-    if(IS_ARRAY != Z_TYPE_P(param)|| NULL == connect){
-        handle_error(CUBRID_ER_INVALID_PARAM, NULL, connect);
-        RETURN_FALSE;
-    }
-    count= zend_hash_num_elements(Z_ARRVAL_P(param));
-    sql = malloc(count * sizeof(void*));
-    if(NULL == sql){
-        handle_error(CUBRID_ER_INVALID_PARAM, NULL, connect);
-        RETURN_FALSE;
-    }
-    for (i = 0; i < count; i ++) {
-        zend_hash_get_current_data(Z_ARRVAL_P(param), (void**) &z_item);
-        zend_hash_move_forward(Z_ARRVAL_P(param));
-        convert_to_string_ex(z_item); 
-        sql[i] = Z_STRVAL_PP(z_item);
-    }
-    n_executed = cci_execute_batch (connect->handle, count, sql, &result, &error);
-    if (n_executed < 0){
-        free(sql);
-        handle_error(n_executed, &error, connect);
-        RETURN_FALSE;
-    }
-    free(sql);
-
-    array_init(return_value);
-    for (i = 0; i < n_executed; ++i){
-        zval *item;
-        MAKE_STD_ZVAL(item);
-        array_init(item);
-        add_index_long(item, 0, result[i].err_no);
-        if (NULL == result[i].err_msg)
-            add_index_string(item, 1, "", 1);
-        else
-            add_index_string(item, 1, result[i].err_msg, 1);
-        add_index_zval(return_value, i, item);
-    }
-    err_code = cci_query_result_free (result, n_executed);    
-    if (err_code < 0)    
-    {     
-        handle_error(n_executed, &error, connect); 
-        RETURN_FALSE;
-    }    
-    
 }
 
 ZEND_FUNCTION(cubrid_execute)
@@ -3656,7 +3588,7 @@ ZEND_FUNCTION(cubrid_field_flags)
 	strcat(sz, "reverse_unique ");
     }
 
-    if (request->col_info[offset].ext_type == CCI_U_TYPE_TIMESTAMP) {
+    if (request->col_info[offset].type == CCI_U_TYPE_TIMESTAMP) {
 	strcat(sz, "timestamp ");
     }
 
@@ -3771,9 +3703,9 @@ ZEND_FUNCTION(cubrid_fetch_field)
 
     array_init(return_value);
 
-    is_numeric = numeric_type(request->col_info[offset].ext_type);
+    is_numeric = numeric_type(request->col_info[offset].type);
     max_length = 0;
-    is_blob = (request->col_info[offset].ext_type == CCI_U_TYPE_BLOB)?1:0;
+    is_blob = (request->col_info[offset].type == CCI_U_TYPE_BLOB)?1:0;
 
     add_assoc_string(return_value, "name", request->col_info[offset].col_name, 1);
     add_assoc_string(return_value, "table", request->col_info[offset].class_name, 1);
@@ -6420,7 +6352,7 @@ static int type2str(T_CCI_COL_INFO * column_info, char *type_name, int type_name
 	int i = 0;
 	int len = (sizeof(cubrid_type2name) / sizeof(cubrid_type2name[0]));
 
-    u_type = CCI_GET_COLLECTION_DOMAIN(column_info->ext_type);
+    u_type = CCI_GET_COLLECTION_DOMAIN(column_info->type);
 
 	for(i = 0;i<len; i++) {
       if (cubrid_type2name[i].type == u_type) {
@@ -6430,11 +6362,11 @@ static int type2str(T_CCI_COL_INFO * column_info, char *type_name, int type_name
 	if(buf[0] == '\0')
 		snprintf(buf, sizeof(buf), cubrid_type2name[0].name);
 	
-    if (CCI_IS_SET_TYPE(column_info->ext_type)) {
+    if (CCI_IS_SET_TYPE(column_info->type)) {
         snprintf(type_name, type_name_len, "set(%s)", buf);
-    } else if (CCI_IS_MULTISET_TYPE(column_info->ext_type)) {
+    } else if (CCI_IS_MULTISET_TYPE(column_info->type)) {
         snprintf(type_name, type_name_len, "multiset(%s)", buf);
-    } else if (CCI_IS_SEQUENCE_TYPE(column_info->ext_type)) {
+    } else if (CCI_IS_SEQUENCE_TYPE(column_info->type)) {
         snprintf(type_name, type_name_len, "sequence(%s)", buf);
     } else {
         snprintf(type_name, type_name_len, "%s", buf);

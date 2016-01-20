@@ -97,8 +97,8 @@ Warning: Error: DBMS, -171, Incorrect or missing password.%s in %s on line %d
 Warning: Error: DBMS, -165, User "dbaa" is invalid.%s in %s on line %d
 [005]Expect: return value false, [-165] [User "dbaa" is invalid.%s]
 
-Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s in %s on line %d
-[006]Expect: return value false, [-677] [Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s]
+Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost%s in %s on line %d
+[006]Expect: return value false, [-677] [Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost%s]
 [007]Expect: return value true, [0] []
 
 Notice: Undefined variable: phpdb in %s on line %d
