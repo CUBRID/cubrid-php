@@ -1,0 +1,114 @@
+1. 빌드 중비.
+#!/bin/bash
+CFLAGS="-O2 -march=core2 -pipe"
+CXXFLAGS="-O2 -march=core2 -pipe"
+export CFLAGS
+export CXXFLAGS
+./configure --prefix=/opt/cubrid --localstatedir=/var/cubrid --sharedstatedir=/var/cubrid --with-gnu-id --with-pic --with-lzo2=/usr --with-libedit=/usr --with-pcre=/usr --with-gc=/usr --with-jdbcdir=/usr/share/jdbc-cubrid --with-logdir=/var/log/cubrid --build=x86_64-pc-linux-gnu --host=x86_64-pc-linux-gnu --target=x86_64-pc-linux-gnu
+
+2. PHP 코드 수행.
+jeenhee ~ # php zipinsert.php 
+51031 records readed.
+*** buffer overflow detected ***: php terminated
+======= Backtrace: =========
+/lib/libc.so.6(__fortify_fail+0x50)[0xb7071850]
+/lib/libc.so.6(+0xe18aa)[0xb706f8aa]
+/lib/libc.so.6(+0xe1199)[0xb706f199]
+/lib/libc.so.6(__snprintf_chk+0x34)[0xb706f084]
+/opt/cubrid/lib/libcascci.so.8(net_connect_srv+0x168)[0xb6976b48]
+/opt/cubrid/lib/libcascci.so.8(+0x4ce6)[0xb6968ce6]
+/opt/cubrid/lib/libcascci.so.8(cci_get_db_version+0xe5)[0xb696c2d5]
+/opt/cubrid/lib/libcascci.so.8(cci_connect_3_0+0x6d)[0xb696ca1d]
+/usr/lib/php5/lib/extensions/no-debug-non-zts-20060613/cubrid.so(zif_cubrid_connect+0x246)[0xb78724b6]
+php[0x82fcac5]
+php(execute+0x16b)[0x82f9a3b]
+php(zend_execute_scripts+0x177)[0x82d4847]
+php(php_execute_script+0x170)[0x828c630]
+php(main+0x1937)[0x8357da7]
+/lib/libc.so.6(__libc_start_main+0xe6)[0xb6fa4bb6]
+php[0x809ef01]
+======= Memory map: ========
+08048000-0858b000 r-xp 00000000 08:07 440724     /usr/lib/php5/bin/php
+0858c000-085a0000 r--p 00543000 08:07 440724     /usr/lib/php5/bin/php
+085a0000-085cb000 rw-p 00557000 08:07 440724     /usr/lib/php5/bin/php
+085cb000-0a80c000 rw-p 00000000 00:00 0          [heap]
+b678f000-b6810000 rw-p 00000000 00:00 0 
+b6810000-b681a000 r-xp 00000000 08:07 207906     /lib/libnss_files-2.11.2.so
+b681a000-b681b000 r--p 00009000 08:07 207906     /lib/libnss_files-2.11.2.so
+b681b000-b681c000 rw-p 0000a000 08:07 207906     /lib/libnss_files-2.11.2.so
+b681c000-b6836000 r-xp 00000000 08:07 252618     /usr/lib/gcc/i686-pc-linux-gnu/4.4.3/libgcc_s.so.1
+b6836000-b6837000 r--p 0001a000 08:07 252618     /usr/lib/gcc/i686-pc-linux-gnu/4.4.3/libgcc_s.so.1
+b6837000-b6838000 rw-p 0001b000 08:07 252618     /usr/lib/gcc/i686-pc-linux-gnu/4.4.3/libgcc_s.so.1
+b6838000-b691e000 r-xp 00000000 08:07 252622     /usr/lib/gcc/i686-pc-linux-gnu/4.4.3/libstdc++.so.6.0.13
+b691e000-b6922000 r--p 000e5000 08:07 252622     /usr/lib/gcc/i686-pc-linux-gnu/4.4.3/libstdc++.so.6.0.13
+b6922000-b6923000 rw-p 000e9000 08:07 252622     /usr/lib/gcc/i686-pc-linux-gnu/4.4.3/libstdc++.so.6.0.13
+b6923000-b692a000 rw-p 00000000 00:00 0 
+b692a000-b694a000 r-xp 00000000 08:07 691656     /usr/lib/liblzo2.so.2.0.0
+b694a000-b694b000 r--p 0001f000 08:07 691656     /usr/lib/liblzo2.so.2.0.0
+b694b000-b694c000 rw-p 00020000 08:07 691656     /usr/lib/liblzo2.so.2.0.0
+b6964000-b697a000 r-xp 00000000 08:07 170612     /opt/cubrid/lib/libcascci.so.8.3.0
+b697a000-b697b000 r--p 00015000 08:07 170612     /opt/cubrid/lib/libcascci.so.8.3.0
+b697b000-b697c000 rw-p 00016000 08:07 170612     /opt/cubrid/lib/libcascci.so.8.3.0
+b697c000-b6981000 rw-p 00000000 00:00 0 
+b6981000-b6ab3000 r--p 001b0000 08:07 5361       /usr/lib/locale/locale-archive
+b6ab3000-b6cb3000 r--p 00000000 08:07 5361       /usr/lib/locale/locale-archive
+b6cf1000-b6cf3000 rw-p 00000000 00:00 0 
+b6cf4000-b6cf7000 rw-p 00000000 00:00 0 
+b6cf7000-b6cfa000 r-xp 00000000 08:07 7063       /usr/lib/libgpg-error.so.0.5.0
+b6cfa000-b6cfb000 r--p 00002000 08:07 7063       /usr/lib/libgpg-error.so.0.5.0
+b6cfb000-b6cfc000 rw-p 00003000 08:07 7063       /usr/lib/libgpg-error.so.0.5.0
+b6cfc000-b6d00000 r-xp 00000000 08:07 10566      /usr/lib/libXdmcp.so.6.0.0
+b6d00000-b6d01000 r--p 00003000 08:07 10566      /usr/lib/libXdmcp.so.6.0.0
+b6d01000-b6d02000 rw-p 00004000 08:07 10566      /usr/lib/libXdmcp.so.6.0.0
+b6d02000-b6d04000 r-xp 00000000 08:07 9399       /usr/lib/libXau.so.6.0.0
+b6d04000-b6d05000 r--p 00001000 08:07 9399       /usr/lib/libXau.so.6.0.0
+b6d05000-b6d06000 rw-p 00002000 08:07 9399       /usr/lib/libXau.so.6.0.0
+b6d06000-b6d07000 rw-p 00000000 00:00 0 
+b6d07000-b6d79000 r-xp 00000000 08:07 299312     /usr/lib/libgcrypt.so.11.6.0
+b6d79000-b6d7a000 r--p 00071000 08:07 299312     /usr/lib/libgcrypt.so.11.6.0
+b6d7a000-b6d7c000 rw-p 00072000 08:07 299312     /usr/lib/libgcrypt.so.11.6.0
+b6d7c000-b6d8b000 r-xp 00000000 08:07 268422     /usr/lib/libtasn1.so.3.1.9
+b6d8b000-b6d8c000 r--p 0000e000 08:07 268422     /usr/lib/libtasn1.so.3.1.9
+b6d8c000-b6d8d000 rw-p 0000f000 08:07 268422     /usr/lib/libtasn1.so.3.1.9
+b6d8d000-b6da2000 r-xp 00000000 08:07 206684     /lib/libpthread-2.11.2.so
+b6da2000-b6da3000 r--p 00014000 08:07 206684     /lib/libpthread-2.11.2.so
+b6da3000-b6da4000 rw-p 00015000 08:07 206684     /lib/libpthread-2.11.2.so
+b6da4000-b6da6000 rw-p 00000000 00:00 0 
+b6da6000-b6dbf000 r-xp 00000000 08:07 15420      /usr/lib/libxcb.so.1.1.0
+b6dbf000-b6dc0000 r--p 00018000 08:07 15420      /usr/lib/libxcb.so.1.1.0
+b6dc0000-b6dc1000 rw-p 00019000 08:07 15420      /usr/lib/libxcb.so.1.1.0
+b6dc1000-b6e5f000 r-xp 00000000 08:07 327798     /usr/lib/libgnutls.so.26.16.9
+b6e5f000-b6e60000 ---p 0009e000 08:07 327798     /usr/lib/libgnutls.so.26.16.9
+b6e60000-b6e64000 r--p 0009e000 08:07 327798     /usr/lib/libgnutls.so.26.16.9
+b6e64000-b6e65000 rw-p 000a2000 08:07 327798     /usr/lib/libgnutls.so.26.16.9
+b6e65000-b6e66000 rw-p 00000000 00:00 0 
+b6e66000-b6e6d000 r-xp 00000000 08:07 207890     /lib/librt-2.11.2.so
+b6e6d000-b6e6e000 r--p 00006000 08:07 207890     /lib/librt-2.11.2.so
+b6e6e000-b6e6f000 rw-p 00007000 08:07 207890     /lib/librt-2.11.2.so
+b6e6f000-b6f8a000 r-xp 00000000 08:07 28565      /usr/lib/libX11.so.6.3.0
+b6f8a000-b6f8b000 r--p 0011b000 08:07 28565      /usr/lib/libX11.so.6.3.0
+b6f8b000-b6f8e000 rw-p 0011c000 08:07 28565      /usr/lib/libX11.so.6.3.0
+b6f8e000-b70ce000 r-xp 00000000 08:07 208172     /lib/libc-2.11.2.so
+b70ce000-b70d0000 r--p 0013f000 08:07 208172     /lib/libc-2.11.2.so
+b70d0000-b70d1000 rw-p 00141000 08:07 208172     /lib/libc-2.11.2.so
+b70d1000-b70d4000 rw-p 00000000 00:00 0 
+b70d4000-b71f8000 r-xp 00000000 08:07 32137      /usr/lib/libxml2.so.2.7.7
+b71f8000-b71f9000 ---p 00124000 08:07 32137      /usr/lib/libxml2.so.2.7.7
+b71f9000-b71fd000 r--p 00124000 08:07 32137      /usr/lib/libxml2.so.2.7.7
+b71fd000-b71fe000 rw-p 00128000 08:07 32137      /usr/lib/libxml2.so.2.7.7
+b71fe000-b71ff000 rw-p 00000000 00:00 0 
+b71ff000-b7322000 r-xp 00000000 08:07 561136     /usr/lib/mysql/libmysqlclient.so.16.0.0
+b7322000-b7324000 r--p 00122000 08:07 561136     /usr/lib/mysql/libmysqlclient.so.16.0.0
+b7324000-b7369000 rw-p 00124000 08:07 561136     /usr/lib/mysql/libmysqlclient.so.16.0.0
+b7369000-b736b000 rw-p 00000000 00:00 0 
+b736b000-b73b6000 r-xp 00000000 08:07 171723     /usr/lib/libgmp.so.3.5.2
+b73b6000-b73b7000 r--p 0004a000 08:07 171723     /usr/lib/libgmp.so.3.5.2
+b73b7000-b73b8000 rw-p 0004b000 08:07 171723     /usr/lib/libgmp.so.3.5.2
+b73b8000-b73fb000 r-xp 00000000 08:07 401624     /usr/lib/libcurl.so.4.2.0
+b73fb000-b73fc000 r--p 00042000 08:07 401624     /usr/lib/libcurl.so.4.2.0
+b73fc000-b73fd000 rw-p 00043000 08:07 401624     /usr/lib/libcurl.so.4.2.0
+b73fd000-b740e000 r-xp 00000000 08:07 207920     /lib/libresolv-2.11.2.so
+b740e000-b740f000 r--p 00010000 08:07 207920     /lib/libresolv-2.11.2.so
+b740f000-b7410000 rw-p 00011000 08:07 207920     /lib/libresolv-2.11.2.so
+b7410000-b7412000 rw-p 00000000 00:00 0 중지됨
+

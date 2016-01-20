@@ -1,0 +1,188 @@
+
+---- EXPECTED OUTPUT
+[001] Expecting NULL, got NULL,
+[002] Expecting NULL, got NULL,
+cubrid_fetch_object(res) start
+object(stdClass)#1 (6) {
+  ["c1"]=>
+  string(7) "string1"
+  ["c2"]=>
+  string(20) "char11111           "
+  ["c3"]=>
+  string(1) "1"
+  ["c4"]=>
+  string(19) "11.1099999999999994"
+  ["c5"]=>
+  string(8) "02:10:22"
+  ["c6"]=>
+  string(10) "1977-08-14"
+}
+object(cubrid_fetch_object_test)#1 (6) {
+  ["c1"]=>
+  string(8) "string10"
+  ["c2"]=>
+  string(20) "char10              "
+  ["c3"]=>
+  string(2) "10"
+  ["c4"]=>
+  string(21) "1010.0000000000000000"
+  ["c5"]=>
+  string(8) "10:15:00"
+  ["c6"]=>
+  string(10) "0010-10-11"
+}
+cubrid_fetch_object(res, string ,array) cubrid_fetch_object_construct start1
+
+Warning: Missing argument 1 for cubrid_fetch_object_construct::__construct() in %s on line %d
+
+Warning: Missing argument 2 for cubrid_fetch_object_construct::__construct() in %s on line %d
+
+Notice: Undefined variable: s in %s on line %d
+
+Notice: Undefined variable: f in %s on line %d
+object(cubrid_fetch_object_construct)#1 (6) {
+  ["c1"]=>
+  NULL
+  ["c2"]=>
+  NULL
+  ["c3"]=>
+  string(1) "2"
+  ["c4"]=>
+  string(23) "222222.0000000000000000"
+  ["c5"]=>
+  string(8) "01:15:00"
+  ["c6"]=>
+  string(10) "2000-10-31"
+}
+start2:
+
+Warning: Missing argument 2 for cubrid_fetch_object_construct::__construct() in %s on line %d
+
+Notice: Undefined variable: f in %s on line %d
+object(cubrid_fetch_object_construct)#1 (6) {
+  ["c1"]=>
+  string(2) "c1"
+  ["c2"]=>
+  NULL
+  ["c3"]=>
+  string(1) "3"
+  ["c4"]=>
+  string(19) "33.0000000000000000"
+  ["c5"]=>
+  string(8) "03:15:00"
+  ["c6"]=>
+  string(10) "2003-10-31"
+}
+start3:
+object(cubrid_fetch_object_construct)#1 (6) {
+  ["c1"]=>
+  string(2) "c1"
+  ["c2"]=>
+  string(2) "c2"
+  ["c3"]=>
+  string(1) "4"
+  ["c4"]=>
+  string(19) "44.0000000000000000"
+  ["c5"]=>
+  string(8) "04:15:00"
+  ["c6"]=>
+  string(10) "2004-10-21"
+}
+start4:
+object(cubrid_fetch_object_construct)#1 (6) {
+  ["c1"]=>
+  string(2) "c1"
+  ["c2"]=>
+  string(2) "c2"
+  ["c3"]=>
+  string(1) "5"
+  ["c4"]=>
+  string(19) "55.0000000000000000"
+  ["c5"]=>
+  string(8) "05:15:00"
+  ["c6"]=>
+  string(10) "2005-10-01"
+}
+cubrid_fetch_object(res, string ,array) cubrid_fetch_object_private_construct start1
+string(2) "c1"
+object(cubrid_fetch_object_private_construct)#1 (6) {
+  ["c1"]=>
+  string(7) "string6"
+  ["c2"]=>
+  string(20) "char6               "
+  ["c3"]=>
+  string(1) "6"
+  ["c4"]=>
+  string(19) "66.0000000000000000"
+  ["c5"]=>
+  string(8) "06:15:00"
+  ["c6"]=>
+  string(10) "2006-10-11"
+}
+start5:
+object(stdClass)#1 (6) {
+  ["c1"]=>
+  string(7) "string7"
+  ["c2"]=>
+  string(20) "char7               "
+  ["c3"]=>
+  string(1) "7"
+  ["c4"]=>
+  string(19) "77.0000000000000000"
+  ["c5"]=>
+  string(8) "07:15:00"
+  ["c6"]=>
+  string(10) "2007-10-11"
+}
+start6:
+object(cubrid_fetch_object_construct)#1 (6) {
+  ["c1"]=>
+  string(2) "c1"
+  ["c2"]=>
+  string(2) "c2"
+  ["c3"]=>
+  string(1) "8"
+  ["c4"]=>
+  string(19) "88.0000000000000000"
+  ["c5"]=>
+  string(8) "08:15:00"
+  ["c6"]=>
+  string(10) "2008-10-11"
+}
+start6:
+
+Fatal error: Class 'this_class_does_not_exist' not found in %s on line %d
+---- ACTUAL OUTPUT
+[001] Expecting NULL, got NULL,
+[002] Expecting NULL, got NULL,
+cubrid_fetch_object(res) start
+object(stdClass)#1 (6) {
+  ["c1"]=>
+  string(7) "string1"
+  ["c2"]=>
+  string(20) "char11111           "
+  ["c3"]=>
+  string(1) "1"
+  ["c4"]=>
+  string(19) "11.1099999999999994"
+  ["c5"]=>
+  string(8) "02:10:22"
+  ["c6"]=>
+  string(10) "1977-08-14"
+}
+object(cubrid_fetch_object_test)#1 (6) {
+  ["c1"]=>
+  string(8) "string10"
+  ["c2"]=>
+  string(20) "char10              "
+  ["c3"]=>
+  string(2) "10"
+  ["c4"]=>
+  string(21) "1010.0000000000000000"
+  ["c5"]=>
+  string(8) "10:15:00"
+  ["c6"]=>
+  string(10) "0010-10-11"
+}
+cubrid_fetch_object(res, string ,array) cubrid_fetch_object_construct start1
+---- FAILED
