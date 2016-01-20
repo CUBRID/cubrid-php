@@ -1098,6 +1098,9 @@ ZEND_MINIT_FUNCTION(cubrid)
     REGISTER_LONG_CONSTANT("CUBRID_AUTOCOMMIT_FALSE", CUBRID_AUTOCOMMIT_FALSE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("CUBRID_AUTOCOMMIT_TRUE", CUBRID_AUTOCOMMIT_TRUE, CONST_CS | CONST_PERSISTENT);
 
+    REGISTER_LONG_CONSTANT("TRAN_COMMIT_CLASS_UNCOMMIT_INSTANCE", TRAN_COMMIT_CLASS_UNCOMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
+    REGISTER_LONG_CONSTANT("TRAN_COMMIT_CLASS_COMMIT_INSTANCE", TRAN_COMMIT_CLASS_COMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
+    REGISTER_LONG_CONSTANT("TRAN_REP_CLASS_UNCOMMIT_INSTANCE", TRAN_REP_CLASS_UNCOMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("TRAN_REP_CLASS_COMMIT_INSTANCE", TRAN_REP_CLASS_COMMIT_INSTANCE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("TRAN_REP_CLASS_REP_INSTANCE", TRAN_REP_CLASS_REP_INSTANCE, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("TRAN_SERIALIZABLE", TRAN_SERIALIZABLE, CONST_CS | CONST_PERSISTENT);
@@ -3656,7 +3659,7 @@ ZEND_FUNCTION(cubrid_field_flags)
 	strcat(sz, "reverse_unique ");
     }
 
-    if (request->col_info[offset].ext_type == CCI_U_TYPE_TIMESTAMP) {
+    if (request->col_info[offset].type == CCI_U_TYPE_TIMESTAMP) {
 	strcat(sz, "timestamp ");
     }
 
@@ -3771,9 +3774,9 @@ ZEND_FUNCTION(cubrid_fetch_field)
 
     array_init(return_value);
 
-    is_numeric = numeric_type(request->col_info[offset].ext_type);
+    is_numeric = numeric_type(request->col_info[offset].type);
     max_length = 0;
-    is_blob = (request->col_info[offset].ext_type == CCI_U_TYPE_BLOB)?1:0;
+    is_blob = (request->col_info[offset].type == CCI_U_TYPE_BLOB)?1:0;
 
     add_assoc_string(return_value, "name", request->col_info[offset].col_name, 1);
     add_assoc_string(return_value, "table", request->col_info[offset].class_name, 1);
@@ -6420,7 +6423,7 @@ static int type2str(T_CCI_COL_INFO * column_info, char *type_name, int type_name
 	int i = 0;
 	int len = (sizeof(cubrid_type2name) / sizeof(cubrid_type2name[0]));
 
-    u_type = CCI_GET_COLLECTION_DOMAIN(column_info->ext_type);
+    u_type = CCI_GET_COLLECTION_DOMAIN(column_info->type);
 
 	for(i = 0;i<len; i++) {
       if (cubrid_type2name[i].type == u_type) {
@@ -6430,11 +6433,11 @@ static int type2str(T_CCI_COL_INFO * column_info, char *type_name, int type_name
 	if(buf[0] == '\0')
 		snprintf(buf, sizeof(buf), cubrid_type2name[0].name);
 	
-    if (CCI_IS_SET_TYPE(column_info->ext_type)) {
+    if (CCI_IS_SET_TYPE(column_info->type)) {
         snprintf(type_name, type_name_len, "set(%s)", buf);
-    } else if (CCI_IS_MULTISET_TYPE(column_info->ext_type)) {
+    } else if (CCI_IS_MULTISET_TYPE(column_info->type)) {
         snprintf(type_name, type_name_len, "multiset(%s)", buf);
-    } else if (CCI_IS_SEQUENCE_TYPE(column_info->ext_type)) {
+    } else if (CCI_IS_SEQUENCE_TYPE(column_info->type)) {
         snprintf(type_name, type_name_len, "sequence(%s)", buf);
     } else {
         snprintf(type_name, type_name_len, "%s", buf);

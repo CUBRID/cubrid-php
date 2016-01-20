@@ -172,7 +172,7 @@ Second Column Flags:
 ------------ print_field_info --------------------
 name:                          f_name
 table:                         code
-default value:                 "NULL"
+default value:                 ""
 max length:                    0
 not null:                      0
 primary key:                   0

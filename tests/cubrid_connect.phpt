@@ -89,8 +89,8 @@ Warning: Error: DBMS, -677, Failed to connect to database server, %s
 Warning: Error: DBMS, -171, Incorrect or missing password.%s
 [008] [-171] Incorrect or missing password.%s
 
-Warning: Error: CCI, -20038, Connection timed out %s
-[009] [-20038] Connection timed out
+Warning: Error: CCI, -20016, Cannot connect to CUBRID CAS %s
+[009] [-20016] Cannot connect to CUBRID CAS
 
 Warning: Error: DBMS, -165, User "invalid_user" is invalid.%s
 [010] [-165] User "invalid_user" is invalid.%s
