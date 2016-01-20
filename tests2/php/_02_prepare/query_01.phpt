@@ -144,7 +144,6 @@ Array
     [Packed] => 
     [Null] => YES
     [Index_type] => BTREE
-    [Func] => 
 )
 Array
 (
@@ -159,7 +158,6 @@ Array
     [Packed] => 
     [Null] => YES
     [Index_type] => BTREE
-    [Func] => 
 )
 Array
 (
@@ -174,7 +172,6 @@ Array
     [Packed] => 
     [Null] => YES
     [Index_type] => BTREE
-    [Func] => 
 )
 Array
 (
@@ -189,7 +186,6 @@ Array
     [Packed] => 
     [Null] => YES
     [Index_type] => BTREE
-    [Func] => 
 )
 
 
@@ -212,7 +208,7 @@ array(6) {
   ["Field"]=>
   string(5) "phone"
   ["Type"]=>
-  string(11) "VARCHAR(10)"
+  string(10) "STRING(10)"
   ["Null"]=>
   string(3) "YES"
   ["Key"]=>
@@ -226,7 +222,7 @@ array(6) {
   ["Field"]=>
   string(7) "address"
   ["Type"]=>
-  string(19) "VARCHAR(1073741823)"
+  string(18) "STRING(1073741823)"
   ["Null"]=>
   string(3) "YES"
   ["Key"]=>
@@ -254,7 +250,7 @@ array(6) {
   ["Field"]=>
   string(6) "coment"
   ["Type"]=>
-  string(19) "VARCHAR(1073741823)"
+  string(18) "STRING(1073741823)"
   ["Null"]=>
   string(3) "YES"
   ["Key"]=>
@@ -271,13 +267,13 @@ array(6) {
   ["Field"]=>
   string(7) "comment"
   ["Type"]=>
-  string(19) "VARCHAR(1073741823)"
+  string(18) "STRING(1073741823)"
   ["Null"]=>
   string(3) "YES"
   ["Key"]=>
   string(0) ""
   ["Default"]=>
-  string(7) "COMMENT"
+  string(9) "'COMMENT'"
   ["Extra"]=>
   string(0) ""
 }
@@ -299,13 +295,13 @@ array(6) {
   ["Field"]=>
   string(10) "first_name"
   ["Type"]=>
-  string(11) "VARCHAR(10)"
+  string(10) "STRING(10)"
   ["Null"]=>
   string(3) "YES"
   ["Key"]=>
   string(0) ""
   ["Default"]=>
-  string(4) "name"
+  string(6) "'name'"
   ["Extra"]=>
   string(0) ""
 }
@@ -313,7 +309,7 @@ array(6) {
   ["Field"]=>
   string(9) "last_name"
   ["Type"]=>
-  string(11) "VARCHAR(20)"
+  string(10) "STRING(20)"
   ["Null"]=>
   string(3) "YES"
   ["Key"]=>

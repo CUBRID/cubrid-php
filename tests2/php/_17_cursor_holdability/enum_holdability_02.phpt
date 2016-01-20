@@ -93,6 +93,8 @@ cubrid_disconnect($conn);
 print "Finished\n";
 ?>
 --CLEAN--
+--XFAIL--
+CUBRID 8.4.4 can not support
 --EXPECTF--
 *******************First select****************
 i                             working_days                  answers                       

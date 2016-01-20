@@ -45,7 +45,7 @@ print "Finished!\n";
 ?>
 --CLEAN--
 --XFAIL--
-"autocommit" setting in url is closed in CCI 9.0.0
+"autocommit" setting in url is closed in CCI 8.4.4
 --EXPECTF--
 PHP Warning:  Error: DBMS, 0, Unknown DBMS error in %s on line %d
 [001]Expect: return value false. [0] [Unknown DBMS error]

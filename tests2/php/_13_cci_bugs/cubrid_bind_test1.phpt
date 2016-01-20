@@ -32,6 +32,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-126 cubrid php driver 9.0.0 fixed this issue
 --EXPECTF--
 array(3) {
   ["c1"]=>

@@ -14,61 +14,77 @@
   
 <h1>CUBRID PHP Library release notes</h1> 
 <hr> 
-<h2>2008 R4.1 Release </h2> 
+<h2>2008 R4.2 Release </h2> 
 
 <pre class = "s1">
-This release is a major release. Several new features have been added to this version including persistent connecting,
-query timeout and so on. Accordingly new functions are added, and several bugs have been fixed.
+This release is a major release. Several features have been enhanced to this version such as remove the
+possibilities of the value of affected rows may not correct, unify the request resource registered in
+cubrid_execute, cubrid_query and cubrid_unbuffered_query and so on. Accordingly features are enhanced, 
+several bugs have been fixed. 
+
+All these issues have been recorded on http://jira.cubrid.org/browse/APIS, or if you have any problem,
+you can ask for help here.
 </pre>
-
-<h4>Functionality added:</h4>
-
-<pre class = "s1">
-The following functions have been added:
-</pre>
-
-<ul>
-  <li>cubrid_pconnect</li>
-  <li>cubrid_pconnect_with_url</li>
-  <li>cubrid_set_query_timeout</li>
-  <li>cubrid_get_query_timeout</li>
-</ul>
 
 <h4>Changed and Enhanced Features:</h4>
 
 <pre class = "s1">
-1.) Reuse the connection established:
+1.) APIS-179: Remove the support of named placeholders for prepare statements
 
-    For mysql, if a second call is made to mysql_connect() with the same arguments, no new link will be established,
-    but instead, the connect identifier of the already opened connection will be returned. The new_link parameter
-    modifies this behavior and makes mysql_connect() always open a new connection, even if mysql_connect() was called
-    before with the same parameters. 
+2.) APIS-172: Remove the possibilities of the value of affected rows may not correct
 
-    To make compatibility with mysql, we add the new_link parameter in cubrid_connect and cubrid_connect_with_url.
+3.) APIS-171: Unify the request resource registered in cubrid_execute, cubrid_query and cubrid_unbuffered_query.
 
-2.) Add persistent connection:
+    Though the implements of cubrid_execute, cubrid_query and cubrid_unbuffered_query are different, 
+    there are also some problems that these three functions all need to consider, such as when should
+    the request resource be registered. We should register the request resource when the related objects are ready.
 
-    We add two functions, cubrid_pconnect and cubrid_pconnect_with_url, to provide persistent database connections.
-    The parameters of cubrid_pconnect are same with cubrid_connect, and so do cubrid_pconnect_with_url and
-    cubrid_connect_with_url.
+4.) APIS-111: Modify cubrid_list_dbs()'s parameter to be optional
 
-3.) Add functions about getting and setting the query timeout time:
+5.) APIS-108: Modify cubrid_disconnect()'s parameter to be optinal
 
-    If database queries are taking too long to perform, and your application is becoming unresponsive, you can
-    configure a timeout for database queries. We add two functions (cubrid_get_query_timeout and 
-    cubrid_set_query_timeout) to get and set the query timeout of database queries.
+6.) APIS-107: cubrid_fetch_field() return default value as empty string instead of NULL
 
-4.) Add a form of the url parameter for cubrid_connect_with_url function:
+7.) APIS-106: Modify cubrid_affected_rows()'s parameter to be optional
 
-    Support the way without "cci:" in url parameter, that is the url become "CUBRID:host:db_name:db_user:......."
- 
+8.) APIS-105: Modify cubrid_field_type(), it returns "varchar" instead of "varchar(100)".
+
+9.) APIS-100: Add cci library's version in phpinfo()
+
 </pre>
 
 <h4>Fixed bugs:</h4> 
 
 <pre class = "s1">
-1.) Fix a bug in cubrid_fetch, cubrid_fetch_row, cubrid_fetch_array and cubrid_fetch_assoc: Modified the return value
-when there are no more data;
+
+1.) APIS-176: Resolve the memory growth when continually execute SQL statements on one connection and don't close request.
+
+2.) APIS-150: Fixed the return values for cubrid_get_autocommit: when the auto-commit mode is off, it will return false, and when there is an error, it will return nothing.
+
+3.) APIS-147: Fix cubrid_pconnect when passing an error password to it, connection will success too.
+
+4.) APIS-135: Fix cubrid_list_dbs: when no passing parameter to cubrid_list_dbs() method, segment fault will appear.
+
+5.) APIS-133: Fix cubrid_current_oid: it will always get the first record's oid value.
+
+6.) APIS-132: Fix cubrid_data_seek: when row number is out of range, the error code is 0.
+
+7.) APIS-129: Fix cubrid_result: when the column value in database is null, cubrid_result will not return the correct result.
+
+8.) APIS-128: Fix cubrid_result: passing field parameter in the form of tablename.fieldname to cubrid_result method will fail.
+
+9.) APIS-123: Fix cubrid_fetch_lengths: return value of cubrid_fetch_lengths method is empty when record number is 1.
+
+10.) APIS-117: Fix cubrid_fetch_field: it will affect the cursor position which will influence the results of cubrid_fetch.
+
+11.) APIS-110: Fix cubrid_num_fields: modify the return value on failure -1 to FALSE.
+
+12.) APIS-109: Make the return values of cubrid_move_cursor and cubrid_data_seek consistent with mysql_data_seek
+
+13.) APIS-103: Fix cubrid_fetch_field: column index is out of range it won't return false.
+
+14.) APIS-97: Register PHP resources: when calling is_resource() function, it always returns "Unknown"
+
 </pre>
 
 </body>

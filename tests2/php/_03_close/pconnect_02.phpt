@@ -30,8 +30,8 @@ print "Finished!\n";
 --EXPECTF--
 [001]pconn values: Resource id #5 
 
-Warning: Error: DBMS, -171, Incorrect or missing password.%s in %s on line %d
-[004]Expect: return value false, [-171] [Incorrect or missing password.%s]
+Warning: Error: DBMS, 0, Unknown DBMS error in %s on line %d
+[004]Expect: return value false, [0] [Unknown DBMS error]
 
 
 Finished!

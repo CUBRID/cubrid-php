@@ -52,6 +52,8 @@ print "\n";
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-292
 --EXPECTF--
 #####correct example#####
 _db_class 

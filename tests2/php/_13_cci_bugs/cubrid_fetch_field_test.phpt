@@ -38,12 +38,14 @@ cubrid_close_request($req);
 cubrid_disconnect($conn);
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-124
 --EXPECTF--
-rray(4) {
+array(4) {
   [0]=>
   string(5) "20001"
   [1]=>
-  string(5) "16681"
+  string(5) "16132"
   [2]=>
   string(3) "KOR"
   [3]=>

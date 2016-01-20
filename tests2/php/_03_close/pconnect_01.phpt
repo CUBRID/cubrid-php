@@ -82,6 +82,8 @@ if (FALSE == $pconn8) {
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+cubrid php driver do not support detail error message. cubrid php driver 9.0.0 resolved this issue
 --EXPECTF--
 #####positive example#####
 [001]pconn values: Resource id #5 
@@ -91,18 +93,18 @@ print "Finished!\n";
 
 #####negative example#####
 
-Warning: Error: DBMS, -171, Incorrect or missing password.%s in %s on line %d
-[004]Expect: return value false, [-171] [Incorrect or missing password.%s]
+Warning: Error: DBMS, -171, Incorrect or missing password. in %s on line %d
+[004]Expect: return value false, [-171] [Incorrect or missing password.]
 
-Warning: Error: DBMS, -165, User "dbaa" is invalid.%s in %s on line %d
-[005]Expect: return value false, [-165] [User "dbaa" is invalid.%s]
+Warning: Error: DBMS, -165, User "dbaa" is invalid. in %s on line %d
+[005]Expect: return value false, [-165] [User "dbaa" is invalid.]
 
-Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s in %s on line %d
-[006]Expect: return value false, [-677] [Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s]
+Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost in %s on line %d
+[006]Expect: return value false, [-677] [Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost]
 [007]Expect: return value true, [0] []
 
 Notice: Undefined variable: phpdb in %s on line %d
 
-Warning: Error: CCI, -20030, Invalid url string in %s on line %d
-[008]Expect: return value false, [-20030] [Invalid url string]
+Warning: Error: CAS, -1, Unknown error message in %s on line %d
+[008]Expect: return value false, [-1] [Unknown error message]
 Finished!

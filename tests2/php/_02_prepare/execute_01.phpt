@@ -79,10 +79,8 @@ Notice: Undefined variable: req11111 in %s on line %d
 Warning: cubrid_execute() expects parameter 1 to be resource, null given in %s on line %d
 [001] [0] 
 
-Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before END OF STATEMENT
-Syntax error: unexpected 'nothissql', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
-[002] [-493] Syntax: In line 1, column 1 before END OF STATEMENT
-Syntax error: unexpected 'nothissql', expecting SELECT or VALUE or VALUES or '(' %s
+Warning: Error: DBMS, -493, Syntax: syntax error, unexpected IdName  in %s on line %d
+[002] [-493] Syntax: syntax error, unexpected IdName 
 [003] execute success.
 array(9) {
   ["c1"]=>

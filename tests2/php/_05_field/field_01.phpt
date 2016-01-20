@@ -235,12 +235,12 @@ collection_tb                  sdouble                        set(double)
 collection_tb                  sdate                          set(date)      
 collection_tb                  stime                          set(time)      
 collection_tb                  stimestamp                     set(timestamp) 
-collection_tb                  sset                           set([unknown]) 
-collection_tb                  smultiset                      set([unknown]) 
-collection_tb                  slist                          set([unknown]) 
-collection_tb                  ssequence                      set([unknown]) 
-collection_tb                  multiset_t                     multiset([unknown])
-collection_tb                  list_t                         sequence([unknown])
+collection_tb                  sset                           set(unknown)   
+collection_tb                  smultiset                      set(unknown)   
+collection_tb                  slist                          set(unknown)   
+collection_tb                  ssequence                      set(unknown)   
+collection_tb                  multiset_t                     multiset(unknown)
+collection_tb                  list_t                         sequence(unknown)
 
 
 #####Data type is Date/Time#####

@@ -40,19 +40,16 @@ if (false == $unbuff) {
 
 printf("\n\n#####negative example for cubrid_free_result()#####\n");
 $free=cubrid_free_result($unbuff);
-var_dump($free);
 if (false == $free) {
     printf("[005] Expecting false, [%d] [%s]\n", cubrid_errno($conn), cubrid_error($conn));
 }
 
 $free2=cubrid_free_result();
-var_dump($free2);
 if (false == $free2) {
     printf("[006] Expecting false, [%d] [%s]\n", cubrid_errno($conn), cubrid_error($conn));
 }
 
 $free3=cubrid_free_result("nothisresource");
-var_dump($free3);
 if (false == $free3) {
     printf("[007] Expecting false, [%d] [%s]\n", cubrid_errno($conn), cubrid_error($conn));
 }
@@ -70,23 +67,21 @@ Warning: cubrid_unbuffered_query() expects at least 1 parameter, 0 given in %s o
 Warning: cubrid_unbuffered_query() expects at most 2 parameters, 3 given in %s on line %d
 [002] Expecting false, [0] []
 
-Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '('  in %s on line %d
-[003] Expecting false, [-493] [Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' ]
+Warning: Error: DBMS, -493, Syntax: syntax error, unexpected IdName  in %s on line %d
+[003] Expecting false, [-493] [Syntax: syntax error, unexpected IdName ]
 
-Warning: Error: CAS, -10006, Server handle not found in %s on line %d
-[004] Expecting false, [-10006] [Server handle not found]
+Warning: Error: CAS, -1006, Server handle not found in %s on line %d
+[004] Expecting false, [-1006] [Server handle not found]
 
 
 #####negative example for cubrid_free_result()#####
 
 Warning: cubrid_free_result() expects parameter 1 to be resource, boolean given in %s on line %d
-[005] Expecting false, [-10006] [Server handle not found]
+[005] Expecting false, [-1006] [Server handle not found]
 
 Warning: cubrid_free_result() expects exactly 1 parameter, 0 given in %s on line %d
-[006] Expecting false, [-10006] [Server handle not found]
+[006] Expecting false, [-1006] [Server handle not found]
 
 Warning: cubrid_free_result() expects parameter 1 to be resource, string given in %s on line %d
-[007] Expecting false, [-10006] [Server handle not found]
+[007] Expecting false, [-1006] [Server handle not found]
 Finished!

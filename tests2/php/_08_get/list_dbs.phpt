@@ -71,7 +71,7 @@ if(FALSE == $db7){
    printf("[007]cubrid_db_name: %s\n",$db7);
 }
 
-$db_array=array("phpdb","demodb");
+$db_array=array("qadb","demodb");
 $db8=cubrid_db_name($db_array,0);
 if(FALSE == $db8){
    printf("[008]Expect false, [%d] [%s]\n",cubrid_errno($conn),cubrid_error($conn));
@@ -98,11 +98,14 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####positive example#####
-array(1) {
+array(2) {
   [0]=>
+  string(4) "qadb"
+  [1]=>
   string(6) "demodb"
 }
 #####cubrid_db_name#####
+qadb
 demodb
 
 
@@ -124,7 +127,7 @@ Warning: cubrid_db_name() expects parameter 2 to be long, string given in %s on 
 
 Warning: cubrid_db_name() expects exactly 2 parameters, 1 given in %s on line %d
 [007]Expect false, [0] []
-[008]cubrid_db_name: phpdb
+[008]cubrid_db_name: qadb
 
 Warning: cubrid_db_name() expects parameter 1 to be array, string given in %s on line %d
 [009]Expect false, [0] []

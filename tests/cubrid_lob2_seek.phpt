@@ -34,7 +34,6 @@ $row = cubrid_fetch_row($req, CUBRID_LOB);
 $lob = $row[1];
 
 $size = cubrid_lob2_size($lob);
-$size64 = cubrid_lob2_size64($lob);
 
 print "cubrid_lob2_size : $size\n";
 
@@ -61,21 +60,6 @@ cubrid_lob2_seek($lob, $size - 20, CUBRID_CURSOR_CURRENT);
 $position = cubrid_lob2_tell($lob);
 print "position after move " . ($size - 20) . " related to CUBRID_CURSOR_CURRENT: $position\n";
 
-cubrid_lob2_seek64($lob, "16", CUBRID_CURSOR_FIRST);
-$position = cubrid_lob2_tell64($lob);
-$size64=cubrid_lob2_size64($lob);
-
-cubrid_lob2_close($lob);
-//error
-cubrid_lob2_close($lob);
-cubrid_lob2_close(0);
-cubrid_lob2_size64(0);
-cubrid_lob2_tell64(0);
-cubrid_lob2_seek64($lob);
-cubrid_lob2_seek64($lob, "16", CUBRID_CURSOR_FIRST);
-cubrid_lob2_tell64($lob);
-cubrid_lob2_size64($lob);
-
 cubrid_disconnect($conn);
 
 print "done!";
@@ -90,10 +74,4 @@ position after move 47 related to CUBRID_CURSOR_LAST: 0
 
 Warning: cubrid_lob2_seek(): offet(-1) is out of range, please input a proper number. in %s on line %d
 position after move 27 related to CUBRID_CURSOR_CURRENT: 27
-
-Warning: cubrid_lob2_seek64(): %d is not a valid CUBRID-Lob2 resource in %s on line %d
-
-Warning: cubrid_lob2_tell64(): %d is not a valid CUBRID-Lob2 resource in %s on line %d
-
-Warning: cubrid_lob2_size64(): %d is not a valid CUBRID-Lob2 resource in %s on line %d
 done!

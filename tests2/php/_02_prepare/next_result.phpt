@@ -211,10 +211,8 @@ Notice: Undefined variable: res22222 in %s on line %d
 Warning: cubrid_next_result() expects parameter 1 to be resource, null given in %s on line %d
 106--there is maybe some error
 
-Warning: Error: DBMS, -493, Syntax: In line 1, column 44 before ' this sql statement;'
-Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
-[004] [-493] Syntax: In line 1, column 44 before ' this sql statement;'
-Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s
+Warning: Error: DBMS, -493, Syntax: syntax error, unexpected NO  in %s on line %d
+[004] [-493] Syntax: syntax error, unexpected NO 
 
 Warning: cubrid_next_result() expects parameter 1 to be resource, boolean given in %s on line %d
 124--there is maybe some error

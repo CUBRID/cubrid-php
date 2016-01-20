@@ -29,9 +29,9 @@ if (false !== ($tmp = @cubrid_lob2_import($lob, "file_not_exist"))) {
     printf("[002] Expecting boolean/false, got %s/%s\n", gettype($tmp), $tmp);
 }
 
-cubrid_lob2_import($lob, './cubrid_logo.png');
+cubrid_lob2_import($lob, 'tests/cubrid_logo.png');
 
-if (filesize("./cubrid_logo.png") != cubrid_lob2_size($lob)) {
+if (filesize("tests/cubrid_logo.png") != cubrid_lob2_size($lob)) {
     printf("[003] cubrid_lob2_import error, filesize is inconsistent.\n");
 }
 

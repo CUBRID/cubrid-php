@@ -38,5 +38,7 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 bind time success
-PHP Warning:  Error: DBMS, -494, Semantic: Cannot coerce host var to type timestamp.  in %s on line %d
+
+Warning: Error: CCI, 0, Unknown error message in %s on line %d
 bool(false)
+Finished!

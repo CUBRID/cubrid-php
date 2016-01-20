@@ -58,8 +58,54 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####positive example#####
-array(1) {
+array(3) {
   [0]=>
+  array(10) {
+    ["NAME"]=>
+    string(9) "tt3_alter"
+    ["STATUS"]=>
+    string(6) "ACTIVE"
+    ["EVENT"]=>
+    string(6) "UPDATE"
+    ["TARGET_CLASS"]=>
+    string(3) "tt3"
+    ["TARGET_ATTR"]=>
+    string(0) ""
+    ["ACTION_TIME"]=>
+    string(6) "BEFORE"
+    ["ACTION"]=>
+    string(27) "update [hi] set [a]=[a]-100"
+    ["PRIORITY"]=>
+    string(8) "0.000000"
+    ["CONDITION_TIME"]=>
+    string(0) ""
+    ["CONDITION"]=>
+    string(0) ""
+  }
+  [1]=>
+  array(10) {
+    ["NAME"]=>
+    string(10) "tt2_delete"
+    ["STATUS"]=>
+    string(6) "ACTIVE"
+    ["EVENT"]=>
+    string(6) "DELETE"
+    ["TARGET_CLASS"]=>
+    string(3) "tt2"
+    ["TARGET_ATTR"]=>
+    string(0) ""
+    ["ACTION_TIME"]=>
+    string(6) "BEFORE"
+    ["ACTION"]=>
+    string(16) "delete from [hi]"
+    ["PRIORITY"]=>
+    string(8) "0.000000"
+    ["CONDITION_TIME"]=>
+    string(0) ""
+    ["CONDITION"]=>
+    string(0) ""
+  }
+  [2]=>
   array(10) {
     ["NAME"]=>
     string(10) "tt1_insert"

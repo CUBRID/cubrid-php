@@ -27,7 +27,7 @@ print "Finished!\n";
 ?>
 --CLEAN--
 --EXPECTF--
-id                             not_null primary_key unique_key
+id                             not_null primary_key unique_key reverse_index
 phone                          
-address                        
+address                        reverse_index
 Finished!

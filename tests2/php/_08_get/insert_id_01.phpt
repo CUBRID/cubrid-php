@@ -84,8 +84,8 @@ print "Finishe!\n";
 --EXPECTF--
 #####positive example#####
 
-Warning: Error: CLIENT, -30002, Invalid API call in %s on line %d
-[001]Expect false, [-30002] [Invalid API call]
+Warning: Error: CLIENT, -2002, Invalid API call in %s on line %d
+[001]Expect false, [-2002] [Invalid API call]
 string(2) "19"
 id2: 19
 [002]id: 19

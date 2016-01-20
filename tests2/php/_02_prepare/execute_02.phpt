@@ -120,7 +120,7 @@ Array
 )
 Array
 (
-    [chr(68 using iso88591)|| chr(68-2 using iso88591)] => DB
+    [chr(68)|| chr(68-2)] => DB
 )
 Array
 (
@@ -149,6 +149,6 @@ Array
     [( cast(timestamp '2008-12-25 10:30:20' as time))] => 10:30:20
 )
 
-Warning: Error: DBMS, -181, Cannot coerce value of domain "numeric" to domain "character".%s in %s on line %d
-[-181] Cannot coerce value of domain "numeric" to domain "character".%s
+Warning: Error: DBMS, -181, Cannot coerce value of domain "numeric" to domain "character". in %s on line %d
+[-181] Cannot coerce value of domain "numeric" to domain "character".
 Finished!
