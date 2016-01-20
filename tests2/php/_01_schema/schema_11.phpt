@@ -123,7 +123,7 @@ array(3) {
     ["ACTION_TIME"]=>
     string(6) "BEFORE"
     ["ACTION"]=>
-    string(16) "delete from [hi]"
+    string(22) "delete  [hi] from [hi]"
     ["PRIORITY"]=>
     string(8) "0.000000"
     ["CONDITION_TIME"]=>

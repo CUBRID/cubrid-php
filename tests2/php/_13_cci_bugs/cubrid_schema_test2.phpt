@@ -33,7 +33,7 @@ array(3) {
     ["SCALE"]=>
     string(1) "0"
     ["PRECISION"]=>
-    string(1) "0"
+    string(2) "10"
     ["INDEXED"]=>
     string(1) "1"
     ["NON_NULL"]=>

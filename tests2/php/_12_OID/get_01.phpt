@@ -145,8 +145,8 @@ array(2) {
 
 #####error get#####
 
-Warning: Error: DBMS, -202, Attribute "nothisstring" was not found.%s in %s on line %d
-[004]FALSE [-202] [Attribute "nothisstring" was not found.%s]
+Warning: Error: DBMS, -202, Attribute "nothisstring" was not found. in %s on line %d
+[004]FALSE [-202] [Attribute "nothisstring" was not found.]
 
 Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
 [005]FALSE [-20020] [Invalid oid string]

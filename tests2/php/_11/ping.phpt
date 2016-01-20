@@ -39,7 +39,7 @@ print "done!";
 --EXPECTF--
 bool(true)
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "unknown_table". select * from unknown_table%s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: Unknown class "unknown_table". select * from unknown_table in %s on line %d
 bool(true)
 bool(true)
 

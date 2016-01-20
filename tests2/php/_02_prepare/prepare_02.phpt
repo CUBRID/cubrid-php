@@ -119,8 +119,8 @@ print 'Finished!';
 [002] [0] 
 [004] bind success.
 
-Warning: Error: DBMS, -494, Semantic: Cannot coerce host var to type integer. %s in %s on line %d
-[004] [-494] Semantic: Cannot coerce host var to type integer. %s
+Warning: Error: DBMS, -494, Semantic: Cannot coerce host var to type integer.  in %s on line %d
+[004] [-494] Semantic: Cannot coerce host var to type integer. 
 [005] bind success.
 [005] execute success.
 array(1) {

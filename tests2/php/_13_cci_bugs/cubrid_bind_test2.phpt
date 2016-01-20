@@ -19,10 +19,9 @@ if(false == ($tmp=cubrid_bind($req2, 1, '25:22:60','time'))){
    printf("bind time success\n");
 }
 
-//cubrid_bind($req2, 1, '02:22:59','time');
-
-cubrid_bind($req2, 2, '2012-03-02');
-cubrid_bind($req2, 3, '08/14/1977 12:36:10 pm');
+cubrid_bind($req2, 1, '02:22:59','time');
+cubrid_bind($req2, 2, '2012/03/02', 'date');
+cubrid_bind($req2, 3, '1977/08/14 1:36:10 PM', 'timestamp');
 cubrid_execute($req2);
 
 $req3= cubrid_execute($conn, "SELECT * FROM time2_tb");
@@ -36,7 +35,18 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-479
 --EXPECTF--
 bind time success
-PHP Warning:  Error: DBMS, -494, Semantic: Cannot coerce host var to type timestamp.  in %s on line %d
-bool(false)
+array(4) {
+  ["c1"]=>
+  string(1) "1"
+  ["c2"]=>
+  string(8) "02:22:59"
+  ["c3"]=>
+  string(10) "2012-03-02"
+  ["c4"]=>
+  string(19) "1977-08-14 01:36:10 pm"
+}
+Finished!

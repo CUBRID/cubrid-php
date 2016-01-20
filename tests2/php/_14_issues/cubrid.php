@@ -184,7 +184,7 @@ class CubridTest extends PHPUnit_Framework_TestCase {
           echo "\r\nPNCTL PHP extension loaded.";
       }
     }
-    //$this->con = cubrid_connect ( "test-db-server", "33000", "phptests", "dba", "" );
+    //$this->con = cubrid_connect ( "localhost", "33000", "phptests", "dba", "" );
     $this->con = cubrid_connect ( CubridTest::HOST, CubridTest::PORT, CubridTest::DBNAME, CubridTest::USERID, CubridTest::PASSWORD );
     
     if (! $this->con) {
@@ -2270,9 +2270,9 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindVarchar0() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "0", "!@#$%", "test", "ï¿½?ï¿½?" );
+    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "0", "!@#$%", "test", "æµ?è¯?" );
     
-    $arrayNormalResult = array (( int ) 10, 89.9, 0x123, 1.2e+3, 1, "0", "!@#$%", "test", "ï¿½?ï¿½?" );
+    $arrayNormalResult = array (( int ) 10, 89.9, 0x123, 1.2e+3, 1, "0", "!@#$%", "test", "æµ?è¯?" );
     
     foreach ( $arrayNormalCase as $key => $value ) {
       // string test
@@ -2332,9 +2332,9 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindChar0() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "test", "test", "test    ", "ï¿½?ï¿½?" );
+    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "test", "test", "test    ", "æµ?è¯?" );
     
-    $arrayNormalResult = array (10, 89.9, 0x123, 1.2e+3, 1, "test  ", "test", "test", "ï¿½?ï¿½?" );
+    $arrayNormalResult = array (10, 89.9, 0x123, 1.2e+3, 1, "test  ", "test", "test", "æµ?è¯?" );
     
     $arraySqlType = array ("char(2)", "char(4)", "char(3)", "char(4)", "char(1)", "char(6)", "char(4)", "char(4)", "char(6)" );
     
@@ -2403,9 +2403,9 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindNChar0() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "test", "test", "test    ", "ï¿½?ï¿½?" );
+    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "test", "test", "test    ", "æµ?è¯?" );
     
-    $arrayNormalResult = array (10, 89.9, 0x123, 1.2e+3, 1, "test  ", "test", "test", "ï¿½?ï¿½?" );
+    $arrayNormalResult = array (10, 89.9, 0x123, 1.2e+3, 1, "test  ", "test", "test", "æµ?è¯?" );
     
     $arraySqlType = array ("nchar(2)", "nchar(4)", "nchar(3)", "nchar(4)", "nchar(1)", "nchar(6)", "nchar(4)", "nchar(4)", "nchar(6)" );
     
@@ -2469,9 +2469,9 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindNVChar0() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "test", "test", "test    ", "ï¿½?ï¿½?" );
+    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "test", "test", "test    ", "æµ?è¯?" );
     
-    $arrayNormalResult = array (10, 89.9, 0x123, 1.2e+3, 1, "test", "test", "test", "ï¿½?ï¿½?" );
+    $arrayNormalResult = array (10, 89.9, 0x123, 1.2e+3, 1, "test", "test", "test", "æµ?è¯?" );
     
     $arraySqlType = array ("NCHAR VARYING(2)", "NCHAR VARYING(4)", "NCHAR VARYING(3)", "NCHAR VARYING(4)", "NCHAR VARYING(1)", "NCHAR VARYING(30)", "NCHAR VARYING(4)", "NCHAR VARYING(4)", "NCHAR VARYING(6)" );
     
@@ -2542,7 +2542,7 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindBit0() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "10", "ï¿½?" );
+    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "10", "æµ?" );
     
     $arrayNormalResult = array (3130, 38392E39, 323931, 31323030, 31, "3130", "E6B58B" );
     
@@ -2591,7 +2591,7 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindBit1() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-      // stringtest å¤§ï¿½?N
+      // stringtest å¤§ä?N
     try {
       $this->sql = "create table test1 (flag BIT(16))";
       cubrid_execute ( $this->con, $this->sql );
@@ -2616,7 +2616,7 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindVarBit0() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "1", "10", "ï¿½?" );
+    $arrayNormalCase = array (( int ) 10, ( float ) 89.9, 0x123, 1.2e+3, TRUE, "1", "10", "æµ?" );
     
     $arrayNormalResult = array (3130, 38392E39, 323931, 31323030, 31, "31", "3130", "E6B58B" );
     
@@ -2664,7 +2664,7 @@ class CubridTest extends PHPUnit_Framework_TestCase {
   public function testCubridBindVarBit1() {
     if (OUTPUT_FUNCTION_NAME == true)
       echo "\r\nRunning: " . __FUNCTION__ . " = ";
-      // stringtest å¤§ï¿½?N
+      // stringtest å¤§ä?N
     $this->sql = "create table test1 (flag BIT VARYING(16))";
     cubrid_execute ( $this->con, $this->sql );
     
@@ -3748,7 +3748,7 @@ class CubridTest extends PHPUnit_Framework_TestCase {
     cubrid_disconnect ( $this->con );
     $this->req = null;
     $this->con = null;
-    $this->con = cubrid_connect ( "test-db-server", CubridTest::PORT, CubridTest::DBNAME, CubridTest::USERID );
+    $this->con = cubrid_connect ( "localhost", CubridTest::PORT, CubridTest::DBNAME, CubridTest::USERID );
     $this->assertGreaterThan ( 0, $this->con );
     $this->testCubridBindBit0 ();
     //$this->assertTrue(FALSE);
@@ -3764,7 +3764,7 @@ class CubridTest extends PHPUnit_Framework_TestCase {
     cubrid_disconnect ( $this->con );
     $this->req = null;
     $this->con = null;
-    $this->con = cubrid_connect ( "test-db-server", CubridTest::PORT, CubridTest::DBNAME );
+    $this->con = cubrid_connect ( "localhost", CubridTest::PORT, CubridTest::DBNAME );
     $this->assertGreaterThan ( 0, $this->con );
     $this->testCubridBindBit0 ();
     //$this->assertTrue(FALSE);

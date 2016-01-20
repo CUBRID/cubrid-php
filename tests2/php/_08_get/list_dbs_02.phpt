@@ -33,14 +33,19 @@ if(FALSE ==$db_list2 ){
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
 --EXPECTF--
 #####positive example#####
-array(1) {
+array(2) {
   [0]=>
+  string(4) "qadb"
+  [1]=>
   string(6) "demodb"
 }
-array(1) {
+array(2) {
   [0]=>
+  string(4) "qadb"
+  [1]=>
   string(6) "demodb"
 }
 

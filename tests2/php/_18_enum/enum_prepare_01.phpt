@@ -170,7 +170,7 @@ id                            e2                            e3                  
 1                             Yes                           Sunday                        x                             
 6                             Yes                           Wednesday                     z                             
 
-Warning: Error: DBMS, -181, Cannot coerce value of domain "integer" to domain "enum".%s in /home/php/phptestcases/php/php/_18_enum/enum_prepare_01.php on line 47
+Warning: Error: DBMS, -181, Cannot coerce value of domain "integer" to domain "enum". in %s on line %d
 *******************After Execute using -1****************
 id                            e2                            e3                            e4                            
 1                             Yes                           Sunday                        x                             
@@ -184,10 +184,10 @@ id                            e2                            e3                  
 1                             Yes                           Saturday                      x                             
 6                             Yes                           Wednesday                     z                             
 
-Warning: Error: DBMS, -181, Cannot coerce value of domain "character" to domain "enum".%s in %s on line %d
+Warning: Error: DBMS, -181, Cannot coerce value of domain "character" to domain "enum". in %s on line %d
 
 Warning: Error: DBMS, -494, Semantic: before '  as int), cast(answers as int) from enum032'
-Attribute "working_days" was not found. select  cast(working_days as integer),  cast(answers as inte...%s in %s on line %d
+Attribute "working_days" was not found. select  cast(working_days as integer),  cast(answers as inte... in %s on line %d
 
 Warning: cubrid_execute() expects parameter 1 to be resource, boolean given in %s on line %d
 

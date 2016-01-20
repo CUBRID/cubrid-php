@@ -25,6 +25,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-127
 --EXPECTF--
 int_t                          
 c10                            

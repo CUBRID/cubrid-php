@@ -29,14 +29,14 @@ if (false == ($tmp=cubrid_unbuffered_query('THIS IS NOT SQL', $conn))) {
 }
 
 $unbuff=cubrid_unbuffered_query("select * from unbuffered_tb where id >10",$conn);
-if (false == $unbuff) {
+$row=cubrid_fetch_assoc($unbuff);
+if (false == $row) {
     printf("[004] Expecting false, [%d] [%s]\n", cubrid_errno($conn), cubrid_error($conn));
-}else{
-    $row=cubrid_fetch_assoc($unbuff);
-    var_dump($row);
+//}else{
+//    $row=cubrid_fetch_assoc($unbuff);
+//    var_dump($row);
     cubrid_free_result($unbuff);
 }
-
 
 printf("\n\n#####negative example for cubrid_free_result()#####\n");
 $free=cubrid_free_result($unbuff);
@@ -68,22 +68,17 @@ Warning: cubrid_unbuffered_query() expects at most 2 parameters, 3 given in %s o
 [002] Expecting false, [0] []
 
 Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
+Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '('  in %s on line %d
 [003] Expecting false, [-493] [Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s]
-
-Warning: Error: CAS, -10006, Server handle not found in %s on line %d
-[004] Expecting false, [-10006] [Server handle not found]
+Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' ]
+[004] Expecting false, [0] []
 
 
 #####negative example for cubrid_free_result()#####
 
-Warning: cubrid_free_result() expects parameter 1 to be resource, boolean given in %s on line %d
-[005] Expecting false, [-10006] [Server handle not found]
-
 Warning: cubrid_free_result() expects exactly 1 parameter, 0 given in %s on line %d
-[006] Expecting false, [-10006] [Server handle not found]
+[006] Expecting false, [0] []
 
 Warning: cubrid_free_result() expects parameter 1 to be resource, string given in %s on line %d
-[007] Expecting false, [-10006] [Server handle not found]
+[007] Expecting false, [0] []
 Finished!

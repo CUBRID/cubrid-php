@@ -17,8 +17,10 @@ cubrid_execute($conn,$sql);
 
 //date time type
 $req = cubrid_prepare($conn, "INSERT INTO time_tb VALUES('time date test',?,?);");
+date_default_timezone_set("Asia/Seoul");
 cubrid_bind($req, 1, '02:22:22','time');
-cubrid_bind($req, 2, '08/14/1977','date');
+//http://jira.cubrid.org/browse/APIS-461, date string format must be 'YYYY/MM/DD'
+cubrid_bind($req, 2, '1977/08/14','date');
 cubrid_execute($req);
 
 $req2= cubrid_execute($conn, "SELECT * FROM time_tb where c1 like 'time%';");

@@ -72,7 +72,7 @@ column_name                              column_type          column_len        
 e2                                       enum                 0                    Yes                                     
 e2                                       enum                 0                    No                                      
 
-Warning: Error: DBMS, -181, Cannot coerce value of domain "integer" to domain "enum".%s. in /home/php/cubrid_php/trunk/tests2/php/_18_enum/enum_03.php on line 30
+Warning: Error: DBMS, -181, Cannot coerce value of domain "integer" to domain "enum". in %s on line 30
 column_name                              column_type          column_len           column_value                            
 e2                                       enum                 0                    Yes                                     
 e2                                       enum                 0                    No                                      

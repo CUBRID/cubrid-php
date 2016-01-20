@@ -127,23 +127,23 @@ int(4)
 
 #####error get#####
 
-Warning: Error: DBMS, -202, Attribute "nothisstring" was not found.%s in %s on line %d
+Warning: Error: DBMS, -202, Attribute "nothisstring" was not found. in %s on line %d
 
-Warning: Error: DBMS, -202, Attribute "nothisstring" was not found.%s in %s on line %d
-
-Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
+Warning: Error: DBMS, -202, Attribute "nothisstring" was not found. in %s on line %d
 
 Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
 
-Warning: Error: DBMS, -202, Attribute "" was not found.%s in %s on line %d
+Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
 
-Warning: Error: DBMS, -202, Attribute "" was not found.%s in %s line %d
+Warning: Error: DBMS, -202, Attribute "" was not found. in %s on line %d
+
+Warning: Error: DBMS, -202, Attribute "" was not found. in %s line %d
 
 Warning: cubrid_col_get() expects exactly 3 parameters, 2 given in %s on line %d
-[007] [-202] Attribute "" was not found.%s
+[007] [-202] Attribute "" was not found.
 
 Warning: cubrid_col_size() expects exactly 3 parameters, 2 given in %s on line %d
-[008] [-202] Attribute "" was not found.%s
+[008] [-202] Attribute "" was not found.
 
 
 Finished!

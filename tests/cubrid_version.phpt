@@ -10,8 +10,6 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-phpinfo();
-
 $conn = cubrid_connect_with_url($connect_url);
 if (!$conn) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
@@ -39,9 +37,8 @@ print "done!";
 ?>
 --CLEAN--
 --EXPECTF--
-%s
 cubrid version: %s
 server version: %s
-client version: 10.0.0
+client version: %s
 database name: demodb
 done!

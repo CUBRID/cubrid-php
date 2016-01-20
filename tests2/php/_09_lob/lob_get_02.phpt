@@ -134,12 +134,12 @@ Clob3 data export success.
 
 #####negative example: lob_get#####
 
-Warning: Error: DBMS, -494, Semantic: Cannot coerce host var to type clob. %s in %s on line %d
+Warning: Error: DBMS, -494, Semantic: Cannot coerce host var to type clob.  in %s on line %d
 
 Warning: cubrid_lob_get() expects exactly 2 parameters, 1 given in %s on line %d
 [001] Expecting FALSE got [0] []
 
-Warning: Error: DBMS, -424, No statement to execute.%s in %s on line %d
+Warning: Error: DBMS, -424, No statement to execute. in %s on line %d
 [002] Expecting boolean/false got [boolean] []
 
 Warning: cubrid_lob_get(): Get result info fail or sql type is not select in %s on line %d

@@ -40,5 +40,5 @@ bool(false)
 string(2) "19"
 int(0)
 
-Warning: Error: DBMS, -493, Syntax: Precision (39) too large. Maximum precision is 38. %s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: Precision (39) too large. Maximum precision is 38.  in %s on line %d
 done!

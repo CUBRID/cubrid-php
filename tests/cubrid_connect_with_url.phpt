@@ -66,8 +66,8 @@ if (!$conn) {
 --EXPECTF--
 done!
 
-Warning: Error: DBMS, -165, User "%s" is invalid.%s in %s on line %d
-[005] [-165] User "%s" is invalid.%s
+Warning: Error: DBMS, -165, User "%s" is invalid. in %s on line %d
+[005] [-165] User "%s" is invalid.
 
-Warning: Error: DBMS, -171, Incorrect or missing password.%s in %s on line %d
-[006] [-171] Incorrect or missing password.%s
+Warning: Error: DBMS, -171, Incorrect or missing password. in %s on line %d
+[006] [-171] Incorrect or missing password.

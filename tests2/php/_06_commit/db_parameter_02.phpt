@@ -138,11 +138,11 @@ PARAM_AUTO_COMMIT             ,0
 
 #####negative example#####
 
-Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6.%s in %s on line %d
-[001]Expect [-110] [Isolation level value must be between 1 and 6.%s]
+Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6. in %s on line %d
+[001]Expect [-110] [Isolation level value must be between 1 and 6.]
 
-Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6.%s in %s on line %d
-[002]Expect [-110] [Isolation level value must be between 1 and 6.%s]
+Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6. in %s on line %d
+[002]Expect [-110] [Isolation level value must be between 1 and 6.]
 array(4) {
   ["PARAM_ISOLATION_LEVEL"]=>
   int(2)

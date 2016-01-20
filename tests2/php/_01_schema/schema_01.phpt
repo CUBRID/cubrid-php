@@ -15,7 +15,8 @@ $conn = cubrid_connect($host, $port, $db,  $user, $passwd);
 printf("\n#####CUBRID_SCH_CLASS#####\n");
 $schema1 = cubrid_schema($conn, CUBRID_SCH_CLASS);
 $count=count($schema1);
-printf("Number of class: %d\n",$count);
+//Class count is contingency
+//printf("Number of class: %d\n",$count);
 $schema1 = cubrid_schema($conn, CUBRID_SCH_CLASS,'_db_auth');
 var_dump($schema1);
 
@@ -67,7 +68,6 @@ print "Finished!\n";
 #####positive example#####
 
 #####CUBRID_SCH_CLASS#####
-Number of class: 51
 array(1) {
   [0]=>
   array(2) {

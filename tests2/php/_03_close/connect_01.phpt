@@ -78,7 +78,7 @@ if (FALSE == $conn7) {
 }
 
 
-$conn8 = cubrid_connect($host, $port, demodb);
+$conn8 = cubrid_connect($host, $port, qadb);
 if (FALSE == $conn8) {
     printf("[008]Expect: return value false, [%d] [%s]\n", cubrid_error_code(), cubrid_error_msg());
 }elseif(TRUE == $conn8){
@@ -176,16 +176,16 @@ array(1) {
 
 #####negative example#####
 
-Warning: Error: DBMS, -171, Incorrect or missing password.%s in %s on line %d
-[004]Expect: return value false, [-171] [Incorrect or missing password.%s]
+Warning: Error: DBMS, -171, Incorrect or missing password. in %s on line %d
+[004]Expect: return value false, [-171] [Incorrect or missing password.]
 
-Warning: Error: DBMS, -165, User "dbaa" is invalid.%s in %s on line %d
-[005]Expect: return value false, [-165] [User "dbaa" is invalid.%s]
+Warning: Error: DBMS, -165, User "dbaa" is invalid. in %s on line %d
+[005]Expect: return value false, [-165] [User "dbaa" is invalid.]
 
-Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s in %s on line %d
-[006]Expect: return value false, [-677] [Failed to connect to database server, 'nothisdb', on the following host(s): test-db-server:test-db-server%s]
+Warning: Error: DBMS, -677, Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost in %s on line %d
+[006]Expect: return value false, [-677] [Failed to connect to database server, 'nothisdb', on the following host(s): localhost:localhost]
 [007]Expect: return value true, [0] []
 
-Notice: Use of undefined constant demodb - assumed 'demodb' in %s on line %d
+Notice: Use of undefined constant qadb - assumed 'qadb' in %s on line %d
 [008]No Expect: return value true, [0] []
 Finished!

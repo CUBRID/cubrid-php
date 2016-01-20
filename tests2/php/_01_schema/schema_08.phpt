@@ -15,10 +15,10 @@ print("#####positive example#####\n");
 printf("ssss table has two foreign keys\n"); 
 cubrid_execute($conn,"drop table if EXISTS ssss;");
 cubrid_execute($conn,"drop table if EXISTS aaaa;");
-cubrid_execute($conn,"drop table if EXISTS album;");
-cubrid_execute($conn,"CREATE TABLE album(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
+cubrid_execute($conn,"drop table if EXISTS album_schema_08;");
+cubrid_execute($conn,"CREATE TABLE album_schema_08(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
 cubrid_execute($conn,"CREATE TABLE aaaa(aid CHAR(10), uid int primary key);");
-cubrid_execute($conn,"CREATE TABLE ssss(album CHAR(10),dsk INTEGER,FOREIGN KEY (album) REFERENCES album(id), FOREIGN KEY (dsk) REFERENCES aaaa(uid));");
+cubrid_execute($conn,"CREATE TABLE ssss(album_schema_08 CHAR(10),dsk INTEGER,FOREIGN KEY (album_schema_08) REFERENCES album_schema_08(id), FOREIGN KEY (dsk) REFERENCES aaaa(uid));");
 
 $schema1 = cubrid_schema($conn,CUBRID_SCH_EXPORTED_KEYS,"aaaa");
 var_dump($schema1);
@@ -29,7 +29,7 @@ cubrid_execute($conn,"drop table if EXISTS  eeee;");
 cubrid_execute($conn,"drop table if EXISTS  cccc;");
 cubrid_execute($conn,"CREATE TABLE cccc(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
 cubrid_execute($conn,"CREATE TABLE eeee(aid CHAR(10),FOREIGN KEY (aid) REFERENCES cccc(id));");
-cubrid_execute($conn,"CREATE TABLE dddd(album CHAR(10),dsk INTEGER,posn INTEGER, song VARCHAR(255),FOREIGN KEY (album) REFERENCES cccc(id));");
+cubrid_execute($conn,"CREATE TABLE dddd(album_schema_08 CHAR(10),dsk INTEGER,posn INTEGER, song VARCHAR(255),FOREIGN KEY (album_schema_08) REFERENCES cccc(id));");
 
 
 $schema2 = cubrid_schema($conn,CUBRID_SCH_EXPORTED_KEYS,"cccc");
@@ -70,7 +70,7 @@ if ($schema4 == false) {
 
 cubrid_execute($conn,"drop table if EXISTS ssss;");
 cubrid_execute($conn,"drop table if EXISTS aaaa;");
-cubrid_execute($conn,"drop table if EXISTS album;");
+cubrid_execute($conn,"drop table if EXISTS album_schema_08;");
 
 cubrid_disconnect($conn);
 
@@ -115,7 +115,7 @@ array(2) {
     ["FKTABLE_NAME"]=>
     string(4) "dddd"
     ["FKCOLUMN_NAME"]=>
-    string(5) "album"
+    string(15) "album_schema_08"
     ["KEY_SEQ"]=>
     string(1) "1"
     ["UPDATE_RULE"]=>
@@ -123,7 +123,7 @@ array(2) {
     ["DELETE_RULE"]=>
     string(1) "1"
     ["FK_NAME"]=>
-    string(13) "fk_dddd_album"
+    string(23) "fk_dddd_album_schema_08"
     ["PK_NAME"]=>
     string(10) "pk_cccc_id"
   }

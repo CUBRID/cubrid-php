@@ -212,9 +212,9 @@ Warning: cubrid_next_result() expects parameter 1 to be resource, null given in 
 106--there is maybe some error
 
 Warning: Error: DBMS, -493, Syntax: In line 1, column 44 before ' this sql statement;'
-Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
+Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '('  in %s on line %d
 [004] [-493] Syntax: In line 1, column 44 before ' this sql statement;'
-Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s
+Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' 
 
 Warning: cubrid_next_result() expects parameter 1 to be resource, boolean given in %s on line %d
 124--there is maybe some error

@@ -15,15 +15,15 @@ print("#####positive example#####\n");
 printf("ssss table has two foreign keys\n"); 
 cubrid_execute($conn,"drop table if EXISTS ssss;");
 cubrid_execute($conn,"drop table if EXISTS aaaa;");
-cubrid_execute($conn,"drop table if EXISTS album;");
-cubrid_execute($conn,"CREATE TABLE album(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
+cubrid_execute($conn,"drop table if EXISTS album_schema_07;");
+cubrid_execute($conn,"CREATE TABLE album_schema_07(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
 cubrid_execute($conn,"CREATE TABLE aaaa(aid CHAR(10), uid int primary key);");
-cubrid_execute($conn,"CREATE TABLE ssss(album CHAR(10),dsk INTEGER,FOREIGN KEY (album) REFERENCES album(id), FOREIGN KEY (dsk) REFERENCES aaaa(uid));");
+cubrid_execute($conn,"CREATE TABLE ssss(album_schema_07 CHAR(10),dsk INTEGER,FOREIGN KEY (album_schema_07) REFERENCES album_schema_07(id), FOREIGN KEY (dsk) REFERENCES aaaa(uid));");
 
 $schema1 = cubrid_schema($conn,CUBRID_SCH_CROSS_REFERENCE,"aaaa","ssss");
 var_dump($schema1);
 
-$schema1 = cubrid_schema($conn,CUBRID_SCH_CROSS_REFERENCE,"album","ssss");
+$schema1 = cubrid_schema($conn,CUBRID_SCH_CROSS_REFERENCE,"album_schema_07","ssss");
 var_dump($schema1);
 
 
@@ -33,7 +33,7 @@ cubrid_execute($conn,"drop table if EXISTS  eeee;");
 cubrid_execute($conn,"drop table if EXISTS  cccc;");
 cubrid_execute($conn,"CREATE TABLE cccc(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
 cubrid_execute($conn,"CREATE TABLE eeee(aid CHAR(10),FOREIGN KEY (aid) REFERENCES cccc(id));");
-cubrid_execute($conn,"CREATE TABLE dddd(album CHAR(10),dsk INTEGER,posn INTEGER, song VARCHAR(255),FOREIGN KEY (album) REFERENCES cccc(id));");
+cubrid_execute($conn,"CREATE TABLE dddd(album_schema_07 CHAR(10),dsk INTEGER,posn INTEGER, song VARCHAR(255),FOREIGN KEY (album_schema_07) REFERENCES cccc(id));");
 
 
 $schema2 = cubrid_schema($conn,CUBRID_SCH_CROSS_REFERENCE,"cccc","eeee");
@@ -75,7 +75,7 @@ if ($schema4 == false) {
 
 cubrid_execute($conn,"drop table if EXISTS ssss;");
 cubrid_execute($conn,"drop table if EXISTS aaaa;");
-cubrid_execute($conn,"drop table if EXISTS album;");
+cubrid_execute($conn,"drop table if EXISTS album_schema_07;");
 
 cubrid_disconnect($conn);
 
@@ -112,13 +112,13 @@ array(1) {
   [0]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(5) "album"
+    string(15) "album_schema_07"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
     string(4) "ssss"
     ["FKCOLUMN_NAME"]=>
-    string(5) "album"
+    string(15) "album_schema_07"
     ["KEY_SEQ"]=>
     string(1) "1"
     ["UPDATE_RULE"]=>
@@ -126,9 +126,9 @@ array(1) {
     ["DELETE_RULE"]=>
     string(1) "1"
     ["FK_NAME"]=>
-    string(13) "fk_ssss_album"
+    string(23) "fk_ssss_album_schema_07"
     ["PK_NAME"]=>
-    string(11) "pk_album_id"
+    string(21) "pk_album_schema_07_id"
   }
 }
 
