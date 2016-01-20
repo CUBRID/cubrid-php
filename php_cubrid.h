@@ -53,25 +53,20 @@ typedef struct
 } T_CUBRID_ERROR;
 
 extern zend_module_entry cubrid_module_entry;
+
 #define cubrid_module_ptr &cubrid_module_entry
 
 ZEND_MINIT_FUNCTION(cubrid);
 ZEND_MSHUTDOWN_FUNCTION(cubrid);
-ZEND_RINIT_FUNCTION(cubrid);
-ZEND_RSHUTDOWN_FUNCTION(cubrid);
 ZEND_MINFO_FUNCTION(cubrid);
 
 ZEND_FUNCTION(cubrid_version);
 ZEND_FUNCTION(cubrid_connect);
-ZEND_FUNCTION(cubrid_pconnect);
 ZEND_FUNCTION(cubrid_connect_with_url);
-ZEND_FUNCTION(cubrid_pconnect_with_url);
-ZEND_FUNCTION(cubrid_close);
+ZEND_FUNCTION(cubrid_disconnect);
 ZEND_FUNCTION(cubrid_prepare);
 ZEND_FUNCTION(cubrid_bind);
 ZEND_FUNCTION(cubrid_execute);
-ZEND_FUNCTION(cubrid_batch_execute);
-ZEND_FUNCTION(cubrid_next_result);
 ZEND_FUNCTION(cubrid_affected_rows);
 ZEND_FUNCTION(cubrid_close_request);
 ZEND_FUNCTION(cubrid_fetch);
@@ -96,15 +91,15 @@ ZEND_FUNCTION(cubrid_set_drop);
 ZEND_FUNCTION(cubrid_seq_drop);
 ZEND_FUNCTION(cubrid_seq_insert);
 ZEND_FUNCTION(cubrid_seq_put);
-ZEND_FUNCTION(cubrid_set_autocommit);
-ZEND_FUNCTION(cubrid_get_autocommit);
 ZEND_FUNCTION(cubrid_commit);
 ZEND_FUNCTION(cubrid_rollback);
+ZEND_FUNCTION(cubrid_new_glo);
+ZEND_FUNCTION(cubrid_save_to_glo);
+ZEND_FUNCTION(cubrid_load_from_glo);
+ZEND_FUNCTION(cubrid_send_glo);
 ZEND_FUNCTION(cubrid_error_msg);
 ZEND_FUNCTION(cubrid_error_code);
 ZEND_FUNCTION(cubrid_error_code_facility);
-ZEND_FUNCTION(cubrid_errno);
-ZEND_FUNCTION(cubrid_error);
 ZEND_FUNCTION(cubrid_field_name);
 ZEND_FUNCTION(cubrid_field_table);
 ZEND_FUNCTION(cubrid_field_type);
@@ -122,47 +117,21 @@ ZEND_FUNCTION(cubrid_fetch_lengths);
 ZEND_FUNCTION(cubrid_field_seek);
 ZEND_FUNCTION(cubrid_result);
 ZEND_FUNCTION(cubrid_unbuffered_query);
-ZEND_FUNCTION(cubrid_query);
 ZEND_FUNCTION(cubrid_get_charset);
-ZEND_FUNCTION(cubrid_client_encoding);
 ZEND_FUNCTION(cubrid_get_client_info);
 ZEND_FUNCTION(cubrid_get_server_info);
 ZEND_FUNCTION(cubrid_real_escape_string);
 ZEND_FUNCTION(cubrid_get_db_parameter);
-ZEND_FUNCTION(cubrid_set_db_parameter);
 ZEND_FUNCTION(cubrid_list_dbs);
-ZEND_FUNCTION(cubrid_db_name);
 ZEND_FUNCTION(cubrid_insert_id);
-ZEND_FUNCTION(cubrid_ping);
-
-ZEND_FUNCTION(cubrid_lob2_new);
-ZEND_FUNCTION(cubrid_lob2_bind);
-ZEND_FUNCTION(cubrid_lob2_export);
-ZEND_FUNCTION(cubrid_lob2_import);
-ZEND_FUNCTION(cubrid_lob2_read);
-ZEND_FUNCTION(cubrid_lob2_write);
-ZEND_FUNCTION(cubrid_lob2_tell);
-ZEND_FUNCTION(cubrid_lob2_tell64);
-ZEND_FUNCTION(cubrid_lob2_seek);
-ZEND_FUNCTION(cubrid_lob2_seek64);
-ZEND_FUNCTION(cubrid_lob2_size);
-ZEND_FUNCTION(cubrid_lob2_size64);
-ZEND_FUNCTION(cubrid_lob2_close);
-
-ZEND_FUNCTION(cubrid_lob_get);
-ZEND_FUNCTION(cubrid_lob_size);
-ZEND_FUNCTION(cubrid_lob_export);
-ZEND_FUNCTION(cubrid_lob_send);
-ZEND_FUNCTION(cubrid_lob_close);
-
-ZEND_FUNCTION(cubrid_get_query_timeout);
-ZEND_FUNCTION(cubrid_set_query_timeout);
 
 ZEND_BEGIN_MODULE_GLOBALS(cubrid)
     T_CUBRID_ERROR recent_error;
 
     int last_connect_id;
     int last_request_id;
+    T_CCI_CUBRID_STMT last_request_stmt_type;
+    int last_request_affected_rows;
 
     char *default_userid, *default_passwd;
 ZEND_END_MODULE_GLOBALS(cubrid)

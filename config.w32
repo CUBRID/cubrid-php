@@ -1,4 +1,4 @@
-// $Id: config.w32 261548 2010-09-20 13:37:29Z fanyifan $
+// $Id: config.w32 100001 2010-09-20 13:37:29Z fanyifan $
 // vim:ft=javascript
 
 ARG_WITH("cubrid", "CUBRID support", "no");

@@ -10,66 +10,72 @@
     <title>CUBRID PHP Library release notes</title> 
   </head> 
 
-<body bgcolor="#ffffff" text="#000000" link="#ff0000" vlink="#a00000" alink="#0000ff"> 
+  <body bgcolor="#ffffff" text="#000000" link="#ff0000" vlink="#a00000" alink="#0000ff"> 
   
 <h1>CUBRID PHP Library release notes</h1> 
 <hr> 
-<h2>2008 R4.1 Release </h2> 
+<h2>2008 R3.0 Release </h2> 
 
 <pre class = "s1">
-This release is a major release. Several new features have been added to this version including persistent connecting,
-query timeout and so on. Accordingly new functions are added, and several bugs have been fixed.
+This release is a major release. All codes has been reviewed, and totally rewritten with latest Zend Engine 2 API, so it
+can't work with PHP 4 now. New functions and features are added in this version, and some bugs has been fixed.
 </pre>
 
 <h4>Functionality added:</h4>
 
 <pre class = "s1">
-The following functions have been added:
+The following functions have been added, and documents of all functions have been updated.
 </pre>
 
-<ul>
-  <li>cubrid_pconnect</li>
-  <li>cubrid_pconnect_with_url</li>
-  <li>cubrid_set_query_timeout</li>
-  <li>cubrid_get_query_timeout</li>
-</ul>
+<table border="1">
+<tr>
+  <th width="200" align="left">Fetch related functions</th>
+  <th width="200" align="left">Field related functions</th>
+  <th width="200" align="left">DB information related functions</th>
+  <th width="200" align="left">Result related functions</th>
+</tr>
+<tr>
+  <td width="200" align="left">cubrid_fetch_array<br>cubrid_fetch_assoc<br>cubrid_fetch_field<br>cubrid_fetch_lengths<br>cubrid_fetch_object<br>cubrid_fetch_row</td>
+  <td width="200" align="left">cubrid_field_flags<br>cubrid_field_len<br>cubrid_field_name<br>cubrid_field_seek<br>cubrid_field_table<br> cubrid_field_type<br>cubrid_num_fields</td>
+  <td width="200" align="left">cubrid_get_client_info<br>cubrid_get_server_info<br>cubrid_get_charset<br>cubrid_get_db_parameter<br>cubrid_list_dbs</td>
+  <td width="200" align="left">cubrid_data_seek<br>cubrid_result<br>cubrid_free_result</td>
+</tr>
+</table>
+
+<br>
+
+<table border="1">
+<tr>
+  <th width="200" align="left">Connect related functions</th>
+  <th width="200" align="left">Other functions</th>
+</tr>
+<tr>
+  <td width="200" align="left">cubrid_connect_with_url</td>
+  <td width="200" align="left">cubrid_insert_id<br>cubrid_unbuffered_query<br>cubrid_real_escape_string</td>
+</tr>
+</table>
 
 <h4>Changed and Enhanced Features:</h4>
 
 <pre class = "s1">
-1.) Reuse the connection established:
+1.) Add two schema type integer constants: 
 
-    For mysql, if a second call is made to mysql_connect() with the same arguments, no new link will be established,
-    but instead, the connect identifier of the already opened connection will be returned. The new_link parameter
-    modifies this behavior and makes mysql_connect() always open a new connection, even if mysql_connect() was called
-    before with the same parameters. 
+    CUBRID_SCH_DIRECT_SUPER_CLASS
+    CUBRID_SCH_PRIMARY_KEY
 
-    To make compatibility with mysql, we add the new_link parameter in cubrid_connect and cubrid_connect_with_url.
+    Both of them are used for cubrid_schema.
+</pre>
 
-2.) Add persistent connection:
+<pre class = "s1">
+2.) cubrid_bind support more data types: 
 
-    We add two functions, cubrid_pconnect and cubrid_pconnect_with_url, to provide persistent database connections.
-    The parameters of cubrid_pconnect are same with cubrid_connect, and so do cubrid_pconnect_with_url and
-    cubrid_connect_with_url.
-
-3.) Add functions about getting and setting the query timeout time:
-
-    If database queries are taking too long to perform, and your application is becoming unresponsive, you can
-    configure a timeout for database queries. We add two functions (cubrid_get_query_timeout and 
-    cubrid_set_query_timeout) to get and set the query timeout of database queries.
-
-4.) Add a form of the url parameter for cubrid_connect_with_url function:
-
-    Support the way without "cci:" in url parameter, that is the url become "CUBRID:host:db_name:db_user:......."
- 
+    The following data types are supported by cubrid_bind: CHAR, VARNCHAR, BIGINT, MONETARY, VARBIT, DATETIME.
 </pre>
 
 <h4>Fixed bugs:</h4> 
 
 <pre class = "s1">
-1.) Fix a bug in cubrid_fetch, cubrid_fetch_row, cubrid_fetch_array and cubrid_fetch_assoc: Modified the return value
-when there are no more data;
-</pre>
+1.) cubrid_get: 
 
-</body>
-</html>
+    If parameter attr is given and its type is string, and the function returns successfully, then there will be memory leak.
+</pre>
