@@ -149,7 +149,7 @@ function get_result_info($req_handle)
 --EXPECTF--
 
 Warning: Error: DBMS, -493, Syntax: In line 1, column 35 before END OF STATEMENT
-Syntax error: unexpected 'unknown' %s in %s on line %d
+Syntax error: unexpected 'unknown'  in %s on line %d
 
 ------------ get_result_info --------------------
 Row count:                     6
@@ -172,7 +172,7 @@ Second Column Flags:
 ------------ print_field_info --------------------
 name:                          f_name
 table:                         code
-default value:                 "NULL"
+default value:                 ""
 max length:                    0
 not null:                      0
 primary key:                   0

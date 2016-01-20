@@ -41,7 +41,7 @@ print "done!";
 --CLEAN--
 --EXPECTF--
 Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
+Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '('  in %s on line %d
 array(5) {
   ["event_code"]=>
   string(5) "20263"
