@@ -10,8 +10,6 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-phpinfo();
-
 $conn = cubrid_connect_with_url($connect_url);
 if (!$conn) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
@@ -26,10 +24,7 @@ $db_list = cubrid_list_dbs($conn);
 $i = 0;
 $cnt = count($db_list);
 while ($i < $cnt) {
-    $db_name = cubrid_db_name($db_list, $i);
-    if ($db_name == "demodb") {
-        printf("database name: %s\n", $db_name);
-    }
+    printf("database name: %s\n", cubrid_db_name($db_list, $i));
     $i++;
 }
 
@@ -39,9 +34,8 @@ print "done!";
 ?>
 --CLEAN--
 --EXPECTF--
-%s
 cubrid version: %s
 server version: %s
-client version: 10.0.0
+client version: %s
 database name: demodb
 done!

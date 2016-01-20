@@ -20,7 +20,7 @@ if (!$cubrid_req) {
     exit(1);
 }
 
-$fp = fopen('./cubrid_logo.png', 'rb');
+$fp = fopen('cubrid_logo.png', 'rb');
 
 $cubrid_retval = cubrid_bind($cubrid_req, 1, $fp, "blob");
 if (!$cubrid_retval) {
@@ -46,7 +46,7 @@ if (!file_exists("lob_test.png")) {
     exit(1);
 }
 
-if (filesize("lob_test.png") != filesize("./cubrid_logo.png")) {
+if (filesize("lob_test.png") != filesize("cubrid_logo.png")) {
     printf("[006] Blob data export error.\n");
     exit(1);
 }

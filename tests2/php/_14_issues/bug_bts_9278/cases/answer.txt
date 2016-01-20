@@ -1,7 +1,0 @@
-
-=== <Result of SELECT Command in Line 1> ===
-
-     count(*)
-=============
-          300
-

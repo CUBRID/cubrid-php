@@ -66,11 +66,11 @@ ZEND_FUNCTION(cubrid_connect);
 ZEND_FUNCTION(cubrid_pconnect);
 ZEND_FUNCTION(cubrid_connect_with_url);
 ZEND_FUNCTION(cubrid_pconnect_with_url);
+ZEND_FUNCTION(cubrid_disconnect);
 ZEND_FUNCTION(cubrid_close);
 ZEND_FUNCTION(cubrid_prepare);
 ZEND_FUNCTION(cubrid_bind);
 ZEND_FUNCTION(cubrid_execute);
-ZEND_FUNCTION(cubrid_batch_execute);
 ZEND_FUNCTION(cubrid_next_result);
 ZEND_FUNCTION(cubrid_affected_rows);
 ZEND_FUNCTION(cubrid_close_request);
@@ -134,35 +134,19 @@ ZEND_FUNCTION(cubrid_list_dbs);
 ZEND_FUNCTION(cubrid_db_name);
 ZEND_FUNCTION(cubrid_insert_id);
 ZEND_FUNCTION(cubrid_ping);
-
-ZEND_FUNCTION(cubrid_lob2_new);
-ZEND_FUNCTION(cubrid_lob2_bind);
-ZEND_FUNCTION(cubrid_lob2_export);
-ZEND_FUNCTION(cubrid_lob2_import);
-ZEND_FUNCTION(cubrid_lob2_read);
-ZEND_FUNCTION(cubrid_lob2_write);
-ZEND_FUNCTION(cubrid_lob2_tell);
-ZEND_FUNCTION(cubrid_lob2_tell64);
-ZEND_FUNCTION(cubrid_lob2_seek);
-ZEND_FUNCTION(cubrid_lob2_seek64);
-ZEND_FUNCTION(cubrid_lob2_size);
-ZEND_FUNCTION(cubrid_lob2_size64);
-ZEND_FUNCTION(cubrid_lob2_close);
-
 ZEND_FUNCTION(cubrid_lob_get);
 ZEND_FUNCTION(cubrid_lob_size);
 ZEND_FUNCTION(cubrid_lob_export);
 ZEND_FUNCTION(cubrid_lob_send);
 ZEND_FUNCTION(cubrid_lob_close);
 
-ZEND_FUNCTION(cubrid_get_query_timeout);
-ZEND_FUNCTION(cubrid_set_query_timeout);
-
 ZEND_BEGIN_MODULE_GLOBALS(cubrid)
     T_CUBRID_ERROR recent_error;
 
     int last_connect_id;
     int last_request_id;
+    T_CCI_CUBRID_STMT last_request_stmt_type;
+    int last_request_affected_rows;
 
     char *default_userid, *default_passwd;
 ZEND_END_MODULE_GLOBALS(cubrid)

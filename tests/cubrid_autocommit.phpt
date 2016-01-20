@@ -15,8 +15,10 @@ $conn = cubrid_connect($host, $port, $db, $user, $passwd);
 if (cubrid_get_autocommit($conn)) {
     printf("Autocommit is ON.\n");
 } else {
-    printf("Autocommit is OFF.");
+    printf("Autocommit is OFF.\n");
 }
+
+cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_TRUE);
 
 @cubrid_execute($conn, "DROP TABLE autocommit_test");
 cubrid_query('CREATE TABLE autocommit_test(a int)');
@@ -30,7 +32,6 @@ $res = cubrid_fetch_array($req, CUBRID_ASSOC);
 
 var_dump($res);
 
-cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_FALSE);
 cubrid_query('UPDATE autocommit_test SET a=2');
 
 cubrid_close($conn);
@@ -40,6 +41,8 @@ $req = cubrid_query('SELECT * FROM autocommit_test');
 $res = cubrid_fetch_array($req, CUBRID_ASSOC);
 
 var_dump($res);
+
+cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_TRUE);
 
 cubrid_query('DROP TABLE autocommit_test');
 
@@ -54,7 +57,7 @@ print "done!";
 ?>
 --CLEAN--
 --EXPECTF--
-Autocommit is ON.
+Autocommit is OFF.
 array(1) {
   ["a"]=>
   string(1) "1"
@@ -64,5 +67,5 @@ array(1) {
   string(1) "1"
 }
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "autocommit_test". select * from autocommit_test%s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: Unknown class "autocommit_test". select * from autocommit_test in %s on line %d
 done!

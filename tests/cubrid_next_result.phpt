@@ -55,7 +55,7 @@ function print_field_info($req_handle, $offset = 0)
     printf("%-30s %s\n", "name:", $field->name);
     printf("%-30s %s\n", "table:", $field->table);
     printf("%-30s \"%s\"\n", "default value:", $field->def);
-    printf("%-30s %d\n", "max length:", $field->max_length);
+    printf("%-30s %d\n", "max lenght:", $field->max_length);
     printf("%-30s %d\n", "not null:", $field->not_null);
     printf("%-30s %d\n", "primary key:", $field->primary_key);
     printf("%-30s %d\n", "unique key:", $field->unique_key);
@@ -148,8 +148,7 @@ function get_result_info($req_handle)
 --CLEAN--
 --EXPECTF--
 
-Warning: Error: DBMS, -493, Syntax: In line 1, column 35 before END OF STATEMENT
-Syntax error: unexpected 'unknown' %s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: syntax error, unexpected UNKNOWN  in %s on line %d
 
 ------------ get_result_info --------------------
 Row count:                     6
@@ -157,13 +156,13 @@ Column count:                  2
 
 Column Names                   Column Types                   Column Len     
 ------------------------------------------------------------------------------
-s_name                         char                           1              
-f_name                         varchar                        6              
+s_name                         char(1)                        1              
+f_name                         varchar(6)                     6              
 
 
 Last Column Name:              f_name
 Last Column Table:             code
-Last Column Type:              varchar
+Last Column Type:              varchar(6)
 Last Column Len:               6
 Second Column Flags:           
 
@@ -172,8 +171,8 @@ Second Column Flags:
 ------------ print_field_info --------------------
 name:                          f_name
 table:                         code
-default value:                 "NULL"
-max length:                    0
+default value:                 ""
+max lenght:                    6
 not null:                      0
 primary key:                   0
 unique key:                    0
@@ -188,15 +187,15 @@ Column count:                  5
 Column Names                   Column Types                   Column Len     
 ------------------------------------------------------------------------------
 event_code                     integer                        11             
-athlete                        varchar                        40             
+athlete                        varchar(40)                    40             
 host_year                      integer                        11             
-score                          varchar                        10             
-unit                           varchar                        5              
+score                          varchar(10)                    10             
+unit                           varchar(5)                     5              
 
 
 Last Column Name:              unit
 Last Column Table:             history
-Last Column Type:              varchar
+Last Column Type:              varchar(5)
 Last Column Len:               5
 Second Column Flags:           not_null primary_key unique_key
 
@@ -206,7 +205,7 @@ Second Column Flags:           not_null primary_key unique_key
 name:                          athlete
 table:                         history
 default value:                 ""
-max length:                    0
+max lenght:                    13
 not null:                      1
 primary key:                   1
 unique key:                    1

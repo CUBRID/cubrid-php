@@ -66,10 +66,10 @@ array(4) {
   ["PARAM_MAX_STRING_LENGTH"]=>
   int(1073741823)
   ["PARAM_AUTO_COMMIT"]=>
-  int(1)
+  int(0)
 }
 
-Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6.%s in %s on line %d
+Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6. in %s on line %d
 array(4) {
   ["PARAM_ISOLATION_LEVEL"]=>
   int(2)
@@ -78,6 +78,6 @@ array(4) {
   ["PARAM_MAX_STRING_LENGTH"]=>
   int(1073741823)
   ["PARAM_AUTO_COMMIT"]=>
-  int(1)
+  int(0)
 }
 done!

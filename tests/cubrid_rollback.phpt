@@ -10,6 +10,7 @@ require_once('skipifconnectfailure.inc');
 include_once("connect.inc");
 
 $conn = cubrid_connect_with_url($connect_url, $user, $passwd);
+cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_TRUE);
 
 @cubrid_execute($conn, "DROP TABLE IF EXISTS rollback_test");
 cubrid_query('CREATE TABLE rollback_test(a int)');
@@ -17,8 +18,6 @@ cubrid_query('INSERT INTO rollback_test(a) VALUE(1)');
 
 cubrid_close($conn);
 $conn = cubrid_connect_with_url($connect_url, $user, $passwd);
-
-cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_FALSE);
 
 $req = cubrid_query('SELECT * FROM rollback_test');
 $res = cubrid_fetch_array($req, CUBRID_ASSOC);
