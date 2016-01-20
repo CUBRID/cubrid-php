@@ -207,14 +207,14 @@ string(1) "6"
 [002]Get result success
 string(1) "6"
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-[003]Expect false [-20013] [Column index is out of range]
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+[003]Expect false [-13] [Column index is out of range]
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-[004]Expect false [-20013] [Column index is out of range]
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+[004]Expect false [-13] [Column index is out of range]
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-[005]Expect false [-20013] [Column index is out of range]
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+[005]Expect false [-13] [Column index is out of range]
 [006]Get result success
 string(7) "string3"
 

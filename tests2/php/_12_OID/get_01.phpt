@@ -148,8 +148,8 @@ array(2) {
 Warning: Error: DBMS, -202, Attribute "nothisstring" was not found.%s in %s on line %d
 [004]FALSE [-202] [Attribute "nothisstring" was not found.%s]
 
-Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
-[005]FALSE [-20020] [Invalid oid string]
+Warning: Error: CCI, -20, Invalid oid string in %s on line %d
+[005]FALSE [-20] [Invalid oid string]
 array(4) {
   ["a"]=>
   string(1) "1"
@@ -177,6 +177,6 @@ array(4) {
   string(30) "a                             "
 }
 
-Warning: Error: CAS, -10013, Invalid oid in %s on line %d
-[007]FALSE [-10013] [Invalid oid]
+Warning: Error: CAS, -1013, Invalid oid in %s on line %d
+[007]FALSE [-1013] [Invalid oid]
 Finished!

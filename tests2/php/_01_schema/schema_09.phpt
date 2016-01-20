@@ -15,10 +15,10 @@ print("#####positive example#####\n");
 printf("ssss table has two foreign keys\n"); 
 cubrid_execute($conn,"drop table if EXISTS ssss;");
 cubrid_execute($conn,"drop table if EXISTS aaaa;");
-cubrid_execute($conn,"drop table if EXISTS album;");
-cubrid_execute($conn,"CREATE TABLE album(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
+cubrid_execute($conn,"drop table if EXISTS ablum_foreignkey;");
+cubrid_execute($conn,"CREATE TABLE ablum_foreignkey(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
 cubrid_execute($conn,"CREATE TABLE aaaa(aid CHAR(10), uid int primary key);");
-cubrid_execute($conn,"CREATE TABLE ssss(album CHAR(10),dsk INTEGER,FOREIGN KEY (album) REFERENCES album(id), FOREIGN KEY (dsk) REFERENCES aaaa(uid));");
+cubrid_execute($conn,"CREATE TABLE ssss(ablum_foreignkey CHAR(10),dsk INTEGER,FOREIGN KEY (ablum_foreignkey) REFERENCES ablum_foreignkey(id), FOREIGN KEY (dsk) REFERENCES aaaa(uid));");
 
 $schema1 = cubrid_schema($conn,CUBRID_SCH_IMPORTED_KEYS,"ssss");
 var_dump($schema1);
@@ -30,7 +30,7 @@ cubrid_execute($conn,"drop table if EXISTS  eeee;");
 cubrid_execute($conn,"drop table if EXISTS  cccc;");
 cubrid_execute($conn,"CREATE TABLE cccc(id CHAR(10) primary key,title VARCHAR(100), artist VARCHAR(100));");
 cubrid_execute($conn,"CREATE TABLE eeee(aid CHAR(10),FOREIGN KEY (aid) REFERENCES cccc(id));");
-cubrid_execute($conn,"CREATE TABLE dddd(album CHAR(10),dsk INTEGER,posn INTEGER, song VARCHAR(255),FOREIGN KEY (album) REFERENCES cccc(id));");
+cubrid_execute($conn,"CREATE TABLE dddd(ablum_foreignkey CHAR(10),dsk INTEGER,posn INTEGER, song VARCHAR(255),FOREIGN KEY (ablum_foreignkey) REFERENCES cccc(id));");
 
 
 $schema2 = cubrid_schema($conn,CUBRID_SCH_IMPORTED_KEYS,"eeee");
@@ -65,7 +65,7 @@ if ($schema3 == false) {
 
 cubrid_execute($conn,"drop table if EXISTS ssss;");
 cubrid_execute($conn,"drop table if EXISTS aaaa;");
-cubrid_execute($conn,"drop table if EXISTS album;");
+cubrid_execute($conn,"drop table if EXISTS ablum_foreignkey;");
 
 cubrid_disconnect($conn);
 
@@ -100,13 +100,13 @@ array(2) {
   [1]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(5) "album"
+    string(16) "ablum_foreignkey"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
     string(4) "ssss"
     ["FKCOLUMN_NAME"]=>
-    string(5) "album"
+    string(16) "ablum_foreignkey"
     ["KEY_SEQ"]=>
     string(1) "1"
     ["UPDATE_RULE"]=>
@@ -114,9 +114,9 @@ array(2) {
     ["DELETE_RULE"]=>
     string(1) "1"
     ["FK_NAME"]=>
-    string(13) "fk_ssss_album"
+    string(24) "fk_ssss_ablum_foreignkey"
     ["PK_NAME"]=>
-    string(11) "pk_album_id"
+    string(22) "pk_ablum_foreignkey_id"
   }
 }
 
@@ -149,7 +149,7 @@ array(1) {
 #####negative example#####
 [001] Expecting false, got [0] []
 
-Warning: Error: CAS, -10004, Invalid argument in %s on line %d
-[002] Expecting false, got [-10004] [Invalid argument]
+Warning: Error: CAS, -1004, Invalid argument in %s on line %d
+[002] Expecting false, got [-1004] [Invalid argument]
 [003] Expecting false, got [0] []
 Finished!

@@ -32,7 +32,7 @@ print "Finished!\n";
 ?>
 --CLEAN--
 --XFAIL--
-"autocommit" setting in url is closed in CCI 9.0.0
+"autocommit" setting in url is closed in CCI 8.4.4
 --EXPECTF--
 [005]autocommit value: 1
 PARAM_ISOLATION_LEVEL          3

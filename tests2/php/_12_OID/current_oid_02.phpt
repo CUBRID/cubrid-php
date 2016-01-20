@@ -56,9 +56,9 @@ printf("Finished!\n");
 ?>
 --CLEAN--
 --EXPECTF--
-Warning: Error: CLIENT, -30002, Invalid API call in %s on line %d
+Warning: Error: CLIENT, -2002, Invalid API call in %s on line %d
 
-Warning: Error: CAS, -10012, Invalid cursor position in %s on line %d
+Warning: Error: CAS, -1012, Invalid cursor position in %s on line %d
 
 
 Finished!

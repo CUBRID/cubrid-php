@@ -119,12 +119,12 @@ PARAM_AUTO_COMMIT              1
 
 #####negative example for disconnect and close#####
 
-Warning: Error: CCI, -20030, Invalid url string in %s on line %d
-[008]Expect: return value false. [-20030] [Invalid url string]
+Warning: Error: CCI, -16, Cannot connect to CUBRID CAS in %s on line %d
+[008]Expect: return value false. [-16] [Cannot connect to CUBRID CAS]
 
-Warning: Error: CCI, -20030, Invalid url string in %s on line %d
-[009]Expect: return value false. [-20030] [Invalid url string]
+Warning: Error: CCI, -16, Cannot connect to CUBRID CAS in %s on line %d
+[009]Expect: return value false. [-16] [Cannot connect to CUBRID CAS]
 
-Warning: Error: CCI, -20030, Invalid url string in %s on line %d
-[010]Expect: return value false. [-20030] [Invalid url string]
+Warning: Error: CCI, -30, Invalid url string in %s on line %d
+[010]Expect: return value false. [-30] [Invalid url string]
 Finished!

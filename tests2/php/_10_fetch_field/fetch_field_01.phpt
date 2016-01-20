@@ -77,14 +77,14 @@ object(stdClass)#1 (13) {
   int(0)
 }
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
 
 
 ---index < 0 Field Properties ---
 name: c3
 default value: "-2147483648"
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
 
 
 ---index > range Field Properties ---

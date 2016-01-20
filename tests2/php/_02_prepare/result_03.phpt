@@ -62,12 +62,12 @@ print "Finished!\n";
 string(1) "1"
 string(7) "string2"
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-[002]Expect false [-20013] [Column index is out of range]
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+[002]Expect false [-13] [Column index is out of range]
 [003]Expect false [0] []
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-[004]Expect false [-20013] [Column index is out of range]
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+[004]Expect false [-13] [Column index is out of range]
 [005]Get result success
 string(10) "4444-44-44"
 Finished!

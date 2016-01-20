@@ -134,7 +134,7 @@ Clob3 data export success.
 
 #####negative example: lob_get#####
 
-Warning: Error: DBMS, -494, Semantic: Cannot coerce host var to type clob. %s in %s on line %d
+Warning: Error: CCI, 0, Unknown error message in %s on line %d
 
 Warning: cubrid_lob_get() expects exactly 2 parameters, 1 given in %s on line %d
 [001] Expecting FALSE got [0] []

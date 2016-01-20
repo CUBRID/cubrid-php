@@ -120,7 +120,7 @@ Array
 )
 Array
 (
-    [chr(68 using iso88591)|| chr(68-2 using iso88591)] => DB
+    [chr(68)|| chr(68-2)] => DB
 )
 Array
 (

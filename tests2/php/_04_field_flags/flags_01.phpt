@@ -49,6 +49,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-358
 --EXPECTF--
 #####positive example#####
 array(9) {
@@ -71,9 +73,9 @@ array(9) {
   [8]=>
   string(11) "432341.4321"
 }
-c1                             not_null primary_key unique_key
+c1                             not_null primary_key unique_key reverse_index
 c2                             not_null
-c3                             unique_key auto_increment
+c3                             unique_key auto_increment reverse_index
 c4                             
 c5                             
 c6                             
@@ -84,9 +86,9 @@ c9
 
 #####negative example#####
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-[001]Expect false value [-20013] [Column index is out of range] 
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+[001]Expect false value [-13] [Column index is out of range] 
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-[001]Expect false value [-20013] [Column index is out of range] 
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+[001]Expect false value [-13] [Column index is out of range] 
 Finished!

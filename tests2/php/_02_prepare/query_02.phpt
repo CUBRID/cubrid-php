@@ -73,10 +73,8 @@ Warning: cubrid_query() expects at least 1 parameter, 0 given in %s on line %d
 Warning: cubrid_query() expects at most 2 parameters, 3 given in %s on line %d
 [002] Expecting false, [0] []
 
-Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
-[003] Expecting false, [-493] [Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s]
+Warning: Error: DBMS, -493, Syntax: syntax error, unexpected IdName %s in %s on line %d
+[003] Expecting false, [-493] [Syntax: syntax error, unexpected IdName %s]
 bool(false)
 #####example for cubrid_free_result()#####
 [005] Cubrid_free_result success

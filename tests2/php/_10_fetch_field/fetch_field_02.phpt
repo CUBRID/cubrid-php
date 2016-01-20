@@ -100,12 +100,12 @@ object(stdClass)#1 (13) {
 }
 #####index < 0#####
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-Expect false value, [-20013] [Column index is out of range]
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+Expect false value, [-13] [Column index is out of range]
 #####index > range#####
 
-Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
-Expect false value, [-20013] [Column index is out of range]
+Warning: Error: CCI, -13, Column index is out of range in %s on line %d
+Expect false value, [-13] [Column index is out of range]
 #####insert result#####
 Expect false value for insert statement, [0] []
 

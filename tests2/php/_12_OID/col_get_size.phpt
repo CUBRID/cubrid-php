@@ -131,9 +131,9 @@ Warning: Error: DBMS, -202, Attribute "nothisstring" was not found.%s in %s on l
 
 Warning: Error: DBMS, -202, Attribute "nothisstring" was not found.%s in %s on line %d
 
-Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
+Warning: Error: CCI, -20, Invalid oid string in %s on line %d
 
-Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
+Warning: Error: CCI, -20, Invalid oid string in %s on line %d
 
 Warning: Error: DBMS, -202, Attribute "" was not found.%s in %s on line %d
 

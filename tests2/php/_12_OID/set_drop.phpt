@@ -90,8 +90,8 @@ array(3) {
   string(1) "3"
 }
 
-Warning: Error: CAS, -10020, The attribute domain must be the set type in %s on line %d
-[004] [-10020] The attribute domain must be the set type
+Warning: Error: CAS, -1020, The attribute domain must be the set type in %s on line %d
+[004] [-1020] The attribute domain must be the set type
 array(4) {
   [0]=>
   string(2) "11"

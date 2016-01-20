@@ -35,7 +35,7 @@ if (false !== ($tmp = @cubrid_set_db_parameter($conn, 10000, 1))) {
 cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 50);
 cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 2);
 
-cubrid_set_db_parameter($conn, CUBRID_PARAM_LOCK_TIMEOUT, 1);
+cubrid_set_db_parameter($conn, CUBRID_PARAM_LOCK_TIMEOUT, 1000);
 
 $params_new = cubrid_get_db_parameter($conn);
 

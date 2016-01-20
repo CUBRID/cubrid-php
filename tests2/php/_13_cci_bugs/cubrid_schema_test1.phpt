@@ -22,3 +22,14 @@ print "Finished!\n";
 ?>
 --CLEAN--
 --EXPECTF--
+schema value4: 
+array(1) {
+  [0]=>
+  array(2) {
+    ["NAME"]=>
+    string(12) "db_partition"
+    ["TYPE"]=>
+    string(1) "0"
+  }
+}
+Finished!

@@ -118,12 +118,12 @@ array(2) {
   string(5) "name2"
 }
 
-Warning: Error: CCI, -20005, Invalid cursor position in %s on line %d
-[002]Expect false [-20005] [Invalid cursor position]
+Warning: Error: CCI, -5, Invalid cursor position in %s on line %d
+[002]Expect false [-5] [Invalid cursor position]
 
-Warning: Error: CCI, -20005, Invalid cursor position in %s on line %d
-[003]Expect false [-20005] [Invalid cursor position]
+Warning: Error: CCI, -5, Invalid cursor position in %s on line %d
+[003]Expect false [-5] [Invalid cursor position]
 
-Warning: Error: CCI, -20005, Invalid cursor position in %s on line %d
-[004]Expect false [-20005] [Invalid cursor position]
+Warning: Error: CCI, -5, Invalid cursor position in %s on line %d
+[004]Expect false [-5] [Invalid cursor position]
 Finished!

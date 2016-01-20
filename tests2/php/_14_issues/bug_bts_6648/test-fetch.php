@@ -2,7 +2,7 @@
 $sql = "select * from foo"; 
 
 for ($i = 0; $i <1;$i++) { 
-    $con = cubrid_connect ("test-db-server", 33113, "testdb", "dba",""); 
+    $con = cubrid_connect ("localhost", 33113, "testdb", "dba",""); 
     // $con = cubrid_connect ("10.24.18.65", 33099, "ccitest", "dba", "") 
 
     if ($con) { 

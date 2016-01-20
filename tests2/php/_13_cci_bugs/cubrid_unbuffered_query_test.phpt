@@ -1,5 +1,5 @@
 --TEST--
-cubrid_bind
+cubrid_unbuffered
 --SKIPIF--
 <?php
 require_once('skipif.inc');
@@ -24,6 +24,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-139
 --EXPECTF--
 array(2) {
   ["id"]=>

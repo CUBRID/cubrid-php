@@ -60,7 +60,7 @@ function prepare_table_for_test($conn) {
     $req = cubrid_prepare($conn, 'INSERT INTO test_lob2(images, contents) VALUES (?, ?)');
     
     $lob_1 = cubrid_lob2_new($conn, 'BLOB');
-    cubrid_lob2_import($lob_1, './tests/cubrid_logo.png');
+    cubrid_lob2_import($lob_1, './cubrid_logo.png');
     cubrid_lob2_bind($req, 1, $lob_1);
     
     $lob_2 = cubrid_lob2_new($conn, 'CLOB');
@@ -70,7 +70,7 @@ function prepare_table_for_test($conn) {
     cubrid_execute($req);
     
     $lob_1 = cubrid_lob2_new($conn, 'BLOB');
-    cubrid_lob2_import($lob_1, './tests/cubrid_logo.png');
+    cubrid_lob2_import($lob_1, './cubrid_logo.png');
     cubrid_lob2_bind($req, 1, $lob_1);
     
     
@@ -81,7 +81,7 @@ function prepare_table_for_test($conn) {
     cubrid_execute($req);
     
     $lob_1 = cubrid_lob2_new($conn, 'BLOB');
-    cubrid_lob2_import($lob_1, './tests/cubrid_logo.png');
+    cubrid_lob2_import($lob_1, './cubrid_logo.png');
     cubrid_lob2_bind($req, 1, $lob_1);
     
     

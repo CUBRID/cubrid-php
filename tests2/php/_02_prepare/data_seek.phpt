@@ -106,11 +106,11 @@ array(2) {
 Warning: cubrid_data_seek() expects exactly 2 parameters, 3 given in %s on line %d
 [001]Expect false [0] []
 
-Warning: Error: CCI, -20005, Invalid cursor position in %s on line %d
-[002]Expect false [-20005] [Invalid cursor position]
+Warning: Error: CCI, -5, Invalid cursor position in %s on line %d
+[002]Expect false [-5] [Invalid cursor position]
 
-Warning: Error: CCI, -20005, Invalid cursor position in %s on line %d
-[003]Expect false [-20005] [Invalid cursor position]
+Warning: Error: CCI, -5, Invalid cursor position in %s on line %d
+[003]Expect false [-5] [Invalid cursor position]
 
 Warning: cubrid_data_seek(): Number of rows is NULL.
  in %s on line %d

@@ -60,6 +60,8 @@ cubrid_disconnect($conn);
 print "Fished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-292  oid issue, cci bug
 --EXPECTF--
 positive testing
 23---oid: %s
