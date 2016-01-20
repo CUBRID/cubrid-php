@@ -10,7 +10,7 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-$conn = cubrid_connect_with_url($connect_url, $user, $passwd);
+$conn = cubrid_connect_with_url($connect_url);
 if (!$conn) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
     exit(1);
@@ -29,11 +29,6 @@ var_dump($result);
 $result = cubrid_result($req, 5, "f_name");
 var_dump($result);
 
-$result = cubrid_result($req, 4, "code.f_name");
-var_dump($result);
-
-cubrid_result($req, 8, "f_name");
-
 cubrid_close_request($req);
 cubrid_disconnect($conn);
 
@@ -44,5 +39,4 @@ print "done!";
 string(1) "X"
 string(5) "Mixed"
 string(4) "Gold"
-string(6) "Silver"
 done!

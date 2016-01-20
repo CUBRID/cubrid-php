@@ -28,6 +28,13 @@ if ((0 === cubrid_errno($conn)) || ('' == cubrid_error($conn))) {
     printf("[004] cubrid_errno()/cubrid_error should return some error\n");
 }
 
+if (!$res = cubrid_unbuffered_query("SELECT 'this is sql but with semicolon' AS valid ; ", $conn)) {
+    printf("[005] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
+}
+
+var_dump(cubrid_fetch_assoc($res));
+cubrid_free_result($res);
+
 if (!$res = cubrid_unbuffered_query("SELECT * FROM history ; ", $conn)) {
     printf("[006] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
 }
@@ -40,8 +47,11 @@ print "done!";
 ?>
 --CLEAN--
 --EXPECTF--
-Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before ' IS NOT SQL'
-Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: syntax error, unexpected IdName  in %s on line %d
+array(1) {
+  ["valid"]=>
+  string(30) "this is sql but with semicolon"
+}
 array(5) {
   ["event_code"]=>
   string(5) "20263"

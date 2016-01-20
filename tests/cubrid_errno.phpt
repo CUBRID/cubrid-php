@@ -47,7 +47,7 @@ printf ("cubrid_error_code: %d\n", cubrid_error_code());
 printf ("cubrid_error_msg: %s\n", cubrid_error_msg());
 printf ("cubrid_error_facility: %d\n", cubrid_error_code_facility());
 
-if ($conn = @cubrid_connect($host, 33000, $db, $user . '_unknown', $passwd)) {
+if ($conn = @cubrid_connect($host . '_unknown', $port, $db, $user . '_unknown', $passwd)) {
     printf("[005] Can connect to the server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n", $host . '_unknown', $port, $db, $user . '_unknown');
 } else {
     $errno = cubrid_errno();
@@ -69,10 +69,10 @@ Warning: cubrid_errno(): %d is not a valid CUBRID-Connect resource in %s on line
 bool(false)
 int(0)
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "table_unknow". select * from table_unknow%s in %s on line %d
-cubrid_error: Syntax: Unknown class "table_unknow". select * from table_unknow%s
+Warning: Error: DBMS, -493, Syntax: Unknown class "table_unknow". select * from table_unknow in %s on line %d
+cubrid_error: Syntax: Unknown class "table_unknow". select * from table_unknow
 cubrid_error_code: -493
-cubrid_error_msg: Syntax: Unknown class "table_unknow". select * from table_unknow%s
+cubrid_error_msg: Syntax: Unknown class "table_unknow". select * from table_unknow
 cubrid_error_facility: 1
 int(-493)
 done!

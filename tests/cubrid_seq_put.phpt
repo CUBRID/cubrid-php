@@ -10,13 +10,12 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-$conn = cubrid_connect_with_url($connect_url, $user, $passwd);
+$conn = cubrid_connect_with_url($connect_url);
 if (!$conn) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
     exit(1);
 }
 
-cubrid_execute($conn, "DROP TABLE IF EXISTS php_cubrid_test");
 cubrid_execute($conn, "CREATE TABLE php_cubrid_test (a int AUTO_INCREMENT, b set(int), c list(int), d char(30))");
 cubrid_execute($conn, "INSERT INTO php_cubrid_test(a, b, c, d) VALUES (1, {1,2,3}, {11, 22, 33, 333}, 'a')");
 cubrid_execute($conn, "INSERT INTO php_cubrid_test(a, b, c, d) VALUES (2, {4,5,7}, {44, 55, 66, 666}, 'b')");

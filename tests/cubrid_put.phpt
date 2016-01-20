@@ -10,7 +10,7 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-$conn = cubrid_connect_with_url($connect_url, $user, $passwd);
+$conn = cubrid_connect_with_url($connect_url);
 if (!$conn) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
     exit(1);
@@ -33,9 +33,6 @@ cubrid_move_cursor($req, 1, CUBRID_CURSOR_FIRST);
 $attr = cubrid_col_get($conn, $oid, "b");
 var_dump($attr);
 
-cubrid_put($conn, $oid, "b", array(2, 4, $attr));
-cubrid_put($conn, $oid, "b", array(2, 4, NULL));
-cubrid_put($conn, $oid, "b", array(2, 4, '123'));
 cubrid_put($conn, $oid, "b", array(2, 4, 8));
 
 $attr = cubrid_col_get($conn, $oid, "b");
@@ -60,8 +57,6 @@ array(3) {
   [2]=>
   string(1) "3"
 }
-
-Warning: Error: CLIENT, -30008, Invalid type in %s
 array(3) {
   [0]=>
   string(1) "2"

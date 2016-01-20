@@ -16,9 +16,7 @@ if (!$conn) {
     exit(1);
 }
 
-@cubrid_query("DROP TABLE IF EXISTS php_cubrid_test", $conn);
-
-cubrid_execute($conn, "CREATE TABLE php_cubrid_test (a int AUTO_INCREMENT, b set(int), c list(int), d char(30))");
+require_once("table.inc");
 
 cubrid_execute($conn, "INSERT INTO php_cubrid_test(a, b, c, d) VALUES (1, {1,2,3}, {11, 22, 33, 333}, 'a')");
 
@@ -41,9 +39,6 @@ var_dump($attr);
 $attr = cubrid_get($conn, $oid);
 var_dump($attr);
 
-$data = array('a','b','d');
-$attr = cubrid_get($conn, $oid, $data);
-
 cubrid_disconnect($conn);
 
 print "done!";
@@ -52,7 +47,7 @@ print "done!";
 --EXPECTF--
 string(30) "a                             "
 string(9) "{1, 2, 3}"
-array(4) {
+array(5) {
   ["a"]=>
   string(1) "1"
   ["b"]=>
@@ -77,5 +72,7 @@ array(4) {
   }
   ["d"]=>
   string(30) "a                             "
+  ["e"]=>
+  string(0) ""
 }
 done!

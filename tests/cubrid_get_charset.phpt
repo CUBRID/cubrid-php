@@ -10,7 +10,7 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-$conn = cubrid_connect_with_url($connect_url, $user, $passwd);
+$conn = cubrid_connect_with_url($connect_url);
 if (!$conn) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
     exit(1);
