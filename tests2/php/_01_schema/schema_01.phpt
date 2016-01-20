@@ -63,11 +63,13 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+
 --EXPECTF--
 #####positive example#####
 
 #####CUBRID_SCH_CLASS#####
-Number of class: 51
+Number of class: 41
 array(1) {
   [0]=>
   array(2) {

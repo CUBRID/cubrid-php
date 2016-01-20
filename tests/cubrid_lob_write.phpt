@@ -13,7 +13,7 @@ require('table.inc');
 
 $tmp = NULL;
 
-$fp = fopen('./cubrid_logo.png', 'rb');
+$fp = fopen('tests/cubrid_logo.png', 'rb');
 
 $cubrid_conn = cubrid_connect($host, $port, $db, $user, $passwd);
 $cubrid_req = cubrid_prepare($cubrid_conn, "insert into php_cubrid_test (e) values (?)");

@@ -1,6 +1,6 @@
 <?php
   $file_name = "zipcode.csv";
-  $db["host"] = "test-db-server";
+  $db["host"] = "localhost";
   $db["port"] = 33000;
   $db["dbname"] = "testdb";
   $db["username"] = "dba";

@@ -17,11 +17,11 @@ port2=`cubrid broker status -b | grep query_editor| awk '{print $4}'`
 
 #get ip address
 a=`cat /etc/sysconfig/network-scripts/ifcfg-eth0|grep IPADDR|awk '{print $1}'`
-test-db-server="${a#*=}"
+localhost="${a#*=}"
 
 sed -i "s/33199/$port1/g" connect.inc
 sed -i "s/30199/$port2/g" connect.inc
-sed -i "s/10.34.64.61/$test-db-server/g" connect.inc
+sed -i "s/10.34.64.61/$localhost/g" connect.inc
 
 csql -udba $db -c"drop table if EXISTS foo;create table foo(a int); insert into foo values(1);"
 

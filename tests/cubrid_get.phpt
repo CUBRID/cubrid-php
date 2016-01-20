@@ -41,9 +41,6 @@ var_dump($attr);
 $attr = cubrid_get($conn, $oid);
 var_dump($attr);
 
-$data = array('a','b','d');
-$attr = cubrid_get($conn, $oid, $data);
-
 cubrid_disconnect($conn);
 
 print "done!";

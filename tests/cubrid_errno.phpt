@@ -69,10 +69,10 @@ Warning: cubrid_errno(): %d is not a valid CUBRID-Connect resource in %s on line
 bool(false)
 int(0)
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "table_unknow". select * from table_unknow%s in %s on line %d
-cubrid_error: Syntax: Unknown class "table_unknow". select * from table_unknow%s
+Warning: Error: DBMS, -493, Syntax: Unknown class "table_unknow". select * from table_unknow in %s on line %d
+cubrid_error: Syntax: Unknown class "table_unknow". select * from table_unknow
 cubrid_error_code: -493
-cubrid_error_msg: Syntax: Unknown class "table_unknow". select * from table_unknow%s
+cubrid_error_msg: Syntax: Unknown class "table_unknow". select * from table_unknow
 cubrid_error_facility: 1
 int(-493)
 done!

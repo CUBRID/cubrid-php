@@ -93,139 +93,139 @@ print "Finished!\n";
 --EXPECTF--
 #####positive example#####
 bool(false)
-id_1                           not_null primary_key unique_key
-id_2                           not_null primary_key unique_key
-id_3                           not_null primary_key unique_key
-id_4                           not_null primary_key unique_key
-id_5                           not_null primary_key unique_key
-id_6                           not_null primary_key unique_key
-id_7                           not_null primary_key unique_key
-id_8                           not_null primary_key unique_key
-id_9                           not_null primary_key unique_key
-id_10                          not_null primary_key unique_key
-id_11                          not_null primary_key unique_key
-id_12                          not_null primary_key unique_key
-id_13                          not_null primary_key unique_key
-id_14                          not_null primary_key unique_key
-id_15                          not_null primary_key unique_key
-id_16                          not_null primary_key unique_key
-id_17                          not_null primary_key unique_key
-id_18                          not_null primary_key unique_key
-id_19                          not_null primary_key unique_key
-id_20                          not_null primary_key unique_key
-id_21                          not_null primary_key unique_key
-id_22                          not_null primary_key unique_key
-id_23                          not_null primary_key unique_key
-id_24                          not_null primary_key unique_key
-id_25                          not_null primary_key unique_key
-id_26                          not_null primary_key unique_key
-id_27                          not_null primary_key unique_key
-id_28                          not_null primary_key unique_key
-id_29                          not_null primary_key unique_key
-id_30                          not_null primary_key unique_key
-id_31                          not_null primary_key unique_key
-id_32                          not_null primary_key unique_key
-id_33                          not_null primary_key unique_key
-id_34                          not_null primary_key unique_key
-id_35                          not_null primary_key unique_key
-id_36                          not_null primary_key unique_key
-id_37                          not_null primary_key unique_key
-id_38                          not_null primary_key unique_key
-id_39                          not_null primary_key unique_key
-id_40                          not_null primary_key unique_key
-id_41                          not_null primary_key unique_key
-id_42                          not_null primary_key unique_key
-id_43                          not_null primary_key unique_key
-id_44                          not_null primary_key unique_key
-id_45                          not_null primary_key unique_key
-id_46                          not_null primary_key unique_key
-id_47                          not_null primary_key unique_key
-id_48                          not_null primary_key unique_key
-id_49                          not_null primary_key unique_key
-id_50                          not_null primary_key unique_key
-id_51                          not_null primary_key unique_key
-id_52                          not_null primary_key unique_key
-id_53                          not_null primary_key unique_key
-id_54                          not_null primary_key unique_key
-id_55                          not_null primary_key unique_key
-id_56                          not_null primary_key unique_key
-id_57                          not_null primary_key unique_key
-id_58                          not_null primary_key unique_key
-id_59                          not_null primary_key unique_key
-id_60                          not_null primary_key unique_key
-id_61                          not_null primary_key unique_key
-id_62                          not_null primary_key unique_key
-id_63                          not_null primary_key unique_key
-id_64                          not_null primary_key unique_key
-id_65                          not_null primary_key unique_key
+id_1                           not_null primary_key unique_key reverse_index
+id_2                           not_null primary_key unique_key reverse_index
+id_3                           not_null primary_key unique_key reverse_index
+id_4                           not_null primary_key unique_key reverse_index
+id_5                           not_null primary_key unique_key reverse_index
+id_6                           not_null primary_key unique_key reverse_index
+id_7                           not_null primary_key unique_key reverse_index
+id_8                           not_null primary_key unique_key reverse_index
+id_9                           not_null primary_key unique_key reverse_index
+id_10                          not_null primary_key unique_key reverse_index
+id_11                          not_null primary_key unique_key reverse_index
+id_12                          not_null primary_key unique_key reverse_index
+id_13                          not_null primary_key unique_key reverse_index
+id_14                          not_null primary_key unique_key reverse_index
+id_15                          not_null primary_key unique_key reverse_index
+id_16                          not_null primary_key unique_key reverse_index
+id_17                          not_null primary_key unique_key reverse_index
+id_18                          not_null primary_key unique_key reverse_index
+id_19                          not_null primary_key unique_key reverse_index
+id_20                          not_null primary_key unique_key reverse_index
+id_21                          not_null primary_key unique_key reverse_index
+id_22                          not_null primary_key unique_key reverse_index
+id_23                          not_null primary_key unique_key reverse_index
+id_24                          not_null primary_key unique_key reverse_index
+id_25                          not_null primary_key unique_key reverse_index
+id_26                          not_null primary_key unique_key reverse_index
+id_27                          not_null primary_key unique_key reverse_index
+id_28                          not_null primary_key unique_key reverse_index
+id_29                          not_null primary_key unique_key reverse_index
+id_30                          not_null primary_key unique_key reverse_index
+id_31                          not_null primary_key unique_key reverse_index
+id_32                          not_null primary_key unique_key reverse_index
+id_33                          not_null primary_key unique_key reverse_index
+id_34                          not_null primary_key unique_key reverse_index
+id_35                          not_null primary_key unique_key reverse_index
+id_36                          not_null primary_key unique_key reverse_index
+id_37                          not_null primary_key unique_key reverse_index
+id_38                          not_null primary_key unique_key reverse_index
+id_39                          not_null primary_key unique_key reverse_index
+id_40                          not_null primary_key unique_key reverse_index
+id_41                          not_null primary_key unique_key reverse_index
+id_42                          not_null primary_key unique_key reverse_index
+id_43                          not_null primary_key unique_key reverse_index
+id_44                          not_null primary_key unique_key reverse_index
+id_45                          not_null primary_key unique_key reverse_index
+id_46                          not_null primary_key unique_key reverse_index
+id_47                          not_null primary_key unique_key reverse_index
+id_48                          not_null primary_key unique_key reverse_index
+id_49                          not_null primary_key unique_key reverse_index
+id_50                          not_null primary_key unique_key reverse_index
+id_51                          not_null primary_key unique_key reverse_index
+id_52                          not_null primary_key unique_key reverse_index
+id_53                          not_null primary_key unique_key reverse_index
+id_54                          not_null primary_key unique_key reverse_index
+id_55                          not_null primary_key unique_key reverse_index
+id_56                          not_null primary_key unique_key reverse_index
+id_57                          not_null primary_key unique_key reverse_index
+id_58                          not_null primary_key unique_key reverse_index
+id_59                          not_null primary_key unique_key reverse_index
+id_60                          not_null primary_key unique_key reverse_index
+id_61                          not_null primary_key unique_key reverse_index
+id_62                          not_null primary_key unique_key reverse_index
+id_63                          not_null primary_key unique_key reverse_index
+id_64                          not_null primary_key unique_key reverse_index
+id_65                          not_null primary_key unique_key reverse_index
 title                          
 artist                         
 bool(false)
-album_1                        foreign_key
-album_2                        foreign_key
-album_3                        foreign_key
-album_4                        foreign_key
-album_5                        foreign_key
-album_6                        foreign_key
-album_7                        foreign_key
-album_8                        foreign_key
-album_9                        foreign_key
-album_10                       foreign_key
-album_11                       foreign_key
-album_12                       foreign_key
-album_13                       foreign_key
-album_14                       foreign_key
-album_15                       foreign_key
-album_16                       foreign_key
-album_17                       foreign_key
-album_18                       foreign_key
-album_19                       foreign_key
-album_20                       foreign_key
-album_21                       foreign_key
-album_22                       foreign_key
-album_23                       foreign_key
-album_24                       foreign_key
-album_25                       foreign_key
-album_26                       foreign_key
-album_27                       foreign_key
-album_28                       foreign_key
-album_29                       foreign_key
-album_30                       foreign_key
-album_31                       foreign_key
-album_32                       foreign_key
-album_33                       foreign_key
-album_34                       foreign_key
-album_35                       foreign_key
-album_36                       foreign_key
-album_37                       foreign_key
-album_38                       foreign_key
-album_39                       foreign_key
-album_40                       foreign_key
-album_41                       foreign_key
-album_42                       foreign_key
-album_43                       foreign_key
-album_44                       foreign_key
-album_45                       foreign_key
-album_46                       foreign_key
-album_47                       foreign_key
-album_48                       foreign_key
-album_49                       foreign_key
-album_50                       foreign_key
-album_51                       foreign_key
-album_52                       foreign_key
-album_53                       foreign_key
-album_54                       foreign_key
-album_55                       foreign_key
-album_56                       foreign_key
-album_57                       foreign_key
-album_58                       foreign_key
-album_59                       foreign_key
-album_60                       foreign_key
-album_61                       foreign_key
-album_62                       foreign_key
-album_63                       foreign_key
-album_64                       foreign_key
-album_65                       foreign_key
+album_1                        foreign_key reverse_index
+album_2                        foreign_key reverse_index
+album_3                        foreign_key reverse_index
+album_4                        foreign_key reverse_index
+album_5                        foreign_key reverse_index
+album_6                        foreign_key reverse_index
+album_7                        foreign_key reverse_index
+album_8                        foreign_key reverse_index
+album_9                        foreign_key reverse_index
+album_10                       foreign_key reverse_index
+album_11                       foreign_key reverse_index
+album_12                       foreign_key reverse_index
+album_13                       foreign_key reverse_index
+album_14                       foreign_key reverse_index
+album_15                       foreign_key reverse_index
+album_16                       foreign_key reverse_index
+album_17                       foreign_key reverse_index
+album_18                       foreign_key reverse_index
+album_19                       foreign_key reverse_index
+album_20                       foreign_key reverse_index
+album_21                       foreign_key reverse_index
+album_22                       foreign_key reverse_index
+album_23                       foreign_key reverse_index
+album_24                       foreign_key reverse_index
+album_25                       foreign_key reverse_index
+album_26                       foreign_key reverse_index
+album_27                       foreign_key reverse_index
+album_28                       foreign_key reverse_index
+album_29                       foreign_key reverse_index
+album_30                       foreign_key reverse_index
+album_31                       foreign_key reverse_index
+album_32                       foreign_key reverse_index
+album_33                       foreign_key reverse_index
+album_34                       foreign_key reverse_index
+album_35                       foreign_key reverse_index
+album_36                       foreign_key reverse_index
+album_37                       foreign_key reverse_index
+album_38                       foreign_key reverse_index
+album_39                       foreign_key reverse_index
+album_40                       foreign_key reverse_index
+album_41                       foreign_key reverse_index
+album_42                       foreign_key reverse_index
+album_43                       foreign_key reverse_index
+album_44                       foreign_key reverse_index
+album_45                       foreign_key reverse_index
+album_46                       foreign_key reverse_index
+album_47                       foreign_key reverse_index
+album_48                       foreign_key reverse_index
+album_49                       foreign_key reverse_index
+album_50                       foreign_key reverse_index
+album_51                       foreign_key reverse_index
+album_52                       foreign_key reverse_index
+album_53                       foreign_key reverse_index
+album_54                       foreign_key reverse_index
+album_55                       foreign_key reverse_index
+album_56                       foreign_key reverse_index
+album_57                       foreign_key reverse_index
+album_58                       foreign_key reverse_index
+album_59                       foreign_key reverse_index
+album_60                       foreign_key reverse_index
+album_61                       foreign_key reverse_index
+album_62                       foreign_key reverse_index
+album_63                       foreign_key reverse_index
+album_64                       foreign_key reverse_index
+album_65                       foreign_key reverse_index
 dsk                            
 posn                           
 song                           

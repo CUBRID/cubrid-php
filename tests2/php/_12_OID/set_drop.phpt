@@ -90,8 +90,8 @@ array(3) {
   string(1) "3"
 }
 
-Warning: Error: CAS, -10020, The attribute domain must be the set type in %s on line %d
-[004] [-10020] The attribute domain must be the set type
+Warning: Error: CAS, -1020, The attribute domain must be the set type in %s on line %d
+[004] [-1020] The attribute domain must be the set type
 array(4) {
   [0]=>
   string(2) "11"
@@ -103,8 +103,8 @@ array(4) {
   string(3) "333"
 }
 
-Warning: Error: DBMS, -179, Domain "character varying" is not compatible with domain "integer".%s in %s on line %d
-[004] [-179] Domain "character varying" is not compatible with domain "integer".%s
+Warning: Error: DBMS, -179, Domain "character varying" is not compatible with domain "integer". in %s on line %d
+[004] [-179] Domain "character varying" is not compatible with domain "integer".
 #####correct drop#####
 array(0) {
 }

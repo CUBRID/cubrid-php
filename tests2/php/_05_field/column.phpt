@@ -223,12 +223,12 @@ sdouble                        set(double)                    1073741823
 sdate                          set(date)                      1073741823     
 stime                          set(time)                      1073741823     
 stimestamp                     set(timestamp)                 1073741823     
-sset                           set([unknown])                 1073741823     
-smultiset                      set([unknown])                 1073741823     
-slist                          set([unknown])                 1073741823     
-ssequence                      set([unknown])                 1073741823     
-multiset_t                     multiset([unknown])            1073741823     
-list_t                         sequence([unknown])            1073741823     
+sset                           set(unknown)                   1073741823     
+smultiset                      set(unknown)                   1073741823     
+slist                          set(unknown)                   1073741823     
+ssequence                      set(unknown)                   1073741823     
+multiset_t                     multiset(unknown)              1073741823     
+list_t                         sequence(unknown)              1073741823     
 
 
 #####Data type is Date/Time#####

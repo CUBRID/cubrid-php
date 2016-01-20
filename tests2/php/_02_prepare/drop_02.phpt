@@ -56,14 +56,14 @@ print "Fished!\n";
 --EXPECTF--
 negative testing
 
-Warning: Error: CAS, -10012, Invalid cursor position in %s on line %d
-Expect false for oid [-10012] Invalid cursor position
+Warning: Error: CAS, -1012, Invalid cursor position in %s on line %d
+Expect false for oid [-1012] Invalid cursor position
 
-Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
-Expect false for cubrid_drop, [-20020] [Invalid oid string] 
+Warning: Error: CCI, -20, Invalid oid string in %s on line %d
+Expect false for cubrid_drop, [-20] [Invalid oid string] 
 
 Notice: Undefined variable: nothisoid in %s on line %d
 
-Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
-[002]Expect false for cubrid_drop, [-20020] [Invalid oid string] 
+Warning: Error: CCI, -20, Invalid oid string in %s on line %d
+[002]Expect false for cubrid_drop, [-20] [Invalid oid string] 
 Fished!

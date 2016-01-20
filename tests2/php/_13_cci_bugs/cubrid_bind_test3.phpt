@@ -55,6 +55,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-409 
 --EXPECTF--
 #####select from bit2_tb #####
 Array

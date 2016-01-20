@@ -49,6 +49,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-358
 --EXPECTF--
 #####positive example#####
 array(9) {

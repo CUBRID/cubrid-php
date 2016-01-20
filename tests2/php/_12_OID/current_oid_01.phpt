@@ -76,7 +76,7 @@ array(4) {
 }
 int(4)
 
-Warning: Error: CAS, -10012, Invalid cursor position in %s on line %d
+Warning: Error: CAS, -1012, Invalid cursor position in %s on line %d
 bool(false)
 
 

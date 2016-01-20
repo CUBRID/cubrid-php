@@ -9,7 +9,7 @@ require_once('skipifconnectfailure.inc');
 <?php
 include "connect.inc";
 $conn = cubrid_connect($host, $port, $db,  $user, $passwd);
-//cubrid_execute($conn, "DROP TABLE if exists col2_get_tb");
+cubrid_execute($conn, "DROP TABLE if exists col2_get_tb");
 cubrid_execute($conn, "CREATE TABLE col2_get_tb(a int AUTO_INCREMENT, b set(int), c list(int,varchar(10)), d char(10))");
 //cubrid_execute($conn, "CREATE TABLE col2_get_tb(a int AUTO_INCREMENT, b set(int), c list(varchar(10)), d char(10))");
 cubrid_execute($conn, "INSERT INTO col2_get_tb(a, b, c, d) VALUES(1, {1,2,3}, {11,22,33,'varchar1','varchar2'}, 'a')");
@@ -32,6 +32,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-119
 --EXPECTF--
 array(3) {
   [0]=>

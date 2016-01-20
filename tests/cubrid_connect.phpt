@@ -1,6 +1,10 @@
 --TEST--
 cubrid_connect
 --SKIPIF--
+<?php
+require_once('skipif.inc');
+require_once('skipifconnectfailure.inc')
+?>
 --FILE--
 <?php
 
@@ -32,72 +36,9 @@ if ($conn == $conn2) {
 
 cubrid_close($conn);
 cubrid_close($conn2);
- 
-// invalid db
-$conn2 = cubrid_connect('test-db-server', '33000', 'invalid_db', 'dba', '');
-if($conn2 == false){
-     printf("[007] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
-}
- 
-// invalid password
-$conn2 = cubrid_connect('test-db-server', '33000', 'demodb', 'dba', '222');
-if($conn2 == false){
-     printf("[008] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
-}
-
-$conn2 = cubrid_connect('xx.xx.xx.xx', '33000', 'invalid_db', 'dba', '');
-if($conn2 == false){
-	 printf("[009] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
-}
-
-$conn1 = cubrid_connect('test-db-server', '33000', 'demodb', 'invalid_user', '');
-if($conn1 == false){
-     printf("[010] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
-}
 
 print "done!";
 ?>
-
-<?php
-$user = "public_error_user";
-$passwd = "";
-$connect_url = "CUBRID:$host:$port:$db:::";
-$skip_on_connect_failure  = getenv("CUBRID_TEST_SKIP_CONNECT_FAILURE") ? getenv("CUBRID_TEST_SKIP_CONNECT_FAILURE") : true;
-
-$conn = cubrid_connect_with_url($connect_url, $user, $passwd);
-if (!$conn) {
-    printf("[005] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
-}
-
-$user = "public";
-$passwd = "wrong_password";
-$connect_url = "CUBRID:$host:$port:$db:::";
-$skip_on_connect_failure  = getenv("CUBRID_TEST_SKIP_CONNECT_FAILURE") ? getenv("CUBRID_TEST_SKIP_CONNECT_FAILURE") : true;
-
-$conn = cubrid_connect_with_url($connect_url, $user, $passwd);
-if (!$conn) {
-    printf("[006] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
-}
-
-?>
-
 --CLEAN--
 --EXPECTF--
-Warning: Error: DBMS, -677, Failed to connect to database server, %s
-[007] [-677] Failed to connect to database server, %s
-
-Warning: Error: DBMS, -171, Incorrect or missing password.%s
-[008] [-171] Incorrect or missing password.%s
-
-Warning: Error: CCI, -20038, Connection timed out %s
-[009] [-20038] Connection timed out
-
-Warning: Error: DBMS, -165, User "invalid_user" is invalid.%s
-[010] [-165] User "invalid_user" is invalid.%s
 done!
-
-Warning: Error: DBMS, -165, User "%s" is invalid.%s in %s on line %d
-[005] [-165] User "%s" is invalid.%s
-
-Warning: Error: DBMS, -171, Incorrect or missing password.%s in %s on line %d
-[006] [-171] Incorrect or missing password.%s

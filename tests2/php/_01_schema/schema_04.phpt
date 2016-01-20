@@ -39,6 +39,8 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
+--XFAIL--
+http://jira.cubrid.org/browse/APIS-68
 --EXPECTF--
 #####CUBRID_SCH_CLASS_ATTRIBUTE #####
 array(5) {
@@ -51,7 +53,7 @@ array(5) {
     ["SCALE"]=>
     string(1) "0"
     ["PRECISION"]=>
-    string(2) "10"
+    string(2) "0"
     ["INDEXED"]=>
     string(1) "1"
     ["NON_NULL"]=>

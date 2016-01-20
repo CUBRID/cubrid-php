@@ -119,11 +119,11 @@ array(5) {
 }
 #####error add#####
 
-Warning: Error: DBMS, -179, Domain "character varying" is not compatible with domain "integer".%s in %s on line %d
-[008] [-179] Domain "character varying" is not compatible with domain "integer".%s
+Warning: Error: DBMS, -179, Domain "character varying" is not compatible with domain "integer". in %s on line %d
+[008] [-179] Domain "character varying" is not compatible with domain "integer".
 
-Warning: Error: CAS, -10020, The attribute domain must be the set type in %s on line %d
-[009] [-10020] The attribute domain must be the set type
+Warning: Error: CAS, -1020, The attribute domain must be the set type in %s on line %d
+[009] [-1020] The attribute domain must be the set type
 Finished!
 
 

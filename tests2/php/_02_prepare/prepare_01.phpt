@@ -104,10 +104,8 @@ Notice: Use of undefined constant CUBRID_INCLUDE_OID_ERROR - assumed 'CUBRID_INC
 Warning: cubrid_prepare() expects parameter 3 to be long, string given in %s on line %d
 [0] 
 
-Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before ' this sql statement'
-Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
-[-493] Syntax: In line 1, column 1 before ' this sql statement'
-Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s
+Warning: Error: DBMS, -493, Syntax: syntax error, unexpected NO  in %s on line %d
+[-493] Syntax: syntax error, unexpected NO 
 #####correct bind#####
 array(4) {
   ["c1"]=>

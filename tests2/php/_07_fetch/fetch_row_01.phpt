@@ -137,13 +137,13 @@ string2222, char22222           , 2 ,11.110000, , , , , 0.000000, ,
 
 #####data_seek nagetive example#####
 
-Warning: Error: CCI, -20005, Invalid cursor position in %s on line %d
+Warning: Error: CCI, -5, Invalid cursor position in %s on line %d
 [001] Expecting FALSE, got boolean,
-[001] got [-20005] [Invalid cursor position]
+[001] got [-5] [Invalid cursor position]
 
-Warning: Error: CCI, -20005, Invalid cursor position in %s on line %d
+Warning: Error: CCI, -5, Invalid cursor position in %s on line %d
 [002] Expecting FALSE, got boolean,
-[002] got [-20005] [Invalid cursor position]
+[002] got [-5] [Invalid cursor position]
 
 Warning: cubrid_data_seek() expects exactly 2 parameters, 1 given in %s on line %d
 [003] Expecting FALSE, got [0] []
