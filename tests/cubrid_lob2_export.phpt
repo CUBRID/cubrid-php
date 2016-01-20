@@ -60,33 +60,33 @@ function prepare_table_for_test($conn) {
     $req = cubrid_prepare($conn, 'INSERT INTO test_lob2(images, contents) VALUES (?, ?)');
     
     $lob_1 = cubrid_lob2_new($conn, 'BLOB');
-    cubrid_lob2_import($lob_1, './tests/cubrid_logo.png');
+    cubrid_lob2_import($lob_1, 'cubrid_logo.png');
     cubrid_lob2_bind($req, 1, $lob_1);
     
     $lob_2 = cubrid_lob2_new($conn, 'CLOB');
-    cubrid_lob2_import($lob_2, './tests/connect.inc');
+    cubrid_lob2_import($lob_2, 'connect.inc');
     cubrid_lob2_bind($req, 2, $lob_2);
     
     cubrid_execute($req);
     
     $lob_1 = cubrid_lob2_new($conn, 'BLOB');
-    cubrid_lob2_import($lob_1, './tests/cubrid_logo.png');
+    cubrid_lob2_import($lob_1, 'cubrid_logo.png');
     cubrid_lob2_bind($req, 1, $lob_1);
     
     
     $lob_2 = cubrid_lob2_new($conn, 'CLOB');
-    cubrid_lob2_import($lob_2, './tests/table.inc');
+    cubrid_lob2_import($lob_2, 'table.inc');
     cubrid_lob2_bind($req, 2, $lob_2);
     
     cubrid_execute($req);
     
     $lob_1 = cubrid_lob2_new($conn, 'BLOB');
-    cubrid_lob2_import($lob_1, './tests/cubrid_logo.png');
+    cubrid_lob2_import($lob_1, 'cubrid_logo.png');
     cubrid_lob2_bind($req, 1, $lob_1);
     
     
     $lob_2 = cubrid_lob2_new($conn, 'CLOB');
-    cubrid_lob2_import($lob_2, './tests/clean_table.inc');
+    cubrid_lob2_import($lob_2, 'clean_table.inc');
     cubrid_lob2_bind($req, 2, $lob_2);
     
     cubrid_execute($req);

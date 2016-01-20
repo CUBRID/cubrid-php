@@ -70,7 +70,6 @@ ZEND_FUNCTION(cubrid_close);
 ZEND_FUNCTION(cubrid_prepare);
 ZEND_FUNCTION(cubrid_bind);
 ZEND_FUNCTION(cubrid_execute);
-ZEND_FUNCTION(cubrid_batch_execute);
 ZEND_FUNCTION(cubrid_next_result);
 ZEND_FUNCTION(cubrid_affected_rows);
 ZEND_FUNCTION(cubrid_close_request);
