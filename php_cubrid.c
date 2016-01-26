@@ -1231,9 +1231,9 @@ HANDLE_ERROR:
 
 static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
 {
-    char *host = NULL, *dbname = NULL, *userid = NULL, *passwd = NULL;
+    char *host = NULL, *dbname = NULL, *userid = NULL, *passwd = NULL, *attr = NULL;
     long port = 0;
-    int host_len, dbname_len, userid_len, passwd_len;
+    int host_len, dbname_len, userid_len, passwd_len, attr_len;
 
     int cubrid_conn, cubrid_retval = 0;
 
@@ -1243,13 +1243,15 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
     char hashed_details[1024] = {'\0'};
     int hashed_details_length;
 
+	char connect_url[2048] = {'\0'};
+
     zend_bool new_link = 0;
 
     init_error();
 
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sls|ssb", 
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sls|ssbs", 
 		&host, &host_len, &port, &dbname, &dbname_len, 
-		&userid, &userid_len, &passwd, &passwd_len, &new_link) == FAILURE) {
+		&userid, &userid_len, &passwd, &passwd_len, &new_link, &attr, &attr_len) == FAILURE) {
 	return;
     }
 
@@ -1264,6 +1266,12 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
     snprintf(hashed_details, sizeof(hashed_details), "CUBRID:%s:%d:%s:%s:%s", host, (int)port, dbname, userid, passwd);
     hashed_details_length = strlen(hashed_details);
 
+	if (attr) {
+		snprintf(connect_url, sizeof(connect_url), "cci:CUBRID:%s:%d:%s:%s:%s:?%s", host, (int)port, dbname, userid, passwd, attr);
+	} else {
+		snprintf(connect_url, sizeof(connect_url), "cci:CUBRID:%s:%d:%s:%s:%s:", host, (int)port, dbname, userid, passwd);
+	}
+
     if (persistent) {
         zend_rsrc_list_entry *le;
 
@@ -1271,10 +1279,10 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
         if (zend_hash_find(&EG(persistent_list), hashed_details, hashed_details_length+1, (void **) &le) == FAILURE) { /* we don't */
             zend_rsrc_list_entry new_le;
 
-            if ((cubrid_conn = cci_connect_ex(host, port, dbname, userid, passwd, &error)) < 0) {
-                handle_error(cubrid_conn, &error, NULL);
-                RETURN_FALSE;
-            }
+			if ((cubrid_conn = cci_connect_with_url_ex(connect_url, userid, passwd, &error)) < 0) {
+				handle_error(cubrid_conn, &error, NULL);
+				RETURN_FALSE;
+			}
     
             if ((cubrid_retval = cci_end_tran(cubrid_conn, CCI_TRAN_COMMIT, &error)) < 0) {
                 handle_error(cubrid_retval, &error, NULL);
@@ -1300,7 +1308,7 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
             connect = (T_CUBRID_CONNECT *) le->ptr;
     
             if (!check_connect_alive(connect)) {
-                if ((cubrid_conn = cci_connect_ex(host, port, dbname, userid, passwd, &error)) < 0) {
+				if ((cubrid_conn = cci_connect_with_url_ex(connect_url, userid, passwd, &error)) < 0) {
                     php_error_docref(NULL TSRMLS_CC, E_WARNING, "Link to server lost, unable to reconnect");
                     zend_hash_del(&EG(persistent_list), hashed_details, hashed_details_length+1);
                     RETURN_FALSE;
@@ -1345,11 +1353,11 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
                 zend_hash_del(&EG(regular_list), hashed_details, hashed_details_length+1);
             }
         }
-   
-        if ((cubrid_conn = cci_connect_ex(host, port, dbname, userid, passwd, &error)) < 0) {
-    	handle_error(cubrid_conn, &error, NULL);
-    	RETURN_FALSE;
-        }
+
+		if ((cubrid_conn = cci_connect_with_url_ex(connect_url, userid, passwd, &error)) < 0) {
+			handle_error(cubrid_conn, &error, NULL);
+			RETURN_FALSE;
+		}
     
         CUBRID_G(last_request_id) = -1;
     
@@ -1645,6 +1653,39 @@ ZEND_FUNCTION(cubrid_prepare)
     php_cubrid_set_default_req(Z_LVAL_P(return_value) TSRMLS_CC);
     register_cubrid_request(connect, request);
 }
+static char* cubrid_str2bit(char* str)
+{
+    int i=0,len=0,t=0;
+    char* buf=NULL;
+    int shift = 8;
+
+    if(str == NULL)
+        return NULL;
+    len = strlen(str);
+
+    if(0 == len%shift)
+        t =1;
+
+    buf = (char*)emalloc(len/shift+1+1);
+    memset(buf,0,len/shift+1+1);
+
+    for(i=0;i<len;i++)
+    {
+        if(str[len-i-1] == '1')
+        {
+            buf[len/shift - i/shift-t] |= (1<<(i%shift)); 
+        }
+        else if(str[len-i-1] == '0')
+        {
+        	//nothing
+        }
+        else
+        {
+            return NULL;
+        }
+    }
+    return buf;
+}
 
 ZEND_FUNCTION(cubrid_bind)
 {
@@ -1697,6 +1738,10 @@ ZEND_FUNCTION(cubrid_bind)
 	    php_error_docref(NULL TSRMLS_CC, E_WARNING, "Bind value type unknown : %s\n", bind_value_type);
 	    RETURN_FALSE;
 	}
+       if(u_type == CCI_U_TYPE_ENUM)
+       {
+           u_type = CCI_U_TYPE_STRING;
+       }
     }
 
     if (u_type == CCI_U_TYPE_NULL || Z_TYPE_P(bind_value) == IS_NULL) {
@@ -1783,12 +1828,18 @@ ZEND_FUNCTION(cubrid_bind)
             request->lob->lob = lob;
             request->lob->type = u_type;
         } else if (u_type == CCI_U_TYPE_BIT) {
-            bit_value = (T_CCI_BIT *) emalloc(sizeof(T_CCI_BIT));
-            bit_value->size = value_len;
-            bit_value->buf = value;
+            bit_value = (T_CCI_BIT *) emalloc(sizeof(T_CCI_BIT));            
+            bit_value->buf = cubrid_str2bit(value);
+
+            if(bit_value->buf == NULL)
+            {
+                handle_error(CCI_ER_TYPE_CONVERSION, NULL, request->conn);
+                RETURN_FALSE;             
+            }
+            bit_value->size = strlen(bit_value[0].buf ); 
 
             cubrid_retval = cci_bind_param(request->handle, bind_index, a_type, (void *) bit_value, u_type, 0);
-
+            efree(bit_value->buf);
             efree(bit_value);
         } else {
             cubrid_retval = cci_bind_param(request->handle, bind_index, a_type, value, u_type, 0);
@@ -1919,7 +1970,17 @@ ZEND_FUNCTION(cubrid_execute)
             if ((cubrid_retval =
                         cci_prepare_and_execute(connect->handle, sql_stmt, 0,
                             &exec_retval, &error)) < 0) {
-                goto ERR_CUBRID_EXECUTE;
+				if(cubrid_retval == CAS_ER_NOT_IMPLEMENTED) {
+					if ((cubrid_retval = cci_prepare(connect->handle, sql_stmt, 0, &error)) < 0) {
+						goto ERR_CUBRID_EXECUTE;
+					}
+					if ((exec_retval = cci_execute(cubrid_retval, 0, 0, &error)) < 0) {
+						cubrid_retval = exec_retval;
+						goto ERR_CUBRID_EXECUTE;
+					}
+				} else {
+					goto ERR_CUBRID_EXECUTE;
+				}
             }
         }
 
@@ -4057,10 +4118,20 @@ ZEND_FUNCTION(cubrid_query)
     }
     request->conn = connect;
 
-    if ((cubrid_retval =
-       cci_prepare_and_execute(connect->handle, query, 0, &exec_retval, &error)) < 0) {
-        goto ERR_CUBRID_QUERY;
-    }
+	if ((cubrid_retval =
+		cci_prepare_and_execute(connect->handle, query, 0, &exec_retval, &error)) < 0) {
+			if(cubrid_retval == CAS_ER_NOT_IMPLEMENTED) {
+				if ((cubrid_retval = cci_prepare(connect->handle, query, 0, &error)) < 0) {
+					goto ERR_CUBRID_QUERY;
+				}
+				if ((exec_retval = cci_execute(cubrid_retval, 0, 0, &error)) < 0) {
+					cubrid_retval = exec_retval;
+					goto ERR_CUBRID_QUERY;
+				}
+			} else {
+				goto ERR_CUBRID_QUERY;
+			}
+	}
 
     req_handle = cubrid_retval;
     request->handle = req_handle;
@@ -4731,6 +4802,7 @@ ZEND_FUNCTION(cubrid_lob2_export)
     char *file_name = NULL, *buf = NULL;
     int file_name_len = 0, cubrid_retval = 0;
     int fd, size;
+	int flags = 0;
     php_cubrid_int64_t lob_size, pos = 0;
 
     init_error();
@@ -4748,7 +4820,13 @@ ZEND_FUNCTION(cubrid_lob2_export)
 
     init_error_link(lob->connect);
 
-    if ((fd = open(file_name, O_CREAT | O_WRONLY | O_EXCL, 0666)) < 0) {
+#ifdef PHP_WIN32
+	flags = O_BINARY;
+#else
+	flags = 0;
+#endif
+
+    if ((fd = open(file_name, flags | O_CREAT | O_WRONLY | O_EXCL, 0666)) < 0) {
         php_error_docref(NULL TSRMLS_CC, E_WARNING, "The file that you want to export lob object may have existed.");
         RETURN_FALSE;
     }
@@ -5027,7 +5105,7 @@ ZEND_FUNCTION(cubrid_lob2_seek)
 
     if (origin == CUBRID_CURSOR_CURRENT) {
         if ((offset < 0 && -offset > lob->pos) || (offset > 0 && (size - lob->pos) < offset)) {
-            php_error_docref(NULL TSRMLS_CC, E_WARNING, "offet(%d) is out of range, please input a proper number.", offset);
+            php_error_docref(NULL TSRMLS_CC, E_WARNING, "offet(%d) is out of range, please input a proper number.", (int)offset);
             RETURN_FALSE;
         }
 
@@ -5036,7 +5114,7 @@ ZEND_FUNCTION(cubrid_lob2_seek)
     }
 
     if (offset < 0 || offset > size) {
-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "offset(%d) is not correct, it can't be a negative number or larger than size", offset);
+        php_error_docref(NULL TSRMLS_CC, E_WARNING, "offset(%d) is not correct, it can't be a negative number or larger than size", (int)offset);
         RETURN_FALSE;
     }
     
@@ -5074,7 +5152,7 @@ ZEND_FUNCTION(cubrid_lob2_seek64)
     size = cubrid_lob_size(lob->lob, lob->type);
 
     if (offset_len >= 65) {
-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "string(%s) is out of range, cannot move the cursor of lob object.", offset);
+        php_error_docref(NULL TSRMLS_CC, E_WARNING, "string(%s) is out of range for the lob field you have chosen, so please check the offset you give and the lob length.", offset);
         RETURN_FALSE;
     }
 
@@ -5086,16 +5164,21 @@ ZEND_FUNCTION(cubrid_lob2_seek64)
 
     if (origin == CUBRID_CURSOR_CURRENT) {
         if ((index < 0 && -index > lob->pos) || (index > 0 && (size - lob->pos) < index)) {
-            php_error_docref(NULL TSRMLS_CC, E_WARNING, "offset(%s) is out of range, please input a proper number.", offset);
+            php_error_docref(NULL TSRMLS_CC, E_WARNING, "offset(%s) is out of range for the lob field you have chosen, so please check the offset you give and the lob length.", offset);
             RETURN_FALSE;
         }
 
         lob->pos += index;
-    }
+    }else{
+        if (index < 0) {
+            php_error_docref(NULL TSRMLS_CC, E_WARNING, "offset(%s) must not be a negative number, so please check the offset you give.", offset);
+            RETURN_FALSE;
+        }
 
-    if (index < 0 || index > size) {
-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "offset(%s) may be a negative number or out of range, please check the offset you give.", offset);
-        RETURN_FALSE;
+        if (index > size) {
+            php_error_docref(NULL TSRMLS_CC, E_WARNING, "offset(%s) is out of range for the lob field you have chosen, so please check the offset you give and the lob length.", offset);
+            RETURN_FALSE;
+        }        
     }
 
     if (origin == CUBRID_CURSOR_FIRST) {

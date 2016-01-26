@@ -116,7 +116,7 @@ function get_result_info($req_handle)
 --CLEAN--
 --EXPECTF--
 Warning: Error: DBMS, -495, Execute: before ' )'
-Cannot coerce host var to type enum. insert into char_enum char_enum %s
+Cannot coerce host var to type enum. %s
 cubrid execute failed.
 
 ------------ get_result_info --------------------
