@@ -65,10 +65,8 @@ Rows deleted: 10001
 
 
 #####error execute#####
+Rows: 1
 
-Warning: cubrid_affected_rows(): supplied resource is not a valid CUBRID-Connect resource in %s on line %d
-Rows: 0
-
-Warning: Error: CLIENT, -2002, Invalid API call in %s on line %d
-[002] [-2002] Invalid API call
+Warning: Error: CLIENT, -30002, Invalid API call in %s on line %d
+[002] [-30002] Invalid API call
 Finished!

@@ -33,7 +33,7 @@ if (false !== ($tmp = @cubrid_set_db_parameter($conn, 10000, 1))) {
 }
 
 cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 50);
-cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 2);
+cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 5);
 
 cubrid_set_db_parameter($conn, CUBRID_PARAM_LOCK_TIMEOUT, 1);
 
@@ -60,7 +60,7 @@ print "done!";
 --EXPECTF--
 array(4) {
   ["PARAM_ISOLATION_LEVEL"]=>
-  int(3)
+  int(4)
   ["PARAM_LOCK_TIMEOUT"]=>
   int(-1)
   ["PARAM_MAX_STRING_LENGTH"]=>
@@ -69,10 +69,10 @@ array(4) {
   int(1)
 }
 
-Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6.%s in %s on line %d
+Warning: Error: DBMS, -1157, Isolation level value in MVCC must be 'read committed', 'repeatable read' or 'serializable'.%s in %s on line %d
 array(4) {
   ["PARAM_ISOLATION_LEVEL"]=>
-  int(2)
+  int(5)
   ["PARAM_LOCK_TIMEOUT"]=>
   int(1)
   ["PARAM_MAX_STRING_LENGTH"]=>

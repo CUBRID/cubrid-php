@@ -17,7 +17,7 @@ while (list($param_name, $param_value) = each($db_params)) {
 }
 
 printf("\n\n");
-$conn6=cubrid_connect_with_url("CUBRID:$host:$port:$db:::?autocommit=on",$user, $passwd);
+$conn6=cubrid_connect_with_url("CUBRID:$host:$port:$db:::",$user, $passwd);
 $autocommit=cubrid_get_autocommit($conn6);
 printf("[006]autocommit value: %s\n",$autocommit);
 $db_params = cubrid_get_db_parameter($conn6);
@@ -31,19 +31,22 @@ cubrid_close($conn6);
 print "Finished!\n";
 ?>
 --CLEAN--
---XFAIL--
-"autocommit" setting in url is closed in CCI 9.0.0
 --EXPECTF--
-[005]autocommit value: 1
-PARAM_ISOLATION_LEVEL          3
-PARAM_LOCK_TIMEOUT             -1
-PARAM_MAX_STRING_LENGTH        1073741823
-PARAM_AUTO_COMMIT              0
+Warning: Error: CCI, -20030, Invalid url string in %s on line %d
+
+Warning: cubrid_get_autocommit() expects parameter 1 to be resource, boolean given in %s on line %d
+[005]autocommit value: 
+
+Warning: cubrid_get_db_parameter() expects parameter 1 to be resource, boolean given in %s on line %d
+
+Warning: Variable passed to each() is not an array or object in %s on line %d
 
 
 [006]autocommit value: 1
-PARAM_ISOLATION_LEVEL          3
+PARAM_ISOLATION_LEVEL          4
 PARAM_LOCK_TIMEOUT             -1
 PARAM_MAX_STRING_LENGTH        1073741823
 PARAM_AUTO_COMMIT              1
+
+Warning: cubrid_close() expects parameter 1 to be resource, boolean given in %s on line %d
 Finished!

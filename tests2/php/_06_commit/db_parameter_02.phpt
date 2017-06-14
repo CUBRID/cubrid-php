@@ -21,7 +21,7 @@ while(list($param_name,$param_value)=each($db_params1)){
 }
 printf("\n");
 
-cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 2);
+cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 4);
 $db_params2 = cubrid_get_db_parameter($conn);
 while(list($param_name,$param_value)=each($db_params2)){
    printf("%-30s,%s\n",$param_name,$param_value);
@@ -94,7 +94,7 @@ if (FALSE == $params7) {
 
 
 printf("\n\n");
-cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL,3);
+cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL,4);
 cubrid_set_db_parameter($conn, CUBRID_PARAM_LOCK_TIMEOUT,-1 );
 cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_TRUE);
 $params_new = cubrid_get_db_parameter($conn);
@@ -110,7 +110,7 @@ print "Finished!\n";
 #####positive example#####
 array(4) {
   ["PARAM_ISOLATION_LEVEL"]=>
-  int(3)
+  int(4)
   ["PARAM_LOCK_TIMEOUT"]=>
   int(-1)
   ["PARAM_MAX_STRING_LENGTH"]=>
@@ -124,12 +124,12 @@ PARAM_LOCK_TIMEOUT            ,-1
 PARAM_MAX_STRING_LENGTH       ,1073741823
 PARAM_AUTO_COMMIT             ,1
 
-PARAM_ISOLATION_LEVEL         ,2
+PARAM_ISOLATION_LEVEL         ,4
 PARAM_LOCK_TIMEOUT            ,-1
 PARAM_MAX_STRING_LENGTH       ,1073741823
 PARAM_AUTO_COMMIT             ,1
 
-PARAM_ISOLATION_LEVEL         ,2
+PARAM_ISOLATION_LEVEL         ,4
 PARAM_LOCK_TIMEOUT            ,1
 PARAM_MAX_STRING_LENGTH       ,1073741823
 PARAM_AUTO_COMMIT             ,0
@@ -138,14 +138,14 @@ PARAM_AUTO_COMMIT             ,0
 
 #####negative example#####
 
-Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6.%s in %s on line %d
-[001]Expect [-110] [Isolation level value must be between 1 and 6.%s]
+Warning: Error: DBMS, -1157, Isolation level value in MVCC must be 'read committed', 'repeatable read' or 'serializable'.%s in %s on line %d
+[001]Expect [-1157] [Isolation level value in MVCC must be 'read committed', 'repeatable read' or 'serializable'.%s]
 
-Warning: Error: DBMS, -110, Isolation level value must be between 1 and 6.%s in %s on line %d
-[002]Expect [-110] [Isolation level value must be between 1 and 6.%s]
+Warning: Error: DBMS, -1157, Isolation level value in MVCC must be 'read committed', 'repeatable read' or 'serializable'.%s in %s on line %d
+[002]Expect [-1157] [Isolation level value in MVCC must be 'read committed', 'repeatable read' or 'serializable'.%s]
 array(4) {
   ["PARAM_ISOLATION_LEVEL"]=>
-  int(2)
+  int(4)
   ["PARAM_LOCK_TIMEOUT"]=>
   int(-1)
   ["PARAM_MAX_STRING_LENGTH"]=>
@@ -171,7 +171,7 @@ Warning: cubrid_set_db_parameter() expects exactly 3 parameters, 0 given in %s o
 
 array(4) {
   ["PARAM_ISOLATION_LEVEL"]=>
-  int(3)
+  int(4)
   ["PARAM_LOCK_TIMEOUT"]=>
   int(-1)
   ["PARAM_MAX_STRING_LENGTH"]=>

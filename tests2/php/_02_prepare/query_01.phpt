@@ -145,6 +145,7 @@ Array
     [Null] => YES
     [Index_type] => BTREE
     [Func] => 
+    [Comment] => 
 )
 Array
 (
@@ -160,6 +161,7 @@ Array
     [Null] => YES
     [Index_type] => BTREE
     [Func] => 
+    [Comment] => 
 )
 Array
 (
@@ -175,6 +177,7 @@ Array
     [Null] => YES
     [Index_type] => BTREE
     [Func] => 
+    [Comment] => 
 )
 Array
 (
@@ -190,6 +193,7 @@ Array
     [Null] => YES
     [Index_type] => BTREE
     [Func] => 
+    [Comment] => 
 )
 
 

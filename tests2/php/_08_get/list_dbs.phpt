@@ -98,11 +98,14 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####positive example#####
-array(1) {
+array(2) {
   [0]=>
+  string(5) "phpdb"
+  [1]=>
   string(6) "demodb"
 }
 #####cubrid_db_name#####
+phpdb
 demodb
 
 

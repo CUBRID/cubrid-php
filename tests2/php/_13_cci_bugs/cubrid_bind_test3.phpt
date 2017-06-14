@@ -42,7 +42,7 @@ cubrid_close_prepare($req3);
 printf("\n\n#####select from bit3_tb #####\n");
 cubrid_execute($conn,"create table bit3_tb(a3 bit(8))");
 $req4 = cubrid_prepare($conn, 'INSERT INTO bit3_tb VALUES(?)');
-if(!$tmp=cubrid_bind($req4, 1,B'1010','bit')){
+if(!$tmp=cubrid_bind($req4, 1,B'10100000','bit')){
    printf("[%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
 }
 cubrid_execute($req4);
@@ -65,10 +65,12 @@ Array
 
 
 #####select from bit1_tb #####
-array(1) {
-  ["a1"]=>
-  string(2) "A0"
-}
+
+Warning: Error: CCI, -20008, Type conversion error in %s on line %d
+[-20008] Type conversion error
+
+Warning: Error: CLIENT, -30015, Some parameter not binded in %s on line %d
+bool(false)
 
 
 #####select from bit3_tb #####

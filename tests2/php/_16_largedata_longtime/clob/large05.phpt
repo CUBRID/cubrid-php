@@ -69,7 +69,7 @@ Warning: cubrid_lob2_seek(): offset(-1) is not correct, it can't be a negative n
 tell: 0
 #####cubrid_lob2_tell64, cubrid_lob2_seek64#####
 
-Warning: cubrid_lob2_seek64(): offset(-1) may be a negative number or out of range, please check the offset you give. in %s on line 33
+Warning: cubrid_lob2_seek64(): offset(-1) must not be a negative number, so please check the offset you give. in %s on line 33
 35--Error:[0] []
 tell: 0
 Finished!

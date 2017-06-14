@@ -8,7 +8,7 @@ require_once('skipifconnectfailure.inc');
 --FILE--
 <?php
 include "connect.inc";
-$conn1=cubrid_connect_with_url("CUBRID:$host:$port:$db:$user:$passwd:::?autocommit=on","aaaa");
+$conn1=cubrid_connect_with_url("CUBRID:$host:$port:$db:$user:$passwd:?autocommit=on","aaaa");
 if (FALSE == $conn1) {
     printf("[001]Expect: return value false. [%d] [%s]\n", cubrid_error_code(), cubrid_error_msg());
 }elseif(TRUE == $conn1){
@@ -18,7 +18,7 @@ if (FALSE == $conn1) {
     printf("[001]no true and no false");
 }
 
-$conn2=cubrid_connect_with_url("CUBRID:$host:$port:$db:$user:$passwd:::?autocommit=on","dba","123456");
+$conn2=cubrid_connect_with_url("CUBRID:$host:$port:$db:$user:$passwd:?autocommit=on","dba","123456");
 if (FALSE == $conn2) {
     printf("[002]Expect: return value false. [%d] [%s]\n", cubrid_error_code(), cubrid_error_msg());
 }elseif(TRUE == $conn2){
@@ -28,7 +28,7 @@ if (FALSE == $conn2) {
     printf("[002]no true and no false");
 }
 
-$conn3=cubrid_connect_with_url("CUBRID:$host:$port:$db:$user:$passwd:::?autocommit=on");
+$conn3=cubrid_connect_with_url("CUBRID:$host:$port:$db:$user:$passwd:?autocommit=on");
 if (FALSE == $conn3) {
     printf("[003]No Expect: return value false. [%d] [%s]\n", cubrid_error_code(), cubrid_error_msg());
 }elseif(TRUE == $conn3){
@@ -44,11 +44,22 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 ?>
 --CLEAN--
---XFAIL--
-"autocommit" setting in url is closed in CCI 9.0.0
 --EXPECTF--
-PHP Warning:  Error: DBMS, 0, Unknown DBMS error in %s on line %d
-[001]Expect: return value false. [0] [Unknown DBMS error]
-PHP Warning:  Error: DBMS, 0, Unknown DBMS error in %s on line %d
-[002]Expect: return value false. [0] [Unknown DBMS error]
-[003]Expect: return value true
+Warning: Error: CCI, -20030, Invalid url string in %s on line %d
+[001]Expect: return value false. [-20030] [Invalid url string]
+
+Warning: Error: CCI, -20030, Invalid url string in %s on line %d
+[002]Expect: return value false. [-20030] [Invalid url string]
+
+Warning: Error: CCI, -20030, Invalid url string in %s on line %d
+[003]No Expect: return value false. [-20030] [Invalid url string]
+
+Notice: Undefined variable: result in %s on line %d
+
+Warning: cubrid_close_prepare() expects parameter 1 to be resource, null given in %s on line %d
+
+Notice: Undefined variable: conn in %s on line %d
+
+Warning: cubrid_disconnect() expects parameter 1 to be resource, null given in %s on line %d
+Finished!
+

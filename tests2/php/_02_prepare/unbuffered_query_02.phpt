@@ -71,19 +71,14 @@ Warning: Error: DBMS, -493, Syntax: In line 1, column 1 before ' IS NOT SQL'
 Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s in %s on line %d
 [003] Expecting false, [-493] [Syntax: In line 1, column 1 before ' IS NOT SQL'
 Syntax error: unexpected 'THIS', expecting SELECT or VALUE or VALUES or '(' %s]
-
-Warning: Error: CAS, -10006, Server handle not found in %s on line %d
-[004] Expecting false, [-10006] [Server handle not found]
+bool(false)
 
 
 #####negative example for cubrid_free_result()#####
 
-Warning: cubrid_free_result() expects parameter 1 to be resource, boolean given in %s on line %d
-[005] Expecting false, [-10006] [Server handle not found]
-
 Warning: cubrid_free_result() expects exactly 1 parameter, 0 given in %s on line %d
-[006] Expecting false, [-10006] [Server handle not found]
+[006] Expecting false, [0] []
 
 Warning: cubrid_free_result() expects parameter 1 to be resource, string given in %s on line %d
-[007] Expecting false, [-10006] [Server handle not found]
+[007] Expecting false, [0] []
 Finished!

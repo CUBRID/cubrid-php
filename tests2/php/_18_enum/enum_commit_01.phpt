@@ -19,7 +19,7 @@ $sql = "create class enum01(i INT, working_days ENUM('Monday', 'Tuesday', 'Wedne
 $req = cubrid_execute($conn, $sql, CUBRID_INCLUDE_OID);
 cubrid_commit($conn);
 
-$sql = "insert into enum01 values(1,1,1),(2,'Tuesday','No'), (3, 'Wednesday','Cancel')";
+$sql = "insert into enum01 values(3, 'Wednesday','Cancel'),(2,'Tuesday','No'),(1,1,1)";
 $req = cubrid_execute($conn, $sql, CUBRID_INCLUDE_OID);
 
 $sql = "select * from enum01";

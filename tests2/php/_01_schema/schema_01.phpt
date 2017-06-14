@@ -67,26 +67,30 @@ print "Finished!\n";
 #####positive example#####
 
 #####CUBRID_SCH_CLASS#####
-Number of class: 51
+Number of class: 43
 array(1) {
   [0]=>
-  array(2) {
+  array(3) {
     ["NAME"]=>
     string(8) "_db_auth"
     ["TYPE"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    NULL
   }
 }
 
 #####CUBRID_SCH_VCLASS#####
-Number of vclass: 17
+Number of vclass: 18
 array(1) {
   [0]=>
-  array(2) {
+  array(3) {
     ["NAME"]=>
     string(7) "db_auth"
     ["TYPE"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    NULL
   }
 }
 
@@ -97,7 +101,7 @@ array(0) {
 #####CUBRID_SCH_ATTRIBUTE #####
 array(2) {
   [0]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(7) "type_id"
     ["DOMAIN"]=>
@@ -115,7 +119,7 @@ array(2) {
     ["UNIQUE"]=>
     string(1) "0"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "1"
     ["CLASS_NAME"]=>
@@ -124,9 +128,11 @@ array(2) {
     string(13) "_db_data_type"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [1]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(9) "type_name"
     ["DOMAIN"]=>
@@ -134,7 +140,7 @@ array(2) {
     ["SCALE"]=>
     string(1) "0"
     ["PRECISION"]=>
-    string(1) "9"
+    string(2) "16"
     ["INDEXED"]=>
     string(1) "0"
     ["NON_NULL"]=>
@@ -144,7 +150,7 @@ array(2) {
     ["UNIQUE"]=>
     string(1) "0"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "2"
     ["CLASS_NAME"]=>
@@ -153,6 +159,8 @@ array(2) {
     string(13) "_db_data_type"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
 }
 

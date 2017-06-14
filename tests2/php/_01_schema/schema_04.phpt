@@ -43,7 +43,7 @@ print "Finished!\n";
 #####CUBRID_SCH_CLASS_ATTRIBUTE #####
 array(5) {
   [0]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(2) "id"
     ["DOMAIN"]=>
@@ -70,9 +70,11 @@ array(5) {
     string(8) "schema_1"
     ["IS_KEY"]=>
     string(1) "1"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [1]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(5) "phone"
     ["DOMAIN"]=>
@@ -90,7 +92,7 @@ array(5) {
     ["UNIQUE"]=>
     string(1) "0"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "2"
     ["CLASS_NAME"]=>
@@ -99,9 +101,11 @@ array(5) {
     string(8) "schema_1"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [2]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(7) "address"
     ["DOMAIN"]=>
@@ -119,7 +123,7 @@ array(5) {
     ["UNIQUE"]=>
     string(1) "0"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "3"
     ["CLASS_NAME"]=>
@@ -128,9 +132,11 @@ array(5) {
     string(8) "schema_1"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [3]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(5) "email"
     ["DOMAIN"]=>
@@ -146,9 +152,9 @@ array(5) {
     ["SHARED"]=>
     string(1) "0"
     ["UNIQUE"]=>
-    string(1) "0"
+    string(1) "1"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "4"
     ["CLASS_NAME"]=>
@@ -157,9 +163,11 @@ array(5) {
     string(8) "schema_1"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [4]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(6) "coment"
     ["DOMAIN"]=>
@@ -177,7 +185,7 @@ array(5) {
     ["UNIQUE"]=>
     string(1) "0"
     ["DEFAULT"]=>
-    string(9) "no things"
+    string(11) "'no things'"
     ["ATTR_ORDER"]=>
     string(1) "5"
     ["CLASS_NAME"]=>
@@ -186,11 +194,13 @@ array(5) {
     string(8) "schema_1"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
 }
 array(3) {
   [0]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(2) "id"
     ["DOMAIN"]=>
@@ -208,7 +218,7 @@ array(3) {
     ["UNIQUE"]=>
     string(1) "1"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "1"
     ["CLASS_NAME"]=>
@@ -217,9 +227,11 @@ array(3) {
     string(8) "schema_2"
     ["IS_KEY"]=>
     string(1) "1"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [1]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(4) "name"
     ["DOMAIN"]=>
@@ -237,7 +249,7 @@ array(3) {
     ["UNIQUE"]=>
     string(1) "0"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "2"
     ["CLASS_NAME"]=>
@@ -246,9 +258,11 @@ array(3) {
     string(8) "schema_2"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [2]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(6) "salary"
     ["DOMAIN"]=>
@@ -266,7 +280,7 @@ array(3) {
     ["UNIQUE"]=>
     string(1) "1"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "3"
     ["CLASS_NAME"]=>
@@ -275,6 +289,8 @@ array(3) {
     string(8) "schema_2"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
 }
 Finished!

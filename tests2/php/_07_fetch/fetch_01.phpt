@@ -13,7 +13,7 @@ cubrid_execute($conn,"drop table if exists fetch_tb");
 cubrid_execute($conn,"CREATE TABLE fetch_tb(c1 string, c2 char(20), c3 int, c4 double, c5 time, c6 date, c7 TIMESTAMP,c8 bit, c9 numeric(13,4),c10 clob,c11 blob);");
 cubrid_execute($conn,"insert into fetch_tb values('string111111','char11111',1,11.11,TIME '02:10:00',DATE '08/14/1977', TIMESTAMP '08/14/1977 5:35:00 pm',B'1',432341.4321, CHAR_TO_CLOB('This is a Dog'), BIT_TO_BLOB(X'000001'))");
 cubrid_execute($conn,"insert into fetch_tb(c1,c2,c3,c4) values('string2222','char22222',2,11.11)");
-cubrid_execute($conn,"insert into fetch_tb(c5,c6,c7,c8,c9) values(TIME '00:00:00', DATE '2008-10-31',TIMESTAMP '10/31',B'1',513254.3143513)");
+cubrid_execute($conn,"insert into fetch_tb(c5,c6,c7,c8,c9) values(TIME '00:00:00', DATE '2008-10-31',TIMESTAMP '10/31/2013',B'1',513254.3143513)");
 cubrid_execute($conn,"insert into fetch_tb(c10,c11) values(CHAR_TO_CLOB('This is a Dog2'), BIT_TO_BLOB(X'000010'))");
 
 

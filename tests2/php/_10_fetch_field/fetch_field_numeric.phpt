@@ -132,7 +132,7 @@ array(9) {
 ---smallint Field Properties ---
 name: smallint_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -149,7 +149,7 @@ cubrid_field_len: 6
 ---short Field Properties ---
 name: short_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -166,7 +166,7 @@ cubrid_field_len: 6
 ---bigint Field Properties ---
 name: bigint_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -183,7 +183,7 @@ cubrid_field_len: 20
 ---decimal Field Properties ---
 name: decimal_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -200,7 +200,7 @@ cubrid_field_len: 17
 ---numeric Field Properties ---
 name: numeric_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -217,7 +217,7 @@ cubrid_field_len: 40
 ---float Field Properties ---
 name: float_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -234,7 +234,7 @@ cubrid_field_len: 15
 ---real Field Properties ---
 name: real_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -251,7 +251,7 @@ cubrid_field_len: 15
 ---monetary Field Properties ---
 name: monetary_t
 table: numeric_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
