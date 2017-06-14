@@ -25,7 +25,7 @@ print "Finished!\n";
 --EXPECTF--
 array(3) {
   [0]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(2) "id"
     ["DOMAIN"]=>
@@ -33,7 +33,7 @@ array(3) {
     ["SCALE"]=>
     string(1) "0"
     ["PRECISION"]=>
-    string(1) "0"
+    string(2) "10"
     ["INDEXED"]=>
     string(1) "1"
     ["NON_NULL"]=>
@@ -41,9 +41,9 @@ array(3) {
     ["SHARED"]=>
     string(1) "0"
     ["UNIQUE"]=>
-    string(1) "0"
+    string(1) "1"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "1"
     ["CLASS_NAME"]=>
@@ -52,9 +52,11 @@ array(3) {
     string(2) "tb"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [1]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(5) "phone"
     ["DOMAIN"]=>
@@ -72,7 +74,7 @@ array(3) {
     ["UNIQUE"]=>
     string(1) "0"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "2"
     ["CLASS_NAME"]=>
@@ -81,9 +83,11 @@ array(3) {
     string(2) "tb"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
   [2]=>
-  array(13) {
+  array(14) {
     ["ATTR_NAME"]=>
     string(7) "address"
     ["DOMAIN"]=>
@@ -101,7 +105,7 @@ array(3) {
     ["UNIQUE"]=>
     string(1) "1"
     ["DEFAULT"]=>
-    NULL
+    string(4) "NULL"
     ["ATTR_ORDER"]=>
     string(1) "3"
     ["CLASS_NAME"]=>
@@ -110,6 +114,8 @@ array(3) {
     string(2) "tb"
     ["IS_KEY"]=>
     string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
   }
 }
 Finished!

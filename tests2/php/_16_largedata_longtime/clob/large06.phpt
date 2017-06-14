@@ -78,7 +78,7 @@ tell: 0
 lob size: 20000000000
 #####first#####
 
-Warning: cubrid_lob2_seek64(): offset(-1) may be a negative number or out of range, please check the offset you give. in %s on line 16
+Warning: cubrid_lob2_seek64(): offset(-1) must not be a negative number, so please check the offset you give. in %s on line 16
 18--Error:[0] []
 tell: 0
 #####second#####

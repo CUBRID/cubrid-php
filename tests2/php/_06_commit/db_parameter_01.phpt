@@ -41,7 +41,7 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####positive example#####
-PARAM_ISOLATION_LEVEL         ,3
+PARAM_ISOLATION_LEVEL         ,4
 PARAM_LOCK_TIMEOUT            ,-1
 PARAM_MAX_STRING_LENGTH       ,1073741823
 PARAM_AUTO_COMMIT             ,1

@@ -42,6 +42,6 @@ print "done!";
 %s
 cubrid version: %s
 server version: %s
-client version: 10.0.0
+client version: %s
 database name: demodb
 done!

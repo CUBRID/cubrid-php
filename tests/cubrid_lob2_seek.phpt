@@ -91,6 +91,16 @@ position after move 47 related to CUBRID_CURSOR_LAST: 0
 Warning: cubrid_lob2_seek(): offet(-1) is out of range, please input a proper number. in %s on line %d
 position after move 27 related to CUBRID_CURSOR_CURRENT: 27
 
+Warning: cubrid_lob2_close(): %d is not a valid CUBRID-Lob2 resource in %s on line %d
+
+Warning: cubrid_lob2_close() expects parameter 1 to be resource, integer given in %s on line %d
+
+Warning: cubrid_lob2_size64() expects parameter 1 to be resource, integer given in %s on line %d
+
+Warning: cubrid_lob2_tell64() expects parameter 1 to be resource, integer given in %s on line %d
+
+Warning: cubrid_lob2_seek64() expects at least 2 parameters, 1 given in %s on line %d
+
 Warning: cubrid_lob2_seek64(): %d is not a valid CUBRID-Lob2 resource in %s on line %d
 
 Warning: cubrid_lob2_tell64(): %d is not a valid CUBRID-Lob2 resource in %s on line %d

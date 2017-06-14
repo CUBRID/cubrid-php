@@ -76,7 +76,7 @@ object(stdClass)#1 (13) {
   ["table"]=>
   string(9) "field2_tb"
   ["def"]=>
-  string(0) ""
+  string(4) "NULL"
   ["max_length"]=>
   int(0)
   ["not_null"]=>

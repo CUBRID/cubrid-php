@@ -38,5 +38,7 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 bind time success
-PHP Warning:  Error: DBMS, -494, Semantic: Cannot coerce host var to type timestamp.  in %s on line %d
+
+Warning: Error: DBMS, -787, Conversion error in time format.%s. in %s on line %d
 bool(false)
+Finished!

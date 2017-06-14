@@ -120,7 +120,7 @@ array(4) {
 ---char Field Properties ---
 name: char_t
 table: character_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -136,7 +136,7 @@ cubrid_field_len: 5
 ---varchar Field Properties ---
 name: varchar_t
 table: character_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -152,7 +152,7 @@ cubrid_field_len: 11
 ---nchar Field Properties ---
 name: nchar_t
 table: character_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -168,7 +168,7 @@ cubrid_field_len: 20
 ---nchar varying Field Properties ---
 name: ncharvarying_t
 table: character_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0

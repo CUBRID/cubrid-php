@@ -205,7 +205,7 @@ Second Column Flags:           not_null primary_key unique_key
 ------------ print_field_info --------------------
 name:                          athlete
 table:                         history
-default value:                 ""
+default value:                 "NULL"
 max length:                    0
 not null:                      1
 primary key:                   1

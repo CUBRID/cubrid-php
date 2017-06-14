@@ -150,7 +150,7 @@ array(11) {
 ---string Field Properties ---
 name: c1
 table: fetch_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 1
 primary_key: 1
@@ -167,7 +167,7 @@ cubrid_field_len: 1073741823
 ---char Field Properties ---
 name: c2
 table: fetch_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 1
 primary_key: 0
@@ -235,7 +235,7 @@ cubrid_field_len: 8
 ---date Field Properties ---
 name: c6
 table: fetch_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -269,7 +269,7 @@ cubrid_field_len: 23
 ---bit Field Properties ---
 name: c8
 table: fetch_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -286,7 +286,7 @@ cubrid_field_len: 1
 ---numeric Field Properties ---
 name: c9
 table: fetch_tb
-default value: ""
+default value: "NULL"
 max lenght: 0
 not null: 0
 primary_key: 0
@@ -305,7 +305,7 @@ name: c10
 table: 
 default value: ""
 max lenght: 0
-not null: 1
+not null: 0
 primary_key: 0
 unique key: 0
 multiple key: 1
@@ -322,7 +322,7 @@ name: blob_to_bit(c11)
 table: 
 default value: ""
 max lenght: 0
-not null: 1
+not null: 0
 primary_key: 0
 unique key: 0
 multiple key: 1

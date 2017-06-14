@@ -1,7 +1,7 @@
 <?php
 $host = "test-db-server";
 $port = 33000;
-$db = "qadb";
+$db = "phpdb";
 $user = "dba";
 $passwd = "";
 $connect_url = "CUBRID:$host:$port:$db:::";

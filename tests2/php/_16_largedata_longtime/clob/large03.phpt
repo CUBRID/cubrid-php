@@ -56,7 +56,7 @@ tell: 0
 size: 20000000000
 #####first#####
 
-Warning: cubrid_lob2_seek64(): offset(20000000020) may be a negative number or out of range, please check the offset you give. in %s on line 16
+Warning: cubrid_lob2_seek64(): offset(20000000020) is out of range for the lob field you have chosen, so please check the offset you give and the lob length. in %s on line 16
 18--Error:[0] []
 tell: 0
 data: aaa

@@ -103,8 +103,8 @@ array(4) {
   string(3) "333"
 }
 
-Warning: Error: DBMS, -179, Domain "character varying" is not compatible with domain "integer".%s in %s on line %d
-[004] [-179] Domain "character varying" is not compatible with domain "integer".%s
+Warning: Error: DBMS, -181, Cannot coerce value of domain "character varying" to domain "integer".%s. in %s on line %d
+[004] [-181] Cannot coerce value of domain "character varying" to domain "integer".%s.
 #####correct drop#####
 array(0) {
 }

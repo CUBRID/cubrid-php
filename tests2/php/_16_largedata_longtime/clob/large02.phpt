@@ -261,12 +261,12 @@ There is maybe some error
 tell: 0
 #####four#####
 
-Warning: cubrid_lob2_seek64(): offset(-11) is out of range, please input a proper number. in %s on line 53
+Warning: cubrid_lob2_seek64(): offset(-11) is out of range for the lob field you have chosen, so please check the offset you give and the lob length. in %s on line 53
 55--Error:[0] []
 tell: 10
 #####five#####
 
-Warning: cubrid_lob2_seek64(): offset(20000000000) is out of range, please input a proper number. in %s on line 72
+Warning: cubrid_lob2_seek64(): offset(20000000000) is out of range for the lob field you have chosen, so please check the offset you give and the lob length. in %s on line 72
 74--Error:[0] []
 tell: 10
 #####six#####
@@ -277,7 +277,7 @@ OK
 tell: 20000000000
 #####nine#####
 
-Warning: cubrid_lob2_seek64(): offset(-66) may be a negative number or out of range, please check the offset you give. in %s on line 126
+Warning: cubrid_lob2_seek64(): offset(-66) must not be a negative number, so please check the offset you give. in %s on line 126
 128--Error:[0] []
 tell: 0
 #####ten#####

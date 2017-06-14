@@ -60,7 +60,7 @@ print "Finished!\n";
 #####positive example#####
 array(1) {
   [0]=>
-  array(10) {
+  array(11) {
     ["NAME"]=>
     string(10) "tt1_insert"
     ["STATUS"]=>
@@ -81,12 +81,14 @@ array(1) {
     string(0) ""
     ["CONDITION"]=>
     string(0) ""
+    ["REMARKS"]=>
+    string(0) ""
   }
 }
 no parameter for class_name
 array(3) {
   [0]=>
-  array(10) {
+  array(11) {
     ["NAME"]=>
     string(9) "tt3_alter"
     ["STATUS"]=>
@@ -107,9 +109,11 @@ array(3) {
     string(0) ""
     ["CONDITION"]=>
     string(0) ""
+    ["REMARKS"]=>
+    string(0) ""
   }
   [1]=>
-  array(10) {
+  array(11) {
     ["NAME"]=>
     string(10) "tt2_delete"
     ["STATUS"]=>
@@ -123,16 +127,18 @@ array(3) {
     ["ACTION_TIME"]=>
     string(6) "BEFORE"
     ["ACTION"]=>
-    string(16) "delete from [hi]"
+    string(22) "delete  [hi] from [hi]"
     ["PRIORITY"]=>
     string(8) "0.000000"
     ["CONDITION_TIME"]=>
     string(0) ""
     ["CONDITION"]=>
     string(0) ""
+    ["REMARKS"]=>
+    string(0) ""
   }
   [2]=>
-  array(10) {
+  array(11) {
     ["NAME"]=>
     string(10) "tt1_insert"
     ["STATUS"]=>
@@ -152,6 +158,8 @@ array(3) {
     ["CONDITION_TIME"]=>
     string(0) ""
     ["CONDITION"]=>
+    string(0) ""
+    ["REMARKS"]=>
     string(0) ""
   }
 }

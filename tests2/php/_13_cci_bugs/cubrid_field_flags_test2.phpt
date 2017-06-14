@@ -28,4 +28,5 @@ print "Finished!\n";
 --EXPECTF--
 int_t                          
 c10                            
-blob_to_bit(c11)
+blob_to_bit(c11)               
+Finished!

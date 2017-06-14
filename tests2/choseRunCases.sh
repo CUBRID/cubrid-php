@@ -29,14 +29,15 @@ function runAll()
 function modifyPort()
 {
     port=`cubrid broker status -b | grep broker1 | awk '{print $4}'`
-    sed -i "s/33199/$port/g" $1
+    cp $1 $1.ori
+    sed -i "s/33000/$port/g" $1
 }
 
 function createDB()
 {
     mkdir $2
     cd $2
-    cubrid createdb $1
+    cubrid createdb $1 en_US
     cubrid server start $1
     cubrid server status 
     cd ..
@@ -58,6 +59,9 @@ if [ $1 == -L ]
 then 
     #modify file about: broker port
     modifyPort connectLarge.inc
+    #modify skipifconnectfailure.inc
+    cp skipifconnectfailure.inc skipifconnectfailure.inc.ori
+    sed -i "s/connect.inc/connectLarge.inc/g" skipifconnectfailure.inc
 
     #create database
     createDB largedb largedbFile
@@ -71,10 +75,17 @@ then
     php largeTable.php
 
     #start to run test cases about large data
-    runLargeDataCases
+    if [ "$2" == "" ]
+    then
+    	runLargeDataCases
+    else
+	php run-tests.php $2
+    fi
 
     #deletedb
     deleteDB largedb largedbFile
+    mv connectLarge.inc.ori connectLarge.inc
+    mv skipifconnectfailure.inc.ori skipifconnectfailure.inc
 
     #rm large file
     cd largeFile
@@ -89,11 +100,16 @@ then
     #create database
     createDB phpdb phpdbFile
 
-    #start to run test cases about large data
-    runNormalCases
-
+    if [ "$2" == "" ]
+    then
+        #start to run test cases about large data
+        runNormalCases
+    else
+        php run-tests.php $2
+    fi
     #deletedb
     deleteDB phpdb phpdbFile
+    mv connect.inc.ori connect.inc
 
 else
     #default is to run all of test cases 
@@ -121,6 +137,8 @@ else
     #deletedb
     deleteDB largedb largedbFile
     deleteDB phpdb phpdbFile
+    mv connectLarge.inc.ori connectLarge.inc
+    mv connect.inc.ori connect.inc
 
     #rm large file
     cd largeFile

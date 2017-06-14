@@ -8,8 +8,8 @@ require_once('skipifconnectfailure.inc')
 --FILE--
 <?php
 include_once("connect.inc");
-$conn = cubrid_connect($host, $port, $db, $user, $passwd);
-$req = cubrid_execute($conn, "select * from db_class",  CUBRID_INCLUDE_OID);
+$conn = cubrid_connect($host, $port, "demodb", $user, $passwd);
+$req = cubrid_execute($conn, "select * from game",  CUBRID_INCLUDE_OID);
 if (!$req) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
 }
@@ -54,29 +54,29 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####correct example#####
-_db_class 
-_db_class 
-_db_class 
-_db_class 
-_db_class 
-_db_class 
-_db_class 
-_db_class 
-_db_class 
-_db_class 
+game 
+game 
+game 
+game 
+game 
+game 
+game 
+game 
+game 
+game 
 
 
 #####negative example#####
 
 Notice: Undefined variable: oidd in %s on line %d
 
-Warning: Error: CCI, -20, Invalid oid string in %s on line %d
-[001]Expect false [-20] [Invalid oid string]
-45
+Warning: Error: CCI, -20020, Invalid oid string in %s on line %d
+[001]Expect false [-20020] [Invalid oid string]
+48
 Warning: cubrid_get_class_name() expects exactly 2 parameters, 1 given in %s on line %d
-[002]Expect false [-20] [Invalid oid string]
-45
+[002]Expect false [-20020] [Invalid oid string]
+48
 Warning: cubrid_get_class_name() expects exactly 2 parameters, 0 given in %s on line %d
-[003]Expect false [-20] [Invalid oid string]
-45
+[003]Expect false [-20020] [Invalid oid string]
+48
 Finished!

@@ -109,7 +109,7 @@ print "Finished!\n";
 
 [006]Expect: return value true
 [006]autocommit value: 1
-PARAM_ISOLATION_LEVEL          3
+PARAM_ISOLATION_LEVEL          4
 PARAM_LOCK_TIMEOUT             -1
 PARAM_MAX_STRING_LENGTH        1073741823
 PARAM_AUTO_COMMIT              1

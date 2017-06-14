@@ -10,7 +10,7 @@ require_once('skipifconnectfailure.inc');
 include_once('connect.inc');
 $conn = cubrid_connect($host, $port,"demodb", $user, $passwd);
 
-$req = cubrid_execute($conn, "SELECT event_code,athlete_code,nation_code,game_date FROM game WHERE host_year=1988 and event_code=20001;");
+$req = cubrid_execute($conn, "SELECT event_code,athlete_code,nation_code,game_date FROM game WHERE host_year=1988 and event_code=20001 order by athlete_code desc;");
 
 var_dump(cubrid_fetch_row($req));
 
@@ -39,7 +39,7 @@ cubrid_disconnect($conn);
 ?>
 --CLEAN--
 --EXPECTF--
-rray(4) {
+array(4) {
   [0]=>
   string(5) "20001"
   [1]=>
@@ -53,8 +53,8 @@ rray(4) {
 --- Field Properties ---
 name:                          athlete_code
 table:                         game
-default value:                 ""
-max_length:                    11
+default value:                 "NULL"
+max_length:                    0
 not null:                      1
 primary key:                   1
 unique key:                    1

@@ -18,7 +18,7 @@ cubrid_execute($conn,$sql);
 //date time type
 $req = cubrid_prepare($conn, "INSERT INTO time_tb VALUES('time date test',?,?);");
 cubrid_bind($req, 1, '02:22:22','time');
-cubrid_bind($req, 2, '08/14/1977','date');
+cubrid_bind($req, 2, '1977/08/14','date');
 cubrid_execute($req);
 
 $req2= cubrid_execute($conn, "SELECT * FROM time_tb where c1 like 'time%';");
