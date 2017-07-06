@@ -16,8 +16,8 @@ $lob=$row[1];
 
 $tell=cubrid_lob2_tell($lob);
 printf("tell: %d\n", $tell);
-$size= cubrid_lob2_size($lob);
-printf("lob size: %d\n", $size);
+$size= cubrid_lob2_size64($lob);
+printf("lob size: %s\n", $size);
 
 printf("#####first#####\n");
 cubrid_lob2_seek64($lob,0, CUBRID_CURSOR_FIRST);
