@@ -22,7 +22,7 @@ printf("%d--lob size: %f\n", __LINE__, $size);
 
 
 cubrid_lob2_seek64($lob,3, CUBRID_CURSOR_LAST);
-printf("tell: %d\n", cubrid_lob2_tell64($lob));
+printf("tell: %s\n", cubrid_lob2_tell64($lob));
 $data= cubrid_lob2_read($lob,20);
 if($data === FALSE){
     printf("There is no more data\n");

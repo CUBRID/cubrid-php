@@ -17,7 +17,7 @@ printf("\n#####negative: cubrid_lob2_tell64, cubrid_lob2_seek64#####\n");
 $tell=cubrid_lob2_tell64($lob);
 printf("tell: %d\n", $tell);
 $size= cubrid_lob2_size64($lob);
-printf("size: %d\n", $size);
+printf("size: %s\n", $size);
 
 printf("#####first#####\n");
 $seek=cubrid_lob2_seek64($lob,$size, CUBRID_CURSOR_FIRST);
