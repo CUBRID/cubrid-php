@@ -9,7 +9,7 @@ function check_table_existence($conn_handle, $table_name)
     }
 
     $cubrid_retval = cubrid_bind($cubrid_req, 1, $table_name);
-    if (!$cubrid_req) {
+    if (!$cubrid_retval) {
 	cubrid_close_request($cubrid_req);
 	return -1;
     }

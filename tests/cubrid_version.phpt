@@ -10,9 +10,11 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-phpinfo();
+printf("Current PHP version: %s\n", phpversion());
+//phpinfo();
 
-$conn = cubrid_connect_with_url($connect_url);
+$conn = cubrid_connect($host, $port, $db, $user, $passwd);
+
 if (!$conn) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
     exit(1);
