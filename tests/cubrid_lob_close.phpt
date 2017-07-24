@@ -50,5 +50,5 @@ require_once("clean_table.inc");
 ?>
 --EXPECTF--
 
-Warning: cubrid_lob_close(): supplied argument is not a valid CUBRID-Lob resource in %s on line %d
+Warning: cubrid_lob_close(): supplied resource is not a valid CUBRID Lob resource in %s on line %d
 done!
