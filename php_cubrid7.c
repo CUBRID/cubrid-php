@@ -2272,7 +2272,7 @@ ZEND_FUNCTION(cubrid_close_request)
     if (req_id == NULL) {
         RETURN_FALSE;
     }
-    zend_list_delete(Z_RES_P(req_id));
+    if (Z_RES_P(req_id)) zend_list_delete(Z_RES_P(req_id));
 
     /* On an explicit close of the default request it had a refcount of 2,
     * so we need one more call */
