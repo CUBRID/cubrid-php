@@ -34,23 +34,25 @@ cubrid_close($conn);
 cubrid_close($conn2);
  
 // invalid db
-$conn2 = cubrid_connect('test-db-server', '33000', 'invalid_db', 'dba', '');
+$conn2 = cubrid_connect($host, '33000', 'invalid_db', 'dba', '');
 if($conn2 == false){
      printf("[007] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }
  
 // invalid password
-$conn2 = cubrid_connect('test-db-server', '33000', 'demodb', 'dba', '222');
+$conn2 = cubrid_connect($host, '33000', 'demodb', 'dba', '222');
 if($conn2 == false){
      printf("[008] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }
 
+// invalid host
 $conn2 = cubrid_connect('xx.xx.xx.xx', '33000', 'invalid_db', 'dba', '');
 if($conn2 == false){
 	 printf("[009] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }
 
-$conn1 = cubrid_connect('test-db-server', '33000', 'demodb', 'invalid_user', '');
+// invalid user
+$conn1 = cubrid_connect($host, '33000', 'demodb', 'invalid_user', '');
 if($conn1 == false){
      printf("[010] [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }
