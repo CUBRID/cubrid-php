@@ -10,7 +10,8 @@ require_once('skipifconnectfailure.inc')
 
 include_once("connect.inc");
 
-phpinfo();
+printf("Current PHP version: %s\n", phpversion());
+//phpinfo();
 
 $conn = cubrid_connect_with_url($connect_url);
 if (!$conn) {

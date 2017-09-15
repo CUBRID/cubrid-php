@@ -65,7 +65,7 @@ print "done!";
 int(0)
 int(0)
 
-Warning: cubrid_errno(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+Warning: cubrid_errno(): %d is not a valid CUBRID-Connect resource in %s on line %d
 bool(false)
 int(0)
 
