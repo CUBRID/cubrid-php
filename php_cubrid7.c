@@ -1370,17 +1370,28 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
 
 	zend_resource *index_ptr, new_index_ptr;
 
-	index_ptr = (zend_resource *)zend_hash_str_find_ptr(&EG(regular_list), hashed_details, hashed_details_length);
-    if (!new_link && index_ptr != NULL) {
-        zend_resource *link;
-		
-		link = (zend_resource *)index_ptr->ptr;
-		if (link && link->ptr && (link->type == le_connect || link->type == le_pconnect)) {
-            php_cubrid_set_default_link(link);
-			GC_REFCOUNT(link)++;
-            RETVAL_RES(link);
-            return;
-        } 
+    if (!new_link) {
+	    if ((index_ptr = (zend_resource *)zend_hash_str_find_ptr(&EG(regular_list), hashed_details, hashed_details_length))) {
+            zend_ulong conn_id;
+            zend_resource *link;
+
+            if (index_ptr->type != le_index_ptr) {
+                RETURN_FALSE;
+		    }
+
+            conn_id = (zend_ulong)index_ptr->ptr;
+            link = zend_hash_index_find_ptr(&EG(regular_list), conn_id);
+	    	
+	        if (link && link->ptr && (link->type == le_connect || link->type == le_pconnect)) {
+                php_cubrid_set_default_link(link);
+		        GC_REFCOUNT(link)++;
+                RETVAL_RES(link);
+                return;
+            } 
+            else {
+                zend_hash_str_del(&EG(regular_list), hashed_details, hashed_details_length);
+            }
+        }
     }
 
 	if ((cubrid_conn = cci_connect_with_url_ex(connect_url, userid, passwd, &error)) < 0) {
@@ -1397,17 +1408,18 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
     }
 
 	connect = new_cubrid_connect(persistent);
+
     if (!connect) {
 		RETURN_FALSE;
 	}
+
     connect->handle = cubrid_conn;
 
     RETVAL_RES(zend_register_resource(connect, (persistent)?le_pconnect:le_connect));
-
 	return_value->value.res->type = (persistent)?le_pconnect:le_connect;
-    new_index_ptr.ptr = return_value->value.res;
-	new_index_ptr.type = IS_RESOURCE;
-	new_index_ptr.handle = Z_RES_HANDLE_P(return_value);
+
+    new_index_ptr.ptr = (void *)(zend_uintptr_t)return_value->value.res->handle;
+	new_index_ptr.type = le_index_ptr; //IS_RESOURCE;
 
 	if (zend_hash_str_update_mem(&EG(regular_list), hashed_details, hashed_details_length, (void *)&new_index_ptr, sizeof(zend_resource)) == NULL) {
 		RETURN_FALSE;
@@ -1467,17 +1479,25 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
     hashed_details_length = strlen(hashed_details);
 
     zend_resource *index_ptr, new_index_ptr;
-	index_ptr = (zend_resource *)zend_hash_str_find_ptr(&EG(regular_list), hashed_details, hashed_details_length);
 
-    if (!new_link && index_ptr != NULL) {
-        zend_resource* link;
+    if (!new_link) {
+	    if ((index_ptr = (zend_resource *)zend_hash_str_find_ptr(&EG(regular_list), hashed_details, hashed_details_length))) {
+            zend_ulong conn_id;
+            zend_resource* link;
     
-        link = (zend_resource *)index_ptr->ptr;
-        if (link && link->ptr && (link->type == le_connect || link->type == le_pconnect)) {
-            php_cubrid_set_default_link(link);
-			GC_REFCOUNT(link)++;
-            RETVAL_RES(link);
-            return;
+            if (index_ptr->type != le_index_ptr) {
+                RETURN_FALSE;
+            }
+
+            conn_id = (zend_ulong)index_ptr->ptr;
+            link = zend_hash_index_find_ptr(&EG(regular_list), conn_id);
+
+            if (link && link->ptr && (link->type == le_connect || link->type == le_pconnect)) {
+                php_cubrid_set_default_link(link);
+                GC_REFCOUNT(link)++;
+                RETVAL_RES(link);
+                return;
+            }
         }
     }
         
@@ -1499,11 +1519,10 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
     connect->handle = cubrid_conn;
 
     RETVAL_RES(zend_register_resource(connect, (persistent)?le_pconnect:le_connect));
-
 	return_value->value.res->type = (persistent) ? le_pconnect : le_connect;
-    new_index_ptr.ptr = return_value->value.res;
-	new_index_ptr.type = IS_RESOURCE;
-	new_index_ptr.handle = Z_RES_HANDLE_P(return_value);
+
+    new_index_ptr.ptr = (void *)(zend_uintptr_t)return_value->value.res->handle;
+	new_index_ptr.type = le_index_ptr; //IS_RESOURCE;
 
 	if (zend_hash_str_update_mem(&EG(regular_list), hashed_details, hashed_details_length, (void *)&new_index_ptr, sizeof(zend_resource)) == NULL) {
 		RETURN_FALSE;
