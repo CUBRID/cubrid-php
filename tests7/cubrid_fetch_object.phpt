@@ -40,22 +40,32 @@ class cubrid_fetch_object_test {
 
 var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test'));
 
-class cubrid_fetch_object_construct extends cubrid_fetch_object_test {
-
+class cubrid_fetch_object_test_construct extends cubrid_fetch_object_test {
 	public function __construct($s, $f) {
-		$this->s_name = $s;
-		$this->f_name = $f;
-	}
+		try 
+		{
+			$this->s_name = $s;
+			$this->f_name = $f;
+		}
+		catch(Throwable $t) 
+		{
+		echo $t->getMessage();
+		}
+		catch(Exception $e) 
+		{
+		echo $e;
+		}
 
+	}
 }
 
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', null));
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('s_name')));
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('s_name', 'f_name')));
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('s_name', 'f_name', 'x')));
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', "no array and not null"));
+//var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', null));
+//var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('s_name')));
+var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('s_name', 'f_name')));
+var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('s_name', 'f_name', 'x')));
+//var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', "no array and not null"));
 var_dump(cubrid_fetch_object($res));
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('s_name', 'f_name')));
+var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('s_name', 'f_name')));
 
 class cubrid_fetch_object_private_construct {
 
@@ -68,7 +78,7 @@ class cubrid_fetch_object_private_construct {
 var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_private_construct', array('s_name', 'f_name')));
 
 // Fatal error, script execution will end
-var_dump(cubrid_fetch_object($res, 'this_class_does_not_exist'));
+//var_dump(cubrid_fetch_object($res, 'this_class_does_not_exist'));
 
 cubrid_disconnect($conn);
 
@@ -76,52 +86,37 @@ print "done!";
 ?>
 --CLEAN--
 --EXPECTF--
-object(stdClass)#%d (2) {
+object(stdClass)#1 (2) {
   ["s_name"]=>
   string(1) "X"
   ["f_name"]=>
   string(5) "Mixed"
 }
-object(cubrid_fetch_object_test)#%d (2) {
+object(cubrid_fetch_object_test)#1 (2) {
   ["s_name"]=>
   string(1) "W"
   ["f_name"]=>
   string(5) "Woman"
 }
-
-Warning: Missing argument 1 for cubrid_fetch_object_construct::__construct() in %s on line %d
-
-Warning: Missing argument 2 for cubrid_fetch_object_construct::__construct() in %s on line %d
-
-Notice: Undefined variable: s in %s on line %d
-
-Notice: Undefined variable: f in %s on line %d
-object(cubrid_fetch_object_construct)#%d (2) {
-  ["s_name"]=>
-  NULL
-  ["f_name"]=>
-  NULL
-}
-
-Warning: Missing argument 2 for cubrid_fetch_object_construct::__construct() in %s on line %d
-
-Notice: Undefined variable: f in %s on line %d
-object(cubrid_fetch_object_construct)#%d (2) {
-  ["s_name"]=>
-  string(6) "s_name"
-  ["f_name"]=>
-  NULL
-}
-object(cubrid_fetch_object_construct)#%d (2) {
+object(cubrid_fetch_object_test_construct)#1 (2) {
   ["s_name"]=>
   string(6) "s_name"
   ["f_name"]=>
   string(6) "f_name"
 }
+object(cubrid_fetch_object_test_construct)#1 (2) {
+  ["s_name"]=>
+  string(6) "s_name"
+  ["f_name"]=>
+  string(6) "f_name"
+}
+object(stdClass)#1 (2) {
+  ["s_name"]=>
+  string(1) "S"
+  ["f_name"]=>
+  string(6) "Silver"
+}
 bool(false)
 bool(false)
-bool(false)
-bool(false)
-bool(false)
+done!
 
-Fatal error: Class 'this_class_does_not_exist' not found in %s on line %d
