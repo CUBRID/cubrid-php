@@ -156,7 +156,7 @@ array(4) {
 
 Notice: Use of undefined constant PARAM_AUTO_COMMIT - assumed 'PARAM_AUTO_COMMIT' in %s on line %d
 
-Warning: cubrid_set_db_parameter() expects parameter 2 to be long, string given in %s on line %d
+Warning: cubrid_set_db_parameter() expects parameter 2 to be integer, string given in %s on line %d
 [004]Expect [0] []
 
 Warning: cubrid_set_db_parameter() expects exactly 3 parameters, 2 given in %s on line %d

@@ -48,20 +48,33 @@ class cubrid_fetch_object_test {
 }
 
 var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test'));
-class cubrid_fetch_object_construct extends cubrid_fetch_object_test {
-	public function __construct($s, $f) {
-		$this->c1 = $s;
-		$this->c2 = $f;
-	}
+class cubrid_fetch_object_test_construct extends cubrid_fetch_object_test {
+        public function __construct($s, $f) {
+                try
+                {
+			$this->s_name = $s;
+			$this->f_name = $f;
+                }
+                catch(Throwable $t)
+                {
+	                echo $t->getMessage();
+                }
+                catch(Exception $e)
+                {
+        	        echo $e;
+                }
+
+        }
 }
-printf("cubrid_fetch_object(res, string ,array) cubrid_fetch_object_construct start1\n");
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', null));
-printf("start2:\n");
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('c1')));
+
+//printf("cubrid_fetch_object(res, string ,array) cubrid_fetch_object_construct start1\n");
+//var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', null));
+//printf("start2:\n");
+//var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('c1')));
 printf("start3:\n");
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('c1', 'c2')));
+var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('c1', 'c2')));
 printf("start4:\n");
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('c1', 'c2', 'c3')));
+var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('c1', 'c2', 'c3')));
 class cubrid_fetch_object_private_construct {
 	private function __construct($s, $f) {
 		var_dump($s);
@@ -74,7 +87,7 @@ var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_private_construct', arra
 printf("start5:\n");
 var_dump(cubrid_fetch_object($res));
 printf("start6:\n");
-var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_construct', array('c1', 'c2')));
+var_dump(cubrid_fetch_object($res, 'cubrid_fetch_object_test_construct', array('c1', 'c2')));
 // Fatal error, script execution will end
 printf("start6:\n");
 var_dump(cubrid_fetch_object($res, 'this_class_does_not_exist'));
@@ -116,20 +129,12 @@ object(cubrid_fetch_object_test)#1 (6) {
   ["c6"]=>
   string(10) "0010-10-11"
 }
-cubrid_fetch_object(res, string ,array) cubrid_fetch_object_construct start1
-
-Warning: Missing argument 1 for cubrid_fetch_object_construct::__construct() in %s on line %d
-
-Warning: Missing argument 2 for cubrid_fetch_object_construct::__construct() in %s on line %d
-
-Notice: Undefined variable: s in %s on line %d
-
-Notice: Undefined variable: f in %s on line %d
-object(cubrid_fetch_object_construct)#1 (6) {
+start3:
+object(cubrid_fetch_object_test_construct)#1 (8) {
   ["c1"]=>
-  NULL
+  string(7) "string2"
   ["c2"]=>
-  NULL
+  string(20) "char2               "
   ["c3"]=>
   string(1) "2"
   ["c4"]=>
@@ -138,17 +143,17 @@ object(cubrid_fetch_object_construct)#1 (6) {
   string(8) "01:15:00"
   ["c6"]=>
   string(10) "2000-10-31"
-}
-start2:
-
-Warning: Missing argument 2 for cubrid_fetch_object_construct::__construct() in %s on line %d
-
-Notice: Undefined variable: f in %s on line %d
-object(cubrid_fetch_object_construct)#1 (6) {
-  ["c1"]=>
+  ["s_name"]=>
   string(2) "c1"
+  ["f_name"]=>
+  string(2) "c2"
+}
+start4:
+object(cubrid_fetch_object_test_construct)#1 (8) {
+  ["c1"]=>
+  string(7) "string3"
   ["c2"]=>
-  NULL
+  string(20) "char3               "
   ["c3"]=>
   string(1) "3"
   ["c4"]=>
@@ -157,83 +162,23 @@ object(cubrid_fetch_object_construct)#1 (6) {
   string(8) "03:15:00"
   ["c6"]=>
   string(10) "2003-10-31"
-}
-start3:
-object(cubrid_fetch_object_construct)#1 (6) {
-  ["c1"]=>
+  ["s_name"]=>
   string(2) "c1"
-  ["c2"]=>
+  ["f_name"]=>
   string(2) "c2"
-  ["c3"]=>
-  string(1) "4"
-  ["c4"]=>
-  string(19) "44.0000000000000000"
-  ["c5"]=>
-  string(8) "04:15:00"
-  ["c6"]=>
-  string(10) "2004-10-21"
-}
-start4:
-object(cubrid_fetch_object_construct)#1 (6) {
-  ["c1"]=>
-  string(2) "c1"
-  ["c2"]=>
-  string(2) "c2"
-  ["c3"]=>
-  string(1) "5"
-  ["c4"]=>
-  string(19) "55.0000000000000000"
-  ["c5"]=>
-  string(8) "05:15:00"
-  ["c6"]=>
-  string(10) "2005-10-01"
 }
 cubrid_fetch_object(res, string ,array) cubrid_fetch_object_private_construct start1
-string(2) "c1"
-object(cubrid_fetch_object_private_construct)#1 (6) {
-  ["c1"]=>
-  string(7) "string6"
-  ["c2"]=>
-  string(20) "char6               "
-  ["c3"]=>
-  string(1) "6"
-  ["c4"]=>
-  string(19) "66.0000000000000000"
-  ["c5"]=>
-  string(8) "06:15:00"
-  ["c6"]=>
-  string(10) "2006-10-11"
-}
+
+Warning: cubrid_fetch_object(): supplied resource is not a valid CUBRID Request resource in %s on line %d
+NULL
 start5:
-object(stdClass)#1 (6) {
-  ["c1"]=>
-  string(7) "string7"
-  ["c2"]=>
-  string(20) "char7               "
-  ["c3"]=>
-  string(1) "7"
-  ["c4"]=>
-  string(19) "77.0000000000000000"
-  ["c5"]=>
-  string(8) "07:15:00"
-  ["c6"]=>
-  string(10) "2007-10-11"
-}
+
+Warning: cubrid_fetch_object(): supplied resource is not a valid CUBRID Request resource in %s on line %d
+NULL
 start6:
-object(cubrid_fetch_object_construct)#1 (6) {
-  ["c1"]=>
-  string(2) "c1"
-  ["c2"]=>
-  string(2) "c2"
-  ["c3"]=>
-  string(1) "8"
-  ["c4"]=>
-  string(19) "88.0000000000000000"
-  ["c5"]=>
-  string(8) "08:15:00"
-  ["c6"]=>
-  string(10) "2008-10-11"
-}
+
+Warning: cubrid_fetch_object(): supplied resource is not a valid CUBRID Request resource in %s on line %d
+NULL
 start6:
 
 Fatal error: Class 'this_class_does_not_exist' not found in %s on line %d

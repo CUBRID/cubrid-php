@@ -100,12 +100,7 @@ Warning: cubrid_commit() expects parameter 1 to be resource, string given in %s 
 Warning: cubrid_commit() expects exactly 1 parameter, 0 given in %s on line %d
 [003]Expect false, [0] []
 [004]
-array(2) {
-  ["a"]=>
-  string(1) "4"
-  ["b"]=>
-  NULL
-}
+bool(false)
 Expect: autocommit is OFF.
 
 #####negative example for cubrid_rollback()#####

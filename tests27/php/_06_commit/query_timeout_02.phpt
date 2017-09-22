@@ -147,9 +147,7 @@ int(10)
 
 
 #####negative example#####
-
-Warning: cubrid_get_query_timeout(): 9 is not a valid CUBRID-Request resource in %s on line %d
-[003]Expect false,[0] [0] []
+int(10)
 
 Warning: cubrid_get_query_timeout() expects exactly 1 parameter, 2 given in %s on line %d
 [004]Expect false,[0] [0] []
@@ -161,7 +159,7 @@ Warning: cubrid_get_query_timeout() expects parameter 1 to be resource, string g
 [006]Expect false,[0] [0] []
 int(10)
 
-Warning: cubrid_set_query_timeout() expects parameter 2 to be long, string given in %s on line %d
+Warning: cubrid_set_query_timeout() expects parameter 2 to be integer, string given in %s on line %d
 [008]Expect false,[0] [0] []
 int(0)
 

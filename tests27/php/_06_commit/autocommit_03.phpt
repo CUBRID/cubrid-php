@@ -34,7 +34,7 @@ cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_FALSE);
 if (cubrid_get_autocommit($conn)) {
     printf("Autocommit is ON.\n");
 } else {
-    printf("Autocommit is OFF.");
+    printf("Autocommit is OFF.\n");
 }
 cubrid_query('UPDATE commit3_tb SET a=2');
 
@@ -64,6 +64,7 @@ array(1) {
   ["a"]=>
   string(1) "1"
 }
+Autocommit is OFF.
 array(1) {
   ["a"]=>
   string(1) "1"
