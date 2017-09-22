@@ -1,0 +1,61 @@
+#####negative: cubrid_lob2_tell64, cubrid_lob2_seek64#####
+tell: 0
+size: 20000000000
+#####first#####
+OK
+tell: 20000000000
+#####second#####
+
+Notice: Use of undefined constant CUBRID_CURSOR_FIRSTT - assumed 'CUBRID_CURSOR_FIRSTT' in %s on line 33
+
+Warning: cubrid_lob2_seek64() expects parameter 3 to be long, string given in %s on line 33
+There is maybe some error
+tell: 0
+#####four#####
+
+Warning: cubrid_lob2_seek64(): offset(-11) is out of range for the lob field you have chosen, so please check the offset you give and the lob length. in %s on line 53
+55--Error:[0] []
+tell: 10
+#####five#####
+
+Warning: cubrid_lob2_seek64(): offset(20000000000) is out of range for the lob field you have chosen, so please check the offset you give and the lob length. in %s on line 72
+74--Error:[0] []
+tell: 10
+#####six#####
+OK
+tell: 19999999999
+#####seven#####
+OK
+tell: 20000000000
+#####nine#####
+
+Warning: cubrid_lob2_seek64(): offset(-66) must not be a negative number, so please check the offset you give. in %s on line 126
+128--Error:[0] []
+tell: 0
+#####ten#####
+
+Notice: Use of undefined constant CUBRID_CURSOR_CURRENTT - assumed 'CUBRID_CURSOR_CURRENTT' in %s on line 144
+
+Warning: cubrid_lob2_seek64() expects parameter 3 to be long, string given in %s on line 144
+There is maybe some error
+#####eleven#####
+
+Notice: Use of undefined constant CUBRID_CURSOR_FIRSt - assumed 'CUBRID_CURSOR_FIRSt' in %s on line 161
+
+Warning: cubrid_lob2_seek64() expects parameter 3 to be long, string given in %s on line 161
+There is maybe some error
+#####twelve#####
+tell: 1
+#####thirteen#####
+tell: 1
+#####fifteen#####
+
+Notice: Undefined variable: lo in %s on line 212
+
+Warning: cubrid_lob2_tell64() expects parameter 1 to be resource, null given in %s on line 212
+There is may be some error
+#####sixteen#####
+
+Warning: cubrid_lob2_seek64() expects at least 2 parameters, 0 given in %s on line 222
+There is maybe some error
+Finished!
