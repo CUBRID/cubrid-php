@@ -9,6 +9,9 @@ require_once('skipifconnectfailure.inc');
 <?php
 include "connectLarge.inc";
 
+// set memory_limit to 512M for this test;
+ini_set('memory_limit','512M');
+
 //cubrid_lob2_read
 printf("\n#####cubrid_lob2_read#####\n");
 $conn=cubrid_connect($host, $port, $db, $user, $passwd);
@@ -76,14 +79,14 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####cubrid_lob2_read#####
-18--tell: 0
-19--tell: 0.000000
-28--size: 20000000000
-29--size: 20000000000.000000
-38--read data ok
-48--tell: 100000000
-49--tell: 100000000.000000
-60--ok
-61--tell: 100000002
-62--tell: 100000002.000000
+21--tell: 0
+22--tell: 0.000000
+31--size: 20000000000
+32--size: 20000000000.000000
+41--read data ok
+51--tell: 100000000
+52--tell: 100000000.000000
+63--ok
+64--tell: 100000002
+65--tell: 100000002.000000
 Finished!

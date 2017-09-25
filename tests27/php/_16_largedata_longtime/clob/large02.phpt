@@ -256,7 +256,7 @@ tell: 20000000000
 
 Notice: Use of undefined constant CUBRID_CURSOR_FIRSTT - assumed 'CUBRID_CURSOR_FIRSTT' in %s on line 33
 
-Warning: cubrid_lob2_seek64() expects parameter 3 to be long, string given in %s on line 33
+Warning: cubrid_lob2_seek64() expects parameter 3 to be integer, string given in %s on line 33
 There is maybe some error
 tell: 0
 #####four#####
@@ -284,13 +284,13 @@ tell: 0
 
 Notice: Use of undefined constant CUBRID_CURSOR_CURRENTT - assumed 'CUBRID_CURSOR_CURRENTT' in %s on line 144
 
-Warning: cubrid_lob2_seek64() expects parameter 3 to be long, string given in %s on line 144
+Warning: cubrid_lob2_seek64() expects parameter 3 to be integer, string given in %s on line 144
 There is maybe some error
 #####eleven#####
 
 Notice: Use of undefined constant CUBRID_CURSOR_FIRSt - assumed 'CUBRID_CURSOR_FIRSt' in %s on line 161
 
-Warning: cubrid_lob2_seek64() expects parameter 3 to be long, string given in %s on line 161
+Warning: cubrid_lob2_seek64() expects parameter 3 to be integer, string given in %s on line 161
 There is maybe some error
 #####twelve#####
 tell: 1
