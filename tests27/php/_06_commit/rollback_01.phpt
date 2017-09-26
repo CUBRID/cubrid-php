@@ -50,7 +50,7 @@ array(1) {
 
 Warning: cubrid_query(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
 
-Warning: cubrid_fetch_array() expects parameter 1 to be resource, boolean given in /home/gichoi/git/cubrid-php/tests27/php/_06_commit/rollback_01.php on line 28
+Warning: cubrid_fetch_array() expects parameter 1 to be resource, boolean given in %s on line %d
 NULL
 
 Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
