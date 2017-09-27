@@ -1,0 +1,21 @@
+client 1 is called.
+1 : 1 : 1 : 1 : 1 : 20
+client 1 is running.
+ ** (others: 1) iteration: 1, commit interval: 1, elapse time: 0.141 sec, TPS:
+7
+Total TPS : 7.0921984
+client 1 is called.
+1 : 1 : 1 : 1 : 1 : 20
+client 1 is running.
+ ** (others: 1) iteration: 1, commit interval: 1, elapse time: 0.062 sec, TPS:
+16
+Total TPS : 16.129032
+client 1 is called.
+100000 : 1 : 100000 : 1 : 1 : 0
+client 1 is running.
+ ** (insert: 1) iteration: 100000, commit interval: 1, elapse time: 134.126
+sec, TPS: 745
+Total TPS : 745.5676
+client 1 is called.
+100000 : 100001 : 200000 : 1 : 100 : 0
+client 1 is running.
