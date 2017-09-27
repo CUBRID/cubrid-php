@@ -1370,10 +1370,11 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
 
 	zend_resource *index_ptr, new_index_ptr;
 
-    if (!new_link) {
+    if (!new_link && !persistent) {
 	    if ((index_ptr = (zend_resource *)zend_hash_str_find_ptr(&EG(regular_list), hashed_details, hashed_details_length))) {
             zend_ulong conn_id;
             zend_resource *link;
+			int count;
 
             if (index_ptr->type != le_index_ptr) {
                 RETURN_FALSE;
@@ -1382,7 +1383,9 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
             conn_id = (zend_ulong)index_ptr->ptr;
             link = zend_hash_index_find_ptr(&EG(regular_list), conn_id);
 	    	
-	        if (link && link->ptr && (link->type == le_connect || link->type == le_pconnect)) {
+			if (link) count = GC_REFCOUNT(link);
+
+	        if (link && link->ptr && count > 0 && (link->type == le_connect || link->type == le_pconnect)) {
                 php_cubrid_set_default_link(link);
 		        GC_REFCOUNT(link)++;
                 RETVAL_RES(link);
@@ -1480,10 +1483,11 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
 
     zend_resource *index_ptr, new_index_ptr;
 
-    if (!new_link) {
+    if (!new_link && !persistent) {
 	    if ((index_ptr = (zend_resource *)zend_hash_str_find_ptr(&EG(regular_list), hashed_details, hashed_details_length))) {
             zend_ulong conn_id;
             zend_resource* link;
+			int count;
     
             if (index_ptr->type != le_index_ptr) {
                 RETURN_FALSE;
@@ -1492,11 +1496,16 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
             conn_id = (zend_ulong)index_ptr->ptr;
             link = zend_hash_index_find_ptr(&EG(regular_list), conn_id);
 
-            if (link && link->ptr && (link->type == le_connect || link->type == le_pconnect)) {
+			if (link) count = GC_REFCOUNT(link);
+
+            if (link && link->ptr && count > 0 && (link->type == le_connect || link->type == le_pconnect)) {
                 php_cubrid_set_default_link(link);
                 GC_REFCOUNT(link)++;
                 RETVAL_RES(link);
                 return;
+            }
+            else {
+                zend_hash_str_del(&EG(regular_list), hashed_details, hashed_details_length);
             }
         }
     }
@@ -1560,15 +1569,15 @@ ZEND_FUNCTION(cubrid_close)
 
     res_id = conn_id ? Z_RES_P(conn_id) : CUBRID_G(default_link);
 
-    if (!connect->persistent) {
-	    GC_REFCOUNT(res_id) = 1;
-
-        // On an explicit close of the default connection it had a refcount of 2,
-        // so we need one more call
-        if (!conn_id || (conn_id && Z_RES_P(conn_id) == CUBRID_G(default_link))) {
-            CUBRID_G(default_request) = NULL;
-            CUBRID_G(default_link) = NULL;
-        }
+    if (res_id) {
+        GC_REFCOUNT(res_id)--;
+	    GC_REFCOUNT(res_id)--;
+    }
+    // On an explicit close of the default connection it had a refcount of 2,
+    // so we need one more call
+    if (!conn_id || (conn_id && Z_RES_P(conn_id) == CUBRID_G(default_link))) {
+        CUBRID_G(default_request) = NULL;
+        CUBRID_G(default_link) = NULL;
     }
 
     RETURN_TRUE;
