@@ -173,6 +173,8 @@ array(1) {
 }
 [003]Expect: return value true, [0] []
 
+Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+
 
 #####negative example#####
 
