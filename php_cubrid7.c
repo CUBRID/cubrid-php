@@ -1083,11 +1083,6 @@ T_CUBRID_CONNECT* fetch_cubrid_connect(zval* conn_id)
     } else {
         link = FETCH_DEFAULT_LINK();
     }
-    CHECK_DEFAULT_LINK(link);
-
-    if (link == NULL) {
-        return NULL;
-    }
 
     return (T_CUBRID_CONNECT*)zend_fetch_resource2(link, "CUBRID Connect", le_connect, le_pconnect);
 }
@@ -1570,8 +1565,7 @@ ZEND_FUNCTION(cubrid_close)
     res_id = conn_id ? Z_RES_P(conn_id) : CUBRID_G(default_link);
 
     if (res_id) {
-        GC_REFCOUNT(res_id)--;
-	    GC_REFCOUNT(res_id)--;
+	    zend_list_close(res_id);
     }
     // On an explicit close of the default connection it had a refcount of 2,
     // so we need one more call
@@ -6765,7 +6759,7 @@ static void php_cubrid_fetch_hash(INTERNAL_FUNCTION_PARAMETERS, long type, int i
                     zval *val;
 
                     fci.param_count = 0;
-                    fci.params = (zval *)safe_emalloc(sizeof(zval*), ht->nNumOfElements, 0);
+                    fci.params = (zval *)safe_emalloc(ht->nNumOfElements, sizeof(zval), 0);
                     ZEND_HASH_FOREACH_KEY_VAL(ht, num_idx, fld, val) {
                         fci.params[fci.param_count++] = *val;
                     }ZEND_HASH_FOREACH_END();
