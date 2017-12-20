@@ -47,14 +47,14 @@ if($close1) {
 
 $close2=cubrid_close($conn2);
 if(FALSE == $close2) {
-    printf("[002]No Expect close value false. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
+    printf("[002]Expect close value false. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }else{
     printf("[002]Expect close value true. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }
 
 $close3=cubrid_close($conn3);
 if(FALSE == $close3) {
-    printf("[003]No Expect close value false. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
+    printf("[003]Expect close value false. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }elseif(TRUE ==  $close3){
     printf("[003]Return value is true, Expect. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }else{
@@ -63,7 +63,7 @@ if(FALSE == $close3) {
 
 $close4=cubrid_close($conn4);
 if(FALSE == $close4) {
-    printf("[004]No Expect close value false. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
+    printf("[004]Expect close value false. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }elseif(TRUE == $close4){
     printf("[004]Return value is true, Expect. [%d] %s\n", cubrid_error_code(), cubrid_error_msg());
 }else{
@@ -136,9 +136,15 @@ print "Finished!\n";
 [003]conn3 values: Resource id #5 
 [004]conn4 values: Resource id #5 
 [001]Expect close true. [0] 
-[002]Expect close value true. [0] 
-[003]Return value is true, Expect. [0] 
-[004]Return value is true, Expect. [0] 
+
+Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+[002]Expect close value false. [0] 
+
+Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+[003]Expect close value false. [0] 
+
+Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+[004]Expect close value false. [0] 
 
 
 #####negative example for disconnect and close#####

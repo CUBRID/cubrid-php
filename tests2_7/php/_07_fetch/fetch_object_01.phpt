@@ -168,17 +168,55 @@ object(cubrid_fetch_object_test_construct)#1 (8) {
   string(2) "c2"
 }
 cubrid_fetch_object(res, string ,array) cubrid_fetch_object_private_construct start1
-
-Warning: cubrid_fetch_object(): supplied resource is not a valid CUBRID Request resource in %s on line %d
-NULL
+string(2) "c1"
+object(cubrid_fetch_object_private_construct)#1 (6) {
+  ["c1"]=>
+  string(7) "string4"
+  ["c2"]=>
+  string(20) "char4               "
+  ["c3"]=>
+  string(1) "4"
+  ["c4"]=>
+  string(19) "44.0000000000000000"
+  ["c5"]=>
+  string(8) "04:15:00"
+  ["c6"]=>
+  string(10) "2004-10-21"
+}
 start5:
-
-Warning: cubrid_fetch_object(): supplied resource is not a valid CUBRID Request resource in %s on line %d
-NULL
+object(stdClass)#1 (6) {
+  ["c1"]=>
+  string(7) "string5"
+  ["c2"]=>
+  string(20) "char5               "
+  ["c3"]=>
+  string(1) "5"
+  ["c4"]=>
+  string(19) "55.0000000000000000"
+  ["c5"]=>
+  string(8) "05:15:00"
+  ["c6"]=>
+  string(10) "2005-10-01"
+}
 start6:
-
-Warning: cubrid_fetch_object(): supplied resource is not a valid CUBRID Request resource in %s on line %d
-NULL
+object(cubrid_fetch_object_test_construct)#1 (8) {
+  ["c1"]=>
+  string(7) "string6"
+  ["c2"]=>
+  string(20) "char6               "
+  ["c3"]=>
+  string(1) "6"
+  ["c4"]=>
+  string(19) "66.0000000000000000"
+  ["c5"]=>
+  string(8) "06:15:00"
+  ["c6"]=>
+  string(10) "2006-10-11"
+  ["s_name"]=>
+  string(2) "c1"
+  ["f_name"]=>
+  string(2) "c2"
+}
 start6:
 
 Fatal error: Class 'this_class_does_not_exist' not found in %s on line %d

@@ -113,6 +113,12 @@ PARAM_ISOLATION_LEVEL          4
 PARAM_LOCK_TIMEOUT             -1
 PARAM_MAX_STRING_LENGTH        1073741823
 PARAM_AUTO_COMMIT              1
+
+Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+
+Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+
+Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
 [007]Expect: return value true
 [007]autocommit value: 1
 
