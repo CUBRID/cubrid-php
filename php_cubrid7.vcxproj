@@ -239,7 +239,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci7.lib;libregex38a.lib;php7ts.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Release_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP7_TS_X86)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;D:\Work\Git\PHP\cubrid-php-10.0.0\Win32\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP7_TS_X86)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Release_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -285,7 +285,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci7.lib;libregex38a.lib;php7ts.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___x64_Release_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP7_TS_X64)\dev;$(SolutionDir)$(Platform)\Release;D:\Work\Git\PHP\cubrid-php-10.0.0\x64\Release;D:\Work\Git\PHP\cubrid-php-10.0.0\cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP7_TS_X64)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___x64_Release_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase />
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -328,7 +328,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/libpath:""$(CUBRID)\lib"" %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;cas_cci.lib;php7.lib;ws2_32.lib;libregex38a.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;cas_cci7.lib;php7.lib;ws2_32.lib;libregex38a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(PHP7)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
