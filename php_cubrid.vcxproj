@@ -238,7 +238,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;libregex38a.lib;php5ts.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Release_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>F:\03CUBRID\05Driver\php_install\php-5.6.3-Win32-VC11-x86\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_TS_X86)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Release_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -284,7 +284,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;libregex38a.lib;php5ts.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___x64_Release_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>F:\03CUBRID\05Driver\php_install\php-5.6.3-Win32-VC11-x64\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_TS_X64)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___x64_Release_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase />
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -330,7 +330,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;cas_cci.lib;php5.lib;ws2_32.lib;libregex38a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_NTS_X86)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -376,7 +376,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;cas_cci.lib;php5.lib;ws2_32.lib;libregex38a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_NTS_X64)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -422,7 +422,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;php5.lib;cas_cci.lib;libregex38a.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_NTS_X86)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\Release/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -467,7 +467,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;php5.lib;cas_cci.lib;libregex38a.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_NTS_X64)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\Release/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -512,7 +512,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5ts.lib;libregex38a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Debug_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_TS_X86)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Debug_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -559,7 +559,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5ts.lib;libregex38a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Debug_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_TS_X64)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Debug_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -606,7 +606,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;libregex38a.lib;php5.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Release_NTS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>F:\03CUBRID\05Driver\php_install\php-5.6.3-nts-Win32-VC11-x86\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_NTS_X86)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Release_NTS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -652,7 +652,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;libregex38a.lib;php5.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___x64_Release_NTS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>F:\03CUBRID\05Driver\php_install\php-5.6.3-nts-Win32-VC11-x64\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHP5_NTS_X64)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___x64_Release_NTS/php_cubrid.pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase />
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
