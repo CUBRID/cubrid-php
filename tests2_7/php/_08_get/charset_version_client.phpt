@@ -47,7 +47,7 @@ print "Finished!\n";
 string(9) "iso8859-1"
 string(9) "iso8859-1"
 cubrid_get_charset equal cubrid_client_encoding
-CUBRID PHP module's version: 10.1.0.0001
+CUBRID PHP module's version: 10.2.0.0001
 CUBRID server version: %s
 client library version: %s
 Finished!
