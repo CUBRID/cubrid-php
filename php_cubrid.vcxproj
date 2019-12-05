@@ -114,13 +114,13 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TS|x64'">
-    <OutDir>$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>.\php_cubrid___x64_Debug_TS\</OutDir>
+    <IntDir>.\php_cubrid___x64_Debug_TS\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_NTS|Win32'">
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>.\php_cubrid___Win32_Release_NTS\</OutDir>
+    <IntDir>.\php_cubrid___Win32_Release_NTS\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_NTS|x64'">
@@ -407,13 +407,6 @@
       <OutputFile>$(TargetDir)$(TargetName).bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ProjectReference Include="cci-src\win\cas_cci\cas_cci.vcxproj">
-      <Project>{20a88132-c7a9-4d49-b8d8-20d7d88bae23}</Project>
-      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
-      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="php_cubrid.c" />
   </ItemGroup>
