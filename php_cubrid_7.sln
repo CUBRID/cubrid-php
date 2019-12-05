@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cas_cci7", "cas_cci7.vcxproj", "{20A88132-C7A9-4D49-B8D8-20D7D88BAE23}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cas_cci7", "cci-src\win\cas_cci\cas_cci_v140_lib.vcxproj", "{20A88132-C7A9-4D49-B8D8-20D7D88BAE23}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "php_cubrid7", "php_cubrid7.vcxproj", "{5367675B-455D-4D3C-B893-EB7BDEB88D15}"
 	ProjectSection(ProjectDependencies) = postProject
