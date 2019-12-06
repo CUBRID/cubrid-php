@@ -42,7 +42,7 @@ if test "$PHP_CUBRID" != "no"; then
             chmod +x configure
             chmod +x external/libregex38a/configure
             chmod +x external/libregex38a/install-sh
-            ./configure CC=g++ --enable-64bit
+            ./configure --enable-64bit
     	    make
             popd
         else
@@ -51,7 +51,7 @@ if test "$PHP_CUBRID" != "no"; then
             chmod +x configure
             chmod +x external/libregex38a/configure
             chmod +x external/libregex38a/install-sh
-            ./configure CC=g++
+            ./configure
     	    make
             popd
         fi
@@ -70,7 +70,7 @@ if test "$PHP_CUBRID" != "no"; then
             chmod +x configure
             chmod +x external/libregex38a/configure
             chmod +x external/libregex38a/install-sh
-            ./configure CC=g++ --enable-64bit
+            ./configure --enable-64bit
     	    make
             popd
         else
