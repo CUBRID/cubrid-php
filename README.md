@@ -48,9 +48,10 @@ Build
 The latest version of CUBRID PHP Library can be found at: 
 http://ftp.cubrid.org/CUBRID_Drivers/PHP_Driver/
 
-More detailed build manual can be found at: 
+More detailed build manual can be found at:
+
 https://www.cubrid.org/manual/en/10.1/api/php.html#installing-and-configuring-php
-```
+
 
 Source modules
 --------------
