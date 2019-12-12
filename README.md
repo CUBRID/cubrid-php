@@ -1,8 +1,8 @@
 CUBRID PHP Library
 ==================
 
-1. Overview
------------
+Overview
+--------
 
 CUBRID PHP Library is the official PHP Extension to connect to CUBRID Database.
 
@@ -14,8 +14,8 @@ For more information about CUBRID, visit the web site:
 http://www.cubrid.org
 ```
 
-2. Projects
------------
+Projects
+--------
 
 CUBRID and CUBRID APIs (including PHP APIs) are developed with open source projects.
 
@@ -27,8 +27,8 @@ For more information about CUBRID project, visit the web site:
 https://github.com/CUBRID
 ```
 
-3. License
-----------
+License
+-------
 
 CUBRID is distributed under two licenses, 
 * Database engine is under GPL v2 or later
@@ -39,8 +39,8 @@ For more information, visit the web site:
 https://www.cubrid.org/manual/en/10.1/release_note/index.html#license
 ```
 
-4. Build
----------
+Build
+-----
 
 ```
 The latest version of CUBRID PHP Library can be found at: 
@@ -50,12 +50,14 @@ More detailed build manual can be found at:
 https://www.cubrid.org/manual/en/10.1/api/php.html#installing-and-configuring-php
 ```
 
-5. Source modules
------------------
+Source modules
+--------------
 
 * Build from source in Linux require GNU Developer Toolset 6 or higher.
 ```
-CUBRID PHP Library source modules and its structure can be found at: 
-https://github.com/CUBRID/cubrid-php
+$ git clone git@github.com:CUBRID/cubrid-php.git
+$ cd cubrid-php
+$ phpize
+$ ./configure
+$ make
 ```
-
