@@ -43,7 +43,7 @@ if(FALSE == $db3){
    printf("[003]cubrid_db_name: %s\n",$db3);
 }
 
-$db4=cubrid_db_name($db_list,2);
+$db4=cubrid_db_name($db_list,3);
 if(FALSE == $db4){
    printf("[004]Expect false, [%d] [%s]\n",cubrid_errno($conn),cubrid_error($conn));
 }else{
@@ -120,7 +120,7 @@ Warning: cubrid_list_dbs() expects parameter 1 to be resource, string given in %
 
 #####negative example for cubrid_db_name#####
 [003]Expect false, [0] []
-[004]cubrid_db_name: demodb
+[004]Expect false, [0] []
 
 Warning: cubrid_db_name() expects exactly 2 parameters, 0 given in %s on line %d
 [005]Expect false, [0] []
