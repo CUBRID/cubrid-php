@@ -43,7 +43,7 @@ if(FALSE == $db3){
    printf("[003]cubrid_db_name: %s\n",$db3);
 }
 
-$db4=cubrid_db_name($db_list,2);
+$db4=cubrid_db_name($db_list,3);
 if(FALSE == $db4){
    printf("[004]Expect false, [%d] [%s]\n",cubrid_errno($conn),cubrid_error($conn));
 }else{
@@ -98,14 +98,17 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####positive example#####
-array(2) {
+array(3) {
   [0]=>
   string(5) "phpdb"
   [1]=>
+  string(7) "largedb"
+  [2]=>
   string(6) "demodb"
 }
 #####cubrid_db_name#####
 phpdb
+largedb
 demodb
 
 
