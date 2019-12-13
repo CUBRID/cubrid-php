@@ -146,6 +146,7 @@ Array
     [Index_type] => BTREE
     [Func] => 
     [Comment] => 
+    [Visible] => YES
 )
 Array
 (
@@ -162,6 +163,7 @@ Array
     [Index_type] => BTREE
     [Func] => 
     [Comment] => 
+    [Visible] => YES
 )
 Array
 (
@@ -178,6 +180,7 @@ Array
     [Index_type] => BTREE
     [Func] => 
     [Comment] => 
+    [Visible] => YES
 )
 Array
 (
@@ -194,6 +197,7 @@ Array
     [Index_type] => BTREE
     [Func] => 
     [Comment] => 
+    [Visible] => YES
 )
 
 

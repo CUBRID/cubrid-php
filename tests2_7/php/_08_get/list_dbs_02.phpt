@@ -35,16 +35,20 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####positive example#####
-array(2) {
+array(3) {
   [0]=>
   string(5) "phpdb"
   [1]=>
+  string(7) "largedb"
+  [2]=>
   string(6) "demodb"
 }
-array(2) {
+array(3) {
   [0]=>
   string(5) "phpdb"
   [1]=>
+  string(7) "largedb"
+  [2]=>
   string(6) "demodb"
 }
 

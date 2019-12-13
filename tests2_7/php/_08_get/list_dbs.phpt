@@ -98,14 +98,17 @@ print "Finished!\n";
 --CLEAN--
 --EXPECTF--
 #####positive example#####
-array(2) {
+array(3) {
   [0]=>
   string(5) "phpdb"
   [1]=>
+  string(7) "largedb"
+  [2]=>
   string(6) "demodb"
 }
 #####cubrid_db_name#####
 phpdb
+largedb
 demodb
 
 
@@ -117,7 +120,7 @@ Warning: cubrid_list_dbs() expects parameter 1 to be resource, string given in %
 
 #####negative example for cubrid_db_name#####
 [003]Expect false, [0] []
-[004]Expect false, [0] []
+[004]cubrid_db_name: demodb
 
 Warning: cubrid_db_name() expects exactly 2 parameters, 0 given in %s on line %d
 [005]Expect false, [0] []

@@ -152,14 +152,14 @@ Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resourc
 Warning: cubrid_disconnect() expects at most 1 parameter, 2 given in %s on line %d
 [005]Expect close value false. [0] 
 
-Warning: cubrid_disconnect(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+Warning: cubrid_disconnect() expects parameter 1 to be resource, null given in %s on line %d
 [006]Expect close value false. [0] 
 [007]Return value is true, No Expect. [0] 
 
 Warning: cubrid_close() expects at most 1 parameter, 2 given in %s on line %d
 [008]Expect close value false. [0] 
 
-Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+Warning: cubrid_close() expects parameter 1 to be resource, null given in %s on line %d
 [009]Expect close value false. [0] 
 
 Warning: cubrid_close(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
