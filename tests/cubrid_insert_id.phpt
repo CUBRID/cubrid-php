@@ -30,6 +30,7 @@ $id = cubrid_insert_id();
 var_dump($id);
 
 cubrid_execute($conn, "CREATE TABLE cubrid_test (d int AUTO_INCREMENT(1, 2), e numeric(39, 0) AUTO_INCREMENT(1, 2), t varchar)");
+@cubrid_execute($conn, "DROP TABLE cubrid_test");
 cubrid_disconnect($conn);
 
 print "done!";

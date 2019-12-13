@@ -14,6 +14,7 @@ PHP_MAJOR_VERSION=`grep 'PHP_MAJOR_VERSION' $phpincludedir/main/php_version.h | 
 if test "$PHP_CUBRID" != "no"; then
 
     cubrid_dir=`dirname $0`
+    COMPAT_INCDIR=""
     CUBRID_INCDIR=""
     CUBRID_LIBDIR=""
     BROKER_INCDIR=""
@@ -27,6 +28,7 @@ if test "$PHP_CUBRID" != "no"; then
     esac
     
     if test "$os" = "linux"; then
+        COMPAT_INCDIR="$cubrid_dir/cci-src/src/compat"
         CUBRID_INCDIR="$cubrid_dir/cci-src/src/cci"
      	BROKER_INCDIR="$cubrid_dir/cci-src/src/broker"
         CUBRID_LIBDIR="$cubrid_dir/cci-src/cci/.libs"
@@ -54,6 +56,7 @@ if test "$PHP_CUBRID" != "no"; then
             popd
         fi
     elif test "$os" = "mac"; then
+        COMPAT_INCDIR="$cubrid_dir/cci-src/src/compat"
         CUBRID_INCDIR="$cubrid_dir/cci-src/src/cci"
      	BROKER_INCDIR="$cubrid_dir/cci-src/src/broker"
         CUBRID_LIBDIR="$cubrid_dir/cci-src/cci/.libs"
@@ -106,6 +109,7 @@ if test "$PHP_CUBRID" != "no"; then
     fi
 
     dnl Action..
+    PHP_ADD_INCLUDE("$COMPAT_INCDIR")
     PHP_ADD_INCLUDE("$CUBRID_INCDIR")
     PHP_ADD_INCLUDE("$BROKER_INCDIR")
 

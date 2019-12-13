@@ -1,5 +1,5 @@
 --TEST--
-cubrid_enum_type
+cubrid_next_result
 --SKIPIF--
 <?php
 require_once('skipif.inc');

@@ -15,7 +15,7 @@ $conn = cubrid_connect($host, $port, $db, $user, $passwd);
 if (cubrid_get_autocommit($conn)) {
     printf("Autocommit is ON.\n");
 } else {
-    printf("Autocommit is OFF.\n");
+    printf("Autocommit is OFF.");
 }
 
 @cubrid_execute($conn, "DROP TABLE autocommit_test");

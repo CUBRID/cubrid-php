@@ -43,5 +43,5 @@ Warning: Error: DBMS, -493, Syntax: Unknown class "unknown_table". select * from
 bool(true)
 bool(true)
 
-Warning: cubrid_ping(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+Warning: cubrid_ping(): %d is not a valid CUBRID-Connect resource in %s on line %d
 done!

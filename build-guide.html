@@ -8,12 +8,12 @@
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"> 
 
-    <title>CUBRID 10.1.x PHP Library Build Guide</title> 
+    <title>CUBRID 10.x PHP Library Build Guide</title> 
   </head> 
 
   <body bgcolor="#ffffff" text="#000000" link="#ff0000" vlink="#a00000" alink="#0000ff"> 
   
-<h1>CUBRID 10.1.x PHP Library Build Guide</h1> 
+<h1>CUBRID 10.x PHP Library Build Guide</h1> 
 <h4><pre class = "s1">Open Source PHP Library for CUBRID Database 
 (http://sourceforge.net/projects/cubridinterface)</pre></h4> 
 <hr> 
@@ -51,7 +51,12 @@
 <h2>1.	Introduction</h2> 
 
 <pre class = "s1">
-This manual mainly tells you how to build CUBRID 10.1.x PHP Library with PHP on Linux and Windows.
+This manual mainly tells you how to build CUBRID 10.x PHP Library with PHP on Linux and Windows.
+The PHP driver of CUBRID supports the following PHP versions.
+
+  - PHP 5.4.x
+  - PHP 5.6.x
+  - PHP 7.1.x
 </pre>
 
 <a name="Building on Linux"></a>
@@ -68,15 +73,15 @@ In this section, we will introduce two ways of building PHP Library for CUBRID o
   <b>Building CUBRID PHP Library on 64bit Linux</b>
 
   In this section, we assume that the Linux system is 32bit. If you build CUBRID PHP Library on 
-  64bit Linux, remember to install 64bit CUBRID 10.1.x
+  64bit Linux, remember to install 64bit CUBRID 10.x
 
 </pre></td></tr></table>
 
 <a name="Configuring the Environment for Linux"></a>
 <h3>2.1	Configuring the Environment</h3> 
 
-<li>CUBRID 10.1.x:</li>
-<pre class = "s1">Install CUBRID 10.1.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
+<li>CUBRID 10.x:</li>
+<pre class = "s1">Install CUBRID 10.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
 system;</pre>
 
 <li>PHP source code:</li>
@@ -172,7 +177,7 @@ system;</pre>
   <b>What is phpize? Where can I get it?</b>
 
   phpize is a shell script to prepare PHP extension for compiling. Typically, when you install PHP, phpize will  
-  be automatically installed. If it is not installed on your system, the process of get it is as follows:
+  be automatically installed. If it is not installed on your system, the process of getting it is as follows:
 
   1. Download PHP source code, and make sure its version is what you want your PHP extenstion works
      with. Extract PHP source code, and enter its root directory: 
@@ -189,7 +194,9 @@ system;</pre>
 
 </pre></td></tr></table>
 
-<pre class = "s1"> 3. Configure the project. Before you run configure, you'd better run ./configure -h to see the configure options. Forexample:</pre>
+<pre class = "s1"> 3. Configure the project. Before you run configure, check your CUBRID version.
+    In CUBRID 10.2.x environment, make sure if devtoolset-8 is ready and run the command <B>"scl enable devtoolset-8 bash"</B>.
+    And you'd better run ./configure -h to see the configure options. For example:</pre>
 <pre class = "s3">
   cubrid-php&gt; ./configure --with-cubrid --with-php-config=/usr/local/bin/php-config
 </pre>
@@ -229,7 +236,7 @@ system;</pre>
 
 <tr>
 <td><pre class = "s1"> Version </pre></td>
-<td><pre class = "s1"> 10.1.0.xxxx </pre></td>
+<td><pre class = "s1"> 10.x </pre></td>
 </tr>
 
 </table>
@@ -280,8 +287,8 @@ Download CUBRID PHP Library, extract it and enter directory win, you will find V
 <a name="Configuring the Environment for VC9"></a>
 <h3>3.1.1	Configuring the Environment</h3> 
 
-<li>CUBRID 10.1.x:</li>
-<pre class = "s1">Install CUBRID 10.1.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
+<li>CUBRID 10.x:</li>
+<pre class = "s1">Install CUBRID 10.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
 system;</pre>
 
 <li>Visual Studio 2008:</li>
@@ -360,8 +367,8 @@ Download CUBRID PHP Library, extract it and enter directory win, you will find V
 <a name="Configuring the Environment for VC11"></a>
 <h3>3.2.1	Configuring the Environment</h3> 
 
-<li>CUBRID 10.1.x:</li>
-<pre class = "s1">Install CUBRID 10.1.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
+<li>CUBRID 10.x:</li>
+<pre class = "s1">Install CUBRID 10.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
 system;</pre>
 
 <li>Visual Studio 2012:</li>
@@ -440,8 +447,8 @@ Download CUBRID PHP Library, extract it and enter directory win, you will find V
 <a name="Configuring the Environment for VC14"></a>
 <h3>3.3.1	Configuring the Environment</h3> 
 
-<li>CUBRID 10.1.x:</li>
-<pre class = "s1">Install CUBRID 10.1.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
+<li>CUBRID 10.x:</li>
+<pre class = "s1">Install CUBRID 10.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
 system;</pre>
 
 <li>Visual Studio 2015:</li>
@@ -515,8 +522,8 @@ VC11 environment), and PHP 7.1.x (VC14 environment)
 <a name="Configuring the Environment for VC9 x64"></a>
 <h3>4.1.1	Configuring the Environment for PHP 5.4.x</h3> 
 
-<li>CUBRID 10.1.x:</li>
-<pre class = "s1">Install CUBRID 10.1.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
+<li>CUBRID 10.x:</li>
+<pre class = "s1">Install CUBRID 10.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
 system;</pre>
 
 <li>Visual Studio 2008:</li>
@@ -589,8 +596,8 @@ tell you that it can't find header file config.w32.h. You can read the wiki page
 <a name="Configuring the Environment for VC11 x64"></a>
 <h3>4.2.1	Configuring the Environment for PHP 5.6.x</h3> 
 
-<li>CUBRID 10.1.x:</li>
-<pre class = "s1">Install CUBRID 10.1.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
+<li>CUBRID 10.x:</li>
+<pre class = "s1">Install CUBRID 10.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
 system;</pre>
 
 <li>Visual Studio 2012:</li>
@@ -663,8 +670,8 @@ tell you that it can't find header file config.w32.h. You can read the wiki page
 <a name="Configuring the Environment for VC14 x64"></a>
 <h3>4.3.1	Configuring the Environment for PHP 7.1.x</h3> 
 
-<li>CUBRID 10.1.x:</li>
-<pre class = "s1">Install CUBRID 10.1.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
+<li>CUBRID 10.x:</li>
+<pre class = "s1">Install CUBRID 10.x, and make sure the Environment Variable <b>%CUBRID%</b> is defined in your
 system;</pre>
 
 <li>Visual Studio 2015:</li>
