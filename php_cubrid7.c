@@ -1554,7 +1554,7 @@ ZEND_FUNCTION(cubrid_close)
 
     init_error();
 
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|z", &conn_id) == FAILURE) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|r", &conn_id) == FAILURE) {
 		return;
     }
 
