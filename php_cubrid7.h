@@ -31,6 +31,18 @@
 #ifndef PHP_CUBRID_H
 #define PHP_CUBRID_H
 
+
+/* Allow install from PECL on PHP < 7.3 */
+#ifndef GC_ADDREF
+# define CUB_PHP_VERSION 71
+# define GC_ADDREF(p) (++GC_REFCOUNT(p))
+#else
+# define CUB_PHP_VERSION 73
+#endif
+#ifndef GC_DELREF
+# define GC_DELREF(p) (GC_REFCOUNT(p)--)
+#endif
+
 #ifdef PHP_WIN32
 #   define PHP_CUBRID_API __declspec(dllexport)
 #elif defined(__GNUC__) && __GNUC__ >= 4
