@@ -1382,7 +1382,7 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
 
 	        if (link && link->ptr && count > 0 && (link->type == le_connect || link->type == le_pconnect)) {
                 php_cubrid_set_default_link(link);
-		        GC_REFCOUNT(link)++;
+		        GC_ADDREF(link);
                 RETVAL_RES(link);
                 return;
             } 
@@ -1495,7 +1495,7 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
 
             if (link && link->ptr && count > 0 && (link->type == le_connect || link->type == le_pconnect)) {
                 php_cubrid_set_default_link(link);
-                GC_REFCOUNT(link)++;
+		GC_ADDREF(link);
                 RETVAL_RES(link);
                 return;
             }
@@ -2667,7 +2667,9 @@ ZEND_FUNCTION(cubrid_put)
 				case IS_OBJECT:
 				case _IS_BOOL:
 				case IS_RESOURCE:
+#if CUB_PHP_VERSION < 73
 				case IS_CONSTANT:
+#endif
 					cubrid_retval = -1;
 					handle_error(CUBRID_ER_NOT_SUPPORTED_TYPE, NULL, connect);
 					goto ERR_CUBRID_PUT;
@@ -2732,7 +2734,9 @@ ZEND_FUNCTION(cubrid_put)
 		case IS_OBJECT:
 		case _IS_BOOL:
 		case IS_RESOURCE:
+#if CUB_PHP_VERSION < 73
 		case IS_CONSTANT:
+#endif
 			cubrid_retval = -1;
 			handle_error(CUBRID_ER_NOT_SUPPORTED_TYPE, NULL, connect);
 			goto ERR_CUBRID_PUT;
@@ -3110,7 +3114,7 @@ ZEND_FUNCTION(cubrid_col_get)
 		}
 
 		if (ind < 0) {
-			add_index_unset(return_value, i);
+			add_index_null(return_value, i);
 		} else {
 			add_index_stringl(return_value, i, res_buf, ind);
 		}
@@ -5567,6 +5571,9 @@ ZEND_FUNCTION(cubrid_lob_close)
 {
     zval *lob_id_array = NULL;
     T_CUBRID_LOB *data = NULL;
+#if CUB_PHP_VERSION >= 73
+    zend_resource *lobp;
+#endif
 
     init_error();
 
@@ -5575,10 +5582,14 @@ ZEND_FUNCTION(cubrid_lob_close)
         RETURN_FALSE;
     }
 
-	data = fetch_cubrid_lob(lob_id_array);
-
-	GC_REFCOUNT(Z_RES_P(lob_id_array)) = 1;
-	zend_list_delete(Z_RES_P(lob_id_array));
+    data = fetch_cubrid_lob(lob_id_array);
+#if CUB_PHP_VERSION < 73
+    GC_REFCOUNT(Z_RES_P(lob_id_array)) = 1;
+#else
+    lobp = Z_RES_P(lob_id_array);
+    GC_SET_REFCOUNT(Z_RES_P(lob_id_array), 1);
+#endif
+    zend_list_delete(Z_RES_P(lob_id_array));
 
     RETURN_TRUE;
 }
@@ -5642,7 +5653,7 @@ static void php_cubrid_set_default_link(zend_resource *res)
     }
 
     CUBRID_G(default_link) = res;
-    GC_REFCOUNT(res)++;
+    GC_ADDREF(res);
 }
 
 static void php_cubrid_set_default_req_link(zend_resource *res)
@@ -5652,7 +5663,7 @@ static void php_cubrid_set_default_req_link(zend_resource *res)
     }
 
     CUBRID_G(default_request) = res;
-    GC_REFCOUNT(res)++;
+    GC_ADDREF(res);
 }
 
 static void close_cubrid_connect(zend_rsrc_list_entry * rsrc TSRMLS_DC)
@@ -6068,11 +6079,11 @@ static int fetch_a_row(zval *arg, T_CUBRID_CONNECT *connect, int req_handle, T_C
 
         if (null_indicator < 0) {
             if (type & CUBRID_NUM) {
-                add_index_unset(arg, i);
+                add_index_null(arg, i);
             }
 
             if (type & CUBRID_ASSOC) {
-                add_assoc_unset(arg, column_name);
+                add_assoc_null(arg, column_name);
             }
         }
     }
@@ -6231,7 +6242,7 @@ static int cubrid_add_index_array(zval *arg, uint index, T_CCI_SET in_set TSRMLS
         }
 
         if (ind < 0) {
-	        add_index_unset(&tmp_zval, i);
+	        add_index_null(&tmp_zval, i);
         }
 		else {
 	        add_index_string(&tmp_zval, i, buffer);
@@ -6265,7 +6276,7 @@ static int cubrid_add_assoc_array(zval *arg, char *key, T_CCI_SET in_set TSRMLS_
         }
 
         if (ind < 0) {
-	        add_index_unset(&tmp_zval, i);
+	        add_index_null(&tmp_zval, i);
         }
 		else {
 	        add_index_string(&tmp_zval, i, buffer);
@@ -6776,7 +6787,9 @@ static void php_cubrid_fetch_hash(INTERNAL_FUNCTION_PARAMETERS, long type, int i
 
             fci.no_separation = 1;
 
+#if CUB_PHP_VERSION < 73
             fcc.initialized = 1;
+#endif 
             fcc.function_handler = ce->constructor;
             //fcc.calling_scope = EG(scope);
             fcc.called_scope = Z_OBJCE_P(return_value);
