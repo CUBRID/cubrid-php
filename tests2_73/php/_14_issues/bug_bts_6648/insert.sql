@@ -1,0 +1,18 @@
+create table foo (a int, b int);
+insert into foo values(1,1);
+insert into foo select a+1, b+1 from foo;
+insert into foo select a+2, b+2 from foo;
+insert into foo select a+4, b+4 from foo;
+insert into foo select a+8, b+8 from foo;
+insert into foo select a+16, b+16 from foo;
+insert into foo select a+32, b+32 from foo;
+insert into foo select a+64, b+64 from foo;
+insert into foo select a+128, b+128 from foo;
+insert into foo select a+256, b+256 from foo;
+insert into foo select a+512, b+512 from foo;
+insert into foo select a+1024, b+1024 from foo;
+insert into foo select a+2048, b+2048 from foo;
+insert into foo select a+4096, b+4096 from foo;
+insert into foo select a+8192, b+8192 from foo;
+insert into foo select a+16384, b+16384 from foo;
+insert into foo select a+32768, b+32768 from foo;

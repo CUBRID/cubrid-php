@@ -1,0 +1,4 @@
+create class c_b (b bit(0)); 
+create class c_vb (vb bit varying(0));
+create class c_c (c char(0)); 
+create class c_nc (nc nchar(0));
