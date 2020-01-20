@@ -2726,7 +2726,7 @@ ZEND_FUNCTION(cubrid_put)
 
 			break;
 		case IS_ARRAY:
-			if (!data || Z_ARRLEN_P(data) == 0) {
+			if (!attr_value || Z_ARRLEN_P(attr_value) == 0) {
 				cubrid_retval = 0;
 			}
 			else {
