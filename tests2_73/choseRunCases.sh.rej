@@ -1,0 +1,16 @@
+--- tests2_7/choseRunCases.sh
++++ tests2_7/choseRunCases.sh
+@@ -37,12 +37,7 @@
+ {
+     mkdir $2
+     cd $2
+-    engine_ver=`cubrid_rel | sed -n '1!p' | awk -F ' ' '{print $2}'`
+-    if [ "$engine_ver" = "2008" ]; then
+-               cubrid createdb $1
+-    else
+-               cubrid createdb $1 en_US
+-    fi
++    cubrid createdb $1 en_US
+     cubrid server start $1
+     cubrid server status 
+     cd ..
