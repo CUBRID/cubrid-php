@@ -43,6 +43,8 @@
 # define GC_DELREF(p) (GC_REFCOUNT(p)--)
 #endif
 
+#define Z_ARRLEN_P(v) zend_hash_num_elements(Z_ARRVAL_P(v))
+
 #ifdef PHP_WIN32
 #   define PHP_CUBRID_API __declspec(dllexport)
 #elif defined(__GNUC__) && __GNUC__ >= 4

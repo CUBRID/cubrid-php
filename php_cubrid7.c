@@ -2655,7 +2655,12 @@ ZEND_FUNCTION(cubrid_put)
 					attr_type[i] = CCI_A_TYPE_STR;
 					break;
 				case IS_ARRAY:
-					cubrid_retval = cubrid_make_set(HASH_OF(data), &temp_set);
+					if (!data || Z_ARRLEN_P(data) == 0) {
+						cubrid_retval = 0;
+					}
+					else {
+						cubrid_retval = cubrid_make_set(HASH_OF(data), &temp_set);
+					}
 					if (cubrid_retval < 0) {
 						handle_error(cubrid_retval, NULL, connect);
 						goto ERR_CUBRID_PUT;
@@ -2721,7 +2726,12 @@ ZEND_FUNCTION(cubrid_put)
 
 			break;
 		case IS_ARRAY:
-			cubrid_retval = cubrid_make_set(HASH_OF(attr_value), &temp_set);
+			if (!data || Z_ARRLEN_P(data) == 0) {
+				cubrid_retval = 0;
+			}
+			else {
+				cubrid_retval = cubrid_make_set(HASH_OF(attr_value), &temp_set);
+			}
 			if (cubrid_retval < 0) {
 				handle_error(cubrid_retval, NULL, connect);
 				goto ERR_CUBRID_PUT;
