@@ -101,6 +101,12 @@ i                             working_days                  answers
 i                             working_days                  answers                       
 
 Warning: Error: CCI, -20040, Result set is closed in %s on line %d
+
+Notice: Trying to access array offset on value of type null in %s on line %d
+                              
+Notice: Trying to access array offset on value of type null in %s on line %d
+                              
+Notice: Trying to access array offset on value of type null in %s on line %d
                                                                                           
 **********************Fetch all************************
 

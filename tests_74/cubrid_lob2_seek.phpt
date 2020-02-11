@@ -85,17 +85,17 @@ print "done!";
 cubrid_lob2_size : 47
 position after move 47 related to CUBRID_CURSOR_FIRST: 47
 
-Warning: cubrid_lob2_seek(): offset(48) is not correct, it can't be a negative number or larger than size in /home/phppdo_release/exec/phpTest/cubrid-php/tests_73/cubrid_lob2_seek.php on line 38
+Warning: cubrid_lob2_seek(): offset(48) is not correct, it can't be a negative number or larger than size in %s on line %d
 position after move 47 related to CUBRID_CURSOR_LAST: 0
 
-Warning: cubrid_lob2_seek(): offet(-1) is out of range, please input a proper number. in /home/phppdo_release/exec/phpTest/cubrid-php/tests_73/cubrid_lob2_seek.php on line 47
+Warning: cubrid_lob2_seek(): offet(-1) is out of range, please input a proper number. in %s on line %d
 position after move 27 related to CUBRID_CURSOR_CURRENT: 27
 
-Warning: cubrid_lob2_close() expects parameter 1 to be resource, int given in /home/phppdo_release/exec/phpTest/cubrid-php/tests_73/cubrid_lob2_seek.php on line 63
+Warning: cubrid_lob2_close() expects parameter 1 to be resource, int given in %s on line %d
 
-Warning: cubrid_lob2_size64() expects parameter 1 to be resource, int given in /home/phppdo_release/exec/phpTest/cubrid-php/tests_73/cubrid_lob2_seek.php on line 64
+Warning: cubrid_lob2_size64() expects parameter 1 to be resource, int given in %s on line %d
 
-Warning: cubrid_lob2_tell64() expects parameter 1 to be resource, int given in /home/phppdo_release/exec/phpTest/cubrid-php/tests_73/cubrid_lob2_seek.php on line 65
+Warning: cubrid_lob2_tell64() expects parameter 1 to be resource, int given in %s on line %d
 
-Warning: cubrid_lob2_seek64() expects at least 2 parameters, 1 given in /home/phppdo_release/exec/phpTest/cubrid-php/tests_73/cubrid_lob2_seek.php on line 66
+Warning: cubrid_lob2_seek64() expects at least 2 parameters, 1 given in %s on line %d
 done!
