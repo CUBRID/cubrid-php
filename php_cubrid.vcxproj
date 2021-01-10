@@ -140,7 +140,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(PHP5_TS_SRC_X86);$(PHP5_TS_SRC_X86)\main;$(PHP5_TS_SRC_X86)\Zend;$(PHP5_TS_SRC_X86)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PHP5_SRC);$(PHP5_SRC)\main;$(PHP5_SRC)\Zend;$(PHP5_SRC)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PHP_CUBRID_EXPORTS;ZEND_DEBUG=0;ZTS;COMPILE_DL_CUBRID;ZEND_WIN32;PHP_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -162,7 +162,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5ts.lib;libssl.lib;libcrypto.lib;Crypt32.lib;msvcrt.lib;msvcmrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Release_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP5_TS_X86)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Release_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -186,7 +186,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(PHP5_TS_SRC_X64);$(PHP5_TS_SRC_X64)\main;$(PHP5_TS_SRC_X64)\Zend;$(PHP5_TS_SRC_X64)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PHP5_SRC);$(PHP5_SRC)\main;$(PHP5_SRC)\Zend;$(PHP5_SRC)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PHP_CUBRID_EXPORTS;ZEND_DEBUG=0;ZTS;COMPILE_DL_CUBRID;ZEND_WIN32;PHP_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -208,7 +208,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5ts.lib;libssl.lib;libcrypto.lib;Crypt32.lib;msvcrt.lib;msvcmrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___x64_Release_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP5_TS_X64)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib64_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib64_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___x64_Release_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase />
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -232,7 +232,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(PHP5_TS_SRC_X86);$(PHP5_TS_SRC_X86)\main;$(PHP5_TS_SRC_X86)\Zend;$(PHP5_TS_SRC_X86)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PHP5_SRC);$(PHP5_SRC)\main;$(PHP5_SRC)\Zend;$(PHP5_SRC)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PHP_CUBRID_EXPORTS;ZEND_DEBUG=0;ZTS;COMPILE_DL_CUBRID;ZEND_WIN32;PHP_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -254,7 +254,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5ts.lib;libssl.lib;libcrypto.lib;Crypt32.lib;msvcrtd.lib;msvcmrtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Debug_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP5_TS_X86)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\openssl\lib_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\openssl\lib_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Debug_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -279,7 +279,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(PHP5_TS_SRC_X64);$(PHP5_TS_SRC_X64)\main;$(PHP5_TS_SRC_X64)\Zend;$(PHP5_TS_SRC_X64)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PHP5_SRC);$(PHP5_SRC)\main;$(PHP5_SRC)\Zend;$(PHP5_SRC)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PHP_CUBRID_EXPORTS;ZEND_DEBUG=0;ZTS;COMPILE_DL_CUBRID;ZEND_WIN32;PHP_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -301,7 +301,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5ts.lib;libssl.lib;libcrypto.lib;Crypt32.lib;msvcrtd.lib;msvcmrtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___x64_Debug_TS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP5_TS_X64)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\openssl\lib64_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Debug;cci-src\win\external\openssl\lib64_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Debug_TS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -326,7 +326,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(PHP5_NTS_SRC_X86);$(PHP5_NTS_SRC_X86)\main;$(PHP5_NTS_SRC_X86)\Zend;$(PHP5_NTS_SRC_X86)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PHP5_SRC);$(PHP5_SRC)\main;$(PHP5_SRC)\Zend;$(PHP5_SRC)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PHP_CUBRID_EXPORTS;ZEND_DEBUG=0;COMPILE_DL_CUBRID;ZEND_WIN32;PHP_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -348,7 +348,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5.lib;libssl.lib;libcrypto.lib;Crypt32.lib;msvcrt.lib;msvcmrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___Win32_Release_NTS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP5_NTS_X86)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___Win32_Release_NTS/php_cubrid.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -372,7 +372,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(PHP5_NTS_SRC_X64);$(PHP5_NTS_SRC_X64)\main;$(PHP5_NTS_SRC_X64)\Zend;$(PHP5_NTS_SRC_X64)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PHP5_SRC);$(PHP5_SRC)\main;$(PHP5_SRC)\Zend;$(PHP5_SRC)\TSRM;cci-src\src\compat;cci-src\include;cci-src\src\cci;cci-src\src\broker;cci-src\src\base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PHP_CUBRID_EXPORTS;ZEND_DEBUG=0;COMPILE_DL_CUBRID;ZEND_WIN32;PHP_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -394,7 +394,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ws2_32.lib;cas_cci.lib;php5.lib;libssl.lib;libcrypto.lib;Crypt32.lib;msvcrt.lib;msvcmrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\php_cubrid___x64_Release_NTS/php_cubrid.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(PHP5_NTS_X64)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib64_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PHPRC)\dev;$(SolutionDir)$(Platform)\Release;cci-src\win\external\openssl\lib64_v110;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\php_cubrid___x64_Release_NTS/php_cubrid.pdb</ProgramDatabaseFile>
       <ProfileGuidedDatabase />
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
