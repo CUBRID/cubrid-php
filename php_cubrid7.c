@@ -434,7 +434,7 @@ static int fetch_a_row(zval *arg, T_CUBRID_CONNECT *connect, int req_handle, T_C
 static int type2str(T_CCI_COL_INFO *column_info, char *type_name, int type_name_len);
 
 static int cubrid_make_set(HashTable *ht, T_CCI_SET *set);
-static int cubrid_add_index_array(zval *arg, uint index, T_CCI_SET in_set TSRMLS_DC);
+static int cubrid_add_index_array(zval *arg, zend_ulong index, T_CCI_SET in_set TSRMLS_DC);
 static int cubrid_add_assoc_array(zval *arg, char *key, T_CCI_SET in_set TSRMLS_DC);
 static int cubrid_array_destroy(HashTable *ht ZEND_FILE_LINE_DC);
 
@@ -6000,7 +6000,7 @@ static int fetch_a_row(zval *arg, T_CUBRID_CONNECT *connect, int req_handle, T_C
 
 			if (null_indicator >= 0) {
 				if (type & CUBRID_NUM) {
-					cubrid_retval = cubrid_add_index_array(arg, i, res_buf TSRMLS_CC);
+					cubrid_retval = cubrid_add_index_array(arg, (zend_ulong)i, res_buf TSRMLS_CC);
 				} 
 		
 				if (type & CUBRID_ASSOC) {
@@ -6233,7 +6233,7 @@ static void register_cubrid_request(T_CUBRID_CONNECT *conn, T_CUBRID_REQUEST *re
     linked_list_append(conn->unclosed_requests, (void *)req);
 }
 
-static int cubrid_add_index_array(zval *arg, uint index, T_CCI_SET in_set TSRMLS_DC)
+static int cubrid_add_index_array(zval *arg, zend_ulong index, T_CCI_SET in_set TSRMLS_DC)
 {
     zval tmp_zval;
     int i;
