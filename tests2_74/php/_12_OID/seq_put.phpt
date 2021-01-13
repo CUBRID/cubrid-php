@@ -16,7 +16,7 @@ if (!$conn) {
     exit(1);
 }
 cubrid_execute($conn, "drop table if exists seq_put_tb");
-cubrid_execute($conn, "CREATE TABLE seq_put_tb (a int AUTO_INCREMENT, b set(int), c list(int), d char(30))");
+cubrid_execute($conn, "CREATE TABLE seq_put_tb (a int AUTO_INCREMENT, b set(int), c list(int), d char(30)) DONT_REUSE_OID");
 cubrid_execute($conn, "INSERT INTO seq_put_tb(a, b, c, d) VALUES (1, {1,2,3}, {11, 22, 33, 333}, 'a')");
 cubrid_execute($conn, "INSERT INTO seq_put_tb(a, b, c, d) VALUES (2, {4,5,7}, {44, 55, 66, 666}, 'b')");
 

@@ -15,7 +15,7 @@ if (!$conn) {
     exit(1);
 }
 cubrid_execute($conn, "drop table if exists put_tb2");
-cubrid_execute($conn, "create table put_tb2(a int AUTO_INCREMENT, b set(int),c varchar(30))");
+cubrid_execute($conn, "create table put_tb2(a int AUTO_INCREMENT, b set(int),c varchar(30)) DONT_REUSE_OID");
 cubrid_execute($conn, "INSERT INTO put_tb2(a, b, c) VALUES (1, {1,2,3},'a')");
 
 if (!$req = cubrid_execute($conn, "select * from put_tb2", CUBRID_INCLUDE_OID)) {

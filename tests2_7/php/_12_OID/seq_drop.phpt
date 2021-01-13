@@ -17,7 +17,7 @@ if (!$conn) {
 }
 
 @cubrid_execute($conn, "DROP TABLE seq_drop_tb");
-cubrid_execute($conn, "CREATE TABLE seq_drop_tb (a int AUTO_INCREMENT, b set(int), c list(int), d char(30))");
+cubrid_execute($conn, "CREATE TABLE seq_drop_tb (a int AUTO_INCREMENT, b set(int), c list(int), d char(30)) DONT_REUSE_OID");
 cubrid_execute($conn, "INSERT INTO seq_drop_tb(a, b, c, d) VALUES (1, {1,2,3}, {11, 22, 33, 333}, 'a')");
 
 if (!$req = cubrid_execute($conn, "select * from seq_drop_tb", CUBRID_INCLUDE_OID)) {

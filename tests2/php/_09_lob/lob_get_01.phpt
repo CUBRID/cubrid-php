@@ -165,7 +165,9 @@ cubrid_disconnect($conn);
 print "Finished!\n";
 
 //rm export file
-exec("rm -rf php/_09_lob/e*.jpg");
+unlink("php/_09_lob/e1.jpg");
+unlink("php/_09_lob/e2.jpg");
+unlink("php/_09_lob/e3.jpg");
 ?>
 --CLEAN--
 --EXPECTF--

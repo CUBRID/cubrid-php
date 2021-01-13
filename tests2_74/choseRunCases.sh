@@ -54,10 +54,6 @@ function createDB()
 
 function remote_createDB()
 {
-    sshuser=`grep -r sshusr connectLarge_ssh.inc | awk '{print $3}' | tr -d ';'`
-	sshport=`grep -r sshport connectLarge_ssh.inc | awk '{print $3}' | tr -d ';'`
-	sshhost=`grep -r host connectLarge_ssh.inc | awk '{print $3}' | tr -d ';"' | head -1`
-	
 	ssh -f $sshuser@$sshhost -p $sshport "mkdir $2; cd $2; . ~/.cubrid.sh; cubrid createdb $1 en_US"
 	sleep 60
 	ssh -f $sshuser@$sshhost -p $sshport "if [ -d ~/largedbFile_bak ]; then cp -rf ~/largedbFile_bak/* ~/largedbFile; fi"
@@ -67,10 +63,6 @@ function remote_createDB()
 
 function remote_deleteDB()
 {
-    sshuser=`grep -r sshusr connectLarge_ssh.inc | awk '{print $3}' | tr -d ';'`
-	sshport=`grep -r sshport connectLarge_ssh.inc | awk '{print $3}' | tr -d ';'`
-	sshhost=`grep -r host connectLarge_ssh.inc | awk '{print $3}' | tr -d ';"' | head -1`
-	
 	ssh -f $sshuser@$sshhost -p $sshport ". ~/.cubrid.sh; cubrid server stop $1"
 	sleep 60
 	ssh -f $sshuser@$sshhost -p $sshport ". ~/.cubrid.sh; cubrid deletedb $1; rm -rf $2"
@@ -87,15 +79,25 @@ function deleteDB()
 #start broker 
 if [ $1 == -R ]
 then 
-sshuser=`grep -r sshusr connectLarge_ssh.inc | awk '{print $3}' | tr -d ';'`
-sshport=`grep -r sshport connectLarge_ssh.inc | awk '{print $3}' | tr -d ';'`
-sshhost=`grep -r host connectLarge_ssh.inc | awk '{print $3}' | tr -d ';"' | head -1`
+	if [ -e config.properties ]
+	then 
+		sshuser=`grep -r sshuser config.properties | tr -d ' ' | cut -d'=' -f2`
+		sshport=`grep -r sshport config.properties | tr -d ' ' | cut -d'=' -f2`
+		sshhost=`grep -r sshhost config.properties | tr -d ' ' | cut -d'=' -f2`
+		brokerport=`grep -r brokerport config.properties | tr -d ' ' | cut -d'=' -f2`
+	else
+		sshuser=id
+		sshport=22
+		sshhost=`grep -r "^\$host.*;" connect.inc | tr -d ' ;'  | cut -d'=' -f2`
+		brokerport=`grep -r "^\$port.*;" connect.inc | tr -d ' ;'  | cut -d'=' -f2`
+	fi
 
-ssh -f $sshuser@$sshhost -p $sshport ". ~/.cubrid.sh; cubrid broker start"
-ssh -f $sshuser@$sshhost -p $sshport ". ~/.cubrid.sh; cubrid server start demodb;"
+
+	ssh -f $sshuser@$sshhost -p $sshport ". ~/.cubrid.sh; cubrid broker start"
+	ssh -f $sshuser@$sshhost -p $sshport ". ~/.cubrid.sh; cubrid server start demodb;"
 else
-cubrid broker start
-cubrid server start demodb
+	cubrid broker start
+	cubrid server start demodb
 fi
 
 
@@ -157,11 +159,10 @@ then
 
 elif [ $1 == -R ]
 then 
-    #modify file about: broker port
-    #modifyPort connectLarge_ssh.inc 
-    #modifyPort connect.inc 
-	cp connectLarge_ssh.inc  connectLarge_ssh.inc.ori
-	cp connect.inc connect.inc.ori
+	sed -i "s/^\$host.*;/\$host = \"$sshhost\";/" connect.inc
+	sed -i "s/^\$port.*;/\$port = $brokerport;/" connect.inc
+	sed -i "s/^\$host.*;/\$host = \"$sshhost\";/" connectLarge.inc
+	sed -i "s/^\$port.*;/\$port = $brokerport;/" connectLarge.inc
 	
     #create database
     remote_createDB largedb largedbFile
@@ -180,9 +181,9 @@ then
 
 	    #import large data into largedb database
 	    php largeTable.php 
-            sleep 5
+        sleep 5
 	    ssh -f $sshuser@$sshhost -p $sshport "cp -rf ~/largedbFile ~/largedbFile_bak"
-            sleep 600
+        sleep 600
 	fi
     
     #start to run test cases about large data
@@ -191,8 +192,6 @@ then
     #deletedb
     remote_deleteDB largedb largedbFile
     remote_deleteDB phpdb phpdbFile
-    mv connectLarge_ssh.inc.ori connectLarge_ssh.inc
-    mv connect.inc.ori connect.inc
 
     #rm large file
     cd largeFile

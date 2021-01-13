@@ -12,7 +12,7 @@ printf("positive testing\n");
 include_once("connect.inc");
 $conn = cubrid_connect_with_url($connect_url, $user, $passwd);
 @cubrid_execute($conn, "drop table if exists partition_tb");
-cubrid_execute($conn, "create table partition_tb(id int not null,test_char char(50),test_varchar varchar(2000), test_bit bit(16),test_varbit bit varying(20),test_nchar nchar(50),test_nvarchar nchar varying(2001),test_string string,test_datetime timestamp, primary key(id, test_char))");
+cubrid_execute($conn, "create table partition_tb(id int not null,test_char char(50),test_varchar varchar(2000), test_bit bit(16),test_varbit bit varying(20),test_nchar nchar(50),test_nvarchar nchar varying(2001),test_string string,test_datetime timestamp, primary key(id, test_char)) DONT_REUSE_OID");
 $alterSql="ALTER TABLE partition_tb PARTITION BY LIST (test_char) (PARTITION p0 VALUES IN ('aaa','bbb','ddd'),PARTITION p1 VALUES IN ('fff','ggg','hhh',NULL),PARTITION p2 VALUES IN ('kkk','lll','mmm') )";
 $insertSql="insert into partition_tb values(1,'aaa','aaa',B'1',B'1011',N'aaa',N'aaa','aaaaaaaaaa','2006-03-01 09:00:00')";
 $insertSql2="insert into partition_tb values(5,'ggg','ggg',B'101',B'1111',N'ggg',N'ggg','gggggggggg','2006-03-01 09:00:00')";
