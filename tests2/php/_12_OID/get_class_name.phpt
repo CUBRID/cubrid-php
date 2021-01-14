@@ -12,7 +12,7 @@ include_once("connect.inc");
 $conn = cubrid_connect($host, $port, $db, $user, $passwd);
 
 cubrid_execute($conn, 'DROP TABLE IF EXISTS class_name_tb');
-$sql ="CREATE TABLE class_name_tb(id int, name varchar(10))";
+$sql ="CREATE TABLE class_name_tb(id int, name varchar(10)) DONT_REUSE_OID";
 cubrid_execute($conn,$sql);
 cubrid_execute($conn,"insert into class_name_tb values(1,'name1'),(2,'name2'),(3,'name3'),(4,'name4'),(5,'name5')");
 

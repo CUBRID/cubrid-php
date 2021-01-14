@@ -12,7 +12,7 @@ include_once("connect.inc");
 
 $conn = cubrid_connect($host, $port, $db, $user, $passwd);
 cubrid_execute($conn, "drop table if exists lock_write");
-cubrid_execute($conn, "CREATE TABLE lock_write (a int AUTO_INCREMENT, b set(int), c list(int), d char(30))");
+cubrid_execute($conn, "CREATE TABLE lock_write (a int AUTO_INCREMENT, b set(int), c list(int), d char(30)) DONT_REUSE_OID");
 cubrid_execute($conn, "INSERT INTO lock_write(a, b, c, d) VALUES (1, {1,2,3}, {11, 22, 33, 333}, 'a')");
 cubrid_execute($conn, "INSERT INTO lock_write(a, b, c, d) VALUES (2, {4,5,7}, {44, 55, 66, 666}, 'b')");
 

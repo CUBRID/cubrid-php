@@ -24,7 +24,7 @@ $create_result=cubrid_query("create class set_tb(id int primary key,
 	sBit set(bit(10)),
 	sBvit set(bit VARYING(10)),
 	sNumeric set(numeric)
-)");
+) DONT_REUSE_OID");
 if (!$create_result) {
     die('Create Failed: ' . cubrid_error());
 }

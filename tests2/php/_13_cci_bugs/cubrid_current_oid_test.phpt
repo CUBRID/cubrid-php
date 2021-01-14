@@ -10,7 +10,7 @@ require_once('skipifconnectfailure.inc');
 include "connect.inc";
 $conn = cubrid_connect($host, $port, $db, $user, $passwd);
 cubrid_execute($conn, "DROP TABLE if exists current_oid2_tb");
-cubrid_execute($conn, "CREATE TABLE current_oid2_tb(a int, b varchar(10) )");
+cubrid_execute($conn, "CREATE TABLE current_oid2_tb(a int, b varchar(10) ) DONT_REUSE_OID");
 cubrid_execute($conn, "INSERT INTO current_oid2_tb values(1,'varchar1'),(2,'varchar2'),(3,'varchar3'),(4,'varchar4')");
 $req = cubrid_execute($conn, "SELECT * FROM current_oid2_tb order by a ", CUBRID_INCLUDE_OID);
 

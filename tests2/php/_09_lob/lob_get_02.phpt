@@ -116,7 +116,10 @@ cubrid_commit($conn);
 cubrid_disconnect($conn);
 
 //rm export file
-exec("rm -rf php/_09_lob/f*.txt");
+unlink("php/_09_lob/f1.txt");
+unlink("php/_09_lob/f2.txt");
+unlink("php/_09_lob/f3.txt");
+unlink("php/_09_lob/f4.txt");
 print "Finished!\n";
 ?>
 --CLEAN--
