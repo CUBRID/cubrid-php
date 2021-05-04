@@ -39,16 +39,16 @@ if test "$PHP_CUBRID" != "no"; then
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
             pushd $CCISRC_DIR
-            touch configure.ac
             chmod +x configure
+            touch configure.ac
             ./configure --enable-64bit
     	    make
             popd
         else
     	    AC_MSG_NOTICE([Build static cci lib])
             pushd $CCISRC_DIR
-            touch configure.ac
             chmod +x configure
+            touch configure.ac
             ./configure
     	    make
             popd
@@ -65,16 +65,16 @@ if test "$PHP_CUBRID" != "no"; then
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
             pushd $CCISRC_DIR
-            touch configure.ac
             chmod +x configure
+            touch configure.ac
             ./configure --enable-64bit
     	    make
             popd
         else
     	    AC_MSG_NOTICE([Build static cci lib])
             pushd $CCISRC_DIR
-            touch configure.ac
             chmod +x configure
+            touch configure.ac
             ./configure
     	    make
             popd
