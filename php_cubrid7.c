@@ -57,6 +57,7 @@
 #include "php_cubrid7.h"
 #include "php_cubrid_version.h"
 #include <cas_cci.h>
+#include <broker_cas_error.h>
 #include <fcntl.h>
 
 /************************************************************************

@@ -14,10 +14,8 @@ PHP_MAJOR_VERSION=`grep 'PHP_MAJOR_VERSION' $phpincludedir/main/php_version.h | 
 if test "$PHP_CUBRID" != "no"; then
 
     cubrid_dir=`dirname $0`
-    COMPAT_INCDIR=""
     CUBRID_INCDIR=""
     CUBRID_LIBDIR=""
-    BROKER_INCDIR=""
 
     case $host in
       *-linux-*) os=linux ;;
@@ -28,10 +26,8 @@ if test "$PHP_CUBRID" != "no"; then
     esac
     
     if test "$os" = "linux"; then
-        COMPAT_INCDIR="$cubrid_dir/cci-src/src/compat"
         CUBRID_INCDIR="$cubrid_dir/cci-src/src/cci"
-     	BROKER_INCDIR="$cubrid_dir/cci-src/src/broker"
-        CUBRID_LIBDIR="$cubrid_dir/cci-src/cci/.libs"
+        CUBRID_LIBDIR="$cubrid_dir/cci-src/build_x86_64_release/cci"
         CCISRC_DIR="$cubrid_dir/cci-src"
         #tar xvjf cci-src.tar.bz2
         AC_CHECK_SIZEOF([int *])
@@ -39,25 +35,14 @@ if test "$PHP_CUBRID" != "no"; then
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
             pushd $CCISRC_DIR
-            chmod +x configure
-            touch configure.ac
-            ./configure --enable-64bit
-    	    make
+            ./build.sh
             popd
         else
-    	    AC_MSG_NOTICE([Build static cci lib])
-            pushd $CCISRC_DIR
-            chmod +x configure
-            touch configure.ac
-            ./configure
-    	    make
-            popd
+          AC_MSG_ERROR([32bit Driver not supported. Exit.])
         fi
     elif test "$os" = "mac"; then
-        COMPAT_INCDIR="$cubrid_dir/cci-src/src/compat"
         CUBRID_INCDIR="$cubrid_dir/cci-src/src/cci"
-     	BROKER_INCDIR="$cubrid_dir/cci-src/src/broker"
-        CUBRID_LIBDIR="$cubrid_dir/cci-src/cci/.libs"
+        CUBRID_LIBDIR="$cubrid_dir/cci-src/build_x86_64_release/cci"
         CCISRC_DIR="$cubrid_dir/cci-src"
         #tar xvjf cci-src.tar.bz2
         AC_CHECK_SIZEOF([int *])
@@ -65,19 +50,10 @@ if test "$PHP_CUBRID" != "no"; then
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
             pushd $CCISRC_DIR
-            chmod +x configure
-            touch configure.ac
-            ./configure --enable-64bit
-    	    make
+            ./build.sh
             popd
         else
-    	    AC_MSG_NOTICE([Build static cci lib])
-            pushd $CCISRC_DIR
-            chmod +x configure
-            touch configure.ac
-            ./configure
-    	    make
-            popd
+          AC_MSG_ERROR([32bit Driver not supported. Exit.])
         fi     
     else
         AC_MSG_ERROR([Your OS not supported. Exit.])
@@ -105,9 +81,7 @@ if test "$PHP_CUBRID" != "no"; then
     fi
 
     dnl Action..
-    PHP_ADD_INCLUDE("$COMPAT_INCDIR")
     PHP_ADD_INCLUDE("$CUBRID_INCDIR")
-    PHP_ADD_INCLUDE("$BROKER_INCDIR")
 
     PHP_ADD_LIBRARY(stdc++,,CUBRID_SHARED_LIBADD)
     PHP_ADD_LIBRARY(pthread,,CUBRID_SHARED_LIBADD)
