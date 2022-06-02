@@ -364,6 +364,7 @@ typedef struct
     T_CCI_CUBRID_STMT sql_type;
 
     LINKED_LIST *unclosed_requests;
+    char db_version[20];
 } T_CUBRID_CONNECT;
 
 struct cubrid_request
@@ -455,6 +456,10 @@ static int cubrid_get_charset_internal(int conn, T_CCI_ERROR *error);
 
 static void linked_list_append(LINKED_LIST *list, void *data);
 static void linked_list_delete(LINKED_LIST *list, void *data);
+
+static int str_comp (char *class_name, char *col_name, char *in_col_name);
+static char **split_string (const char *str, const char *delim, int *n);
+static void free_string_array (char **array);
 
 /************************************************************************
 * INTERFACE VARIABLES
@@ -1413,6 +1418,10 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
 	}
 
     connect->handle = cubrid_conn;
+
+    if (cci_get_db_version (cubrid_conn, connect->db_version, sizeof (connect->db_version)) < 0) {
+	RETURN_FALSE;
+    }
 
     RETVAL_RES(zend_register_resource(connect, (persistent)?le_pconnect:le_connect));
 	return_value->value.res->type = (persistent)?le_pconnect:le_connect;
@@ -3926,12 +3935,14 @@ ZEND_FUNCTION(cubrid_result)
 
     int cubrid_retval = 0;
     int i;
+    int split_count;
 
     T_CUBRID_REQUEST *request = NULL;
     T_CCI_ERROR error;
 
     char *res_buf = NULL;
     int ind = 0;
+    char **version = NULL;
 
     init_error();
 
@@ -3954,35 +3965,45 @@ ZEND_FUNCTION(cubrid_result)
     if (column) {
 		switch (Z_TYPE_P(column)) {
 			case IS_STRING: {
-					char *table_name = NULL, *field_name = NULL, *tmp = NULL;
+				char *table_name = NULL, *field_name = NULL, *tmp = NULL;
 
-					convert_to_string_ex(column);
-					col_name = Z_STRVAL_P(column);
-					col_name_len = Z_STRLEN_P(column);
+				convert_to_string_ex(column);
+				col_name = Z_STRVAL_P(column);
+				col_name_len = Z_STRLEN_P(column);
 
-						tmp = strchr(col_name, '.');
+				version = split_string(request->conn->db_version, ".", &split_count);
 
-					for (i = 0; i < request->col_count; i++) {
-						if (tmp == NULL) {
-							if (strcmp(request->col_info[i].col_name, col_name) == 0) {
-								col_offset = i;
-								break;
-							}
-						}
-						else { 
-							if ((strcmp(request->col_info[i].col_name, tmp + 1) == 0) && 
-								(strncmp(request->col_info[i].class_name, col_name, tmp - col_name) == 0)) {
-								col_offset = i;
-								break;
-							}
-						}
+				if (atoi (version[0]) >= 11 && atoi (version[1]) >= 2) {
+				    for (i = 0; i < request->col_count; i++) {
+				        if (str_comp (request->col_info[i].class_name, request->col_info[i].col_name, col_name) == 0) {
+					    col_offset = i;
+					    break;
+					 }
+			            }
+			        } else {
+				    tmp = strrchr (col_name, '.');
+				    for (i = 0; i < request->col_count; i++) {
+				        if (tmp == NULL) {
+					    if (strcmp (request->col_info[i].col_name, col_name) == 0) {
+					        col_offset = i;
+						break;
+				            }
+					} else {
+					    if ((strcmp (request->col_info[i].col_name, tmp + 1) == 0) &&
+					        (strncmp (request->col_info[i].class_name, col_name, tmp - col_name) == 0)) {
+					        col_offset = i;
+						break;
+					    }
 					}
+			            }
+			        }
+				free_string_array(version);
 
-					if (i == request->col_count) {
-						handle_error(CCI_ER_COLUMN_INDEX, NULL, request->conn);
-						RETURN_FALSE;
-					}
+				if (i == request->col_count) {
+				    handle_error(CCI_ER_COLUMN_INDEX, NULL, request->conn);
+				    RETURN_FALSE;
 				}
+			}
 				break;
 			case IS_LONG:
 				convert_to_long_ex(column);
@@ -6872,4 +6893,100 @@ static void linked_list_delete(LINKED_LIST *list, void *data)
             break;
         }
     }
+}
+
+static int str_comp (char *class_name, char *col_name, char *in_col_name)
+{
+    char **in_str = NULL;
+    char **class_str = NULL;
+    int in_count = 0;
+    int class_count = 0;
+    int res = -1;
+
+    in_str = split_string (in_col_name, ".", &in_count);
+    class_str = split_string (class_name, ".", &class_count);
+
+    if (in_count == 1) {
+        if (strcmp (in_str[0], col_name) == 0) {
+	    res =  0;
+        }
+    } else if (in_count == 2) {
+        if (class_count == 1) {
+	    if (strcmp (in_str[0], class_str[0]) == 0 && strcmp (in_str[1], col_name) == 0) {
+	        res = 0;
+	    }
+        } else if (class_count == 2) {
+	    if (strcmp (in_str[0], class_str[1]) == 0 && strcmp (in_str[1], col_name) == 0) {
+	        res = 0;
+	    }
+	} else {
+	    res = -1;
+	}
+    } else if (in_count == 3) {
+        if (class_count == 1) {
+	    if (strcmp (in_str[1], class_str[0]) == 0 && strcmp (in_str[2], col_name) == 0) {
+	        res = 0;
+	    }
+	} else if (class_count == 2) {
+	    if (strcmp (in_str[0], class_str[0]) == 0 && strcmp (in_str[1], class_str[1]) == 0 && strcmp (in_str[2], col_name) == 0) {
+	        res = 0;
+	    }
+	} else {
+	    res = -1;
+	}
+    }
+
+    free_string_array (in_str);
+    free_string_array (class_str);
+
+    return res;
+}
+
+static char **split_string (const char *str, const char *delim, int *n)
+{
+    char *t, *o;
+    char *save, *v;
+    char **r = NULL;
+    char **realloc_r = NULL;
+    int count = 1;
+
+    if (str == NULL) {
+        return NULL;
+    }
+
+    o = strdup (str);
+    if (o == NULL) {
+        return NULL;
+    }
+
+    for (t = o;; t = NULL) {
+        v = strtok_s (t, delim, &save);
+        if (v == NULL) {
+            break;
+        }
+        realloc_r = (char **)realloc (r, sizeof (char *) * (count + 1));
+        if (realloc_r == NULL) {
+            free (o);
+            return NULL;
+        } else {
+            r = realloc_r;
+        }
+        r[count - 1] = strdup (v);
+        r[count] = NULL;
+        count++;
+    }
+
+    *n = count - 1;
+    free (o);
+    return r;
+}
+
+static void free_string_array (char **array)
+{
+    int i;
+
+    for (i = 0; array[i] != NULL; i++) {
+        free (array[i]);
+    }
+    free (array);
 }
