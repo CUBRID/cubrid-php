@@ -1335,6 +1335,10 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
             connect = new_cubrid_connect(1);
             if (!connect) RETURN_FALSE;
             connect->handle = cubrid_conn;
+
+	    if (cci_get_db_version (cubrid_conn, connect->db_version, sizeof (connect->db_version)) < 0) {
+	        RETURN_FALSE;
+	    }
     
             Z_TYPE(new_le) = le_pconnect;
             new_le.ptr = connect;
@@ -1358,6 +1362,9 @@ static void php_cubrid_do_connect(INTERNAL_FUNCTION_PARAMETERS, int persistent)
                 }
     
                 connect->handle = cubrid_conn;
+		if (cci_get_db_version (cubrid_conn, connect->db_version, sizeof (connect->db_version)) < 0) {
+		    RETURN_FALSE;
+		}
             }
     
             if ((cubrid_retval = cci_end_tran(connect->handle, CCI_TRAN_COMMIT, &error)) < 0) {
@@ -1501,6 +1508,10 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
             connect = new_cubrid_connect(1);
             if (!connect) RETURN_FALSE;
             connect->handle = cubrid_conn;
+
+	    if (cci_get_db_version (cubrid_conn, connect->db_version, sizeof (connect->db_version)) < 0) {
+	        RETURN_FALSE;
+	    }
     
             Z_TYPE(new_le) = le_pconnect;
             new_le.ptr = connect;
@@ -1525,6 +1536,9 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
                 }
     
                 connect->handle = cubrid_conn;
+		if (cci_get_db_version (cubrid_conn, connect->db_version, sizeof (connect->db_version)) < 0) {
+		    RETURN_FALSE;
+		}
             }
     
             if ((cubrid_retval = cci_end_tran(connect->handle, CCI_TRAN_COMMIT, &error)) < 0) {
@@ -1580,6 +1594,10 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
         connect = new_cubrid_connect(0);
         if (!connect) RETURN_FALSE;
         connect->handle = cubrid_conn;
+
+	if (cci_get_db_version (cubrid_conn, connect->db_version, sizeof (connect->db_version)) < 0) {
+	    RETURN_FALSE;
+	}
     
         ZEND_REGISTER_RESOURCE(return_value, connect, le_connect);
     

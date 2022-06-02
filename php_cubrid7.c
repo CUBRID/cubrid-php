@@ -1532,6 +1532,10 @@ static void php_cubrid_do_connect_with_url(INTERNAL_FUNCTION_PARAMETERS, int per
     if (!connect) RETURN_FALSE;
     connect->handle = cubrid_conn;
 
+    if (cci_get_db_version (cubrid_conn, connect->db_version, sizeof (connect->db_version)) < 0) {
+	RETURN_FALSE;
+    }
+
     RETVAL_RES(zend_register_resource(connect, (persistent)?le_pconnect:le_connect));
 	return_value->value.res->type = (persistent) ? le_pconnect : le_connect;
 
