@@ -6994,3 +6994,4 @@ static void free_string_array (char **array)
     }
     free (array);
 }
+
