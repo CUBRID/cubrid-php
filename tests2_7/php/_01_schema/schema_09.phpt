@@ -79,7 +79,7 @@ array(2) {
   [0]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(4) "aaaa"
+    string(8) "dba.aaaa"
     ["PKCOLUMN_NAME"]=>
     string(3) "uid"
     ["FKTABLE_NAME"]=>
@@ -100,7 +100,7 @@ array(2) {
   [1]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(5) "album"
+    string(9) "dba.album"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
@@ -125,7 +125,7 @@ array(1) {
   [0]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(4) "cccc"
+    string(8) "dba.cccc"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>

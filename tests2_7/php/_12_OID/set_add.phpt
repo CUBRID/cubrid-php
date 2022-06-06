@@ -119,8 +119,8 @@ array(5) {
 }
 #####error add#####
 
-Warning: Error: DBMS, -181, Cannot coerce value of domain "character varying" to domain "integer".%s. in %s on line %d
-[008] [-181] Cannot coerce value of domain "character varying" to domain "integer".%s.
+Warning: Error: DBMS, -181, Cannot coerce value of domain "character" to domain "integer".%s. in %s on line %d
+[008] [-181] Cannot coerce value of domain "character" to domain "integer".%s.
 
 Warning: Error: CAS, -10020, The attribute domain must be the set type in %s on line %d
 [009] [-10020] The attribute domain must be the set type

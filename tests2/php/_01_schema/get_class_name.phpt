@@ -9,7 +9,7 @@ require_once('skipifconnectfailure.inc')
 <?php
 include_once("connect.inc");
 $conn = cubrid_connect($host, $port, "demodb", $user, $passwd);
-$req = cubrid_execute($conn, "select * from game",  CUBRID_INCLUDE_OID);
+$req = cubrid_execute($conn, "select * from public.game",  CUBRID_INCLUDE_OID);
 if (!$req) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
 }

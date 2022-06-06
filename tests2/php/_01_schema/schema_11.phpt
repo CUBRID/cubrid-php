@@ -62,19 +62,19 @@ array(1) {
   [0]=>
   array(11) {
     ["NAME"]=>
-    string(10) "tt1_insert"
+    string(14) "dba.tt1_insert"
     ["STATUS"]=>
     string(6) "ACTIVE"
     ["EVENT"]=>
     string(6) "INSERT"
     ["TARGET_CLASS"]=>
-    string(3) "tt1"
+    string(7) "dba.tt1"
     ["TARGET_ATTR"]=>
     string(0) ""
     ["ACTION_TIME"]=>
     string(5) "AFTER"
     ["ACTION"]=>
-    string(67) "insert into [hi] ([a], [b]) values ([obj].[a],  to_char([obj].[a]))"
+    string(71) "insert into [dba.hi] ([a], [b]) values ([obj].[a],  to_char([obj].[a]))"
     ["PRIORITY"]=>
     string(8) "0.000000"
     ["CONDITION_TIME"]=>
@@ -90,19 +90,19 @@ array(3) {
   [0]=>
   array(11) {
     ["NAME"]=>
-    string(9) "tt3_alter"
+    string(13) "dba.tt3_alter"
     ["STATUS"]=>
     string(6) "ACTIVE"
     ["EVENT"]=>
     string(6) "UPDATE"
     ["TARGET_CLASS"]=>
-    string(3) "tt3"
+    string(7) "dba.tt3"
     ["TARGET_ATTR"]=>
     string(0) ""
     ["ACTION_TIME"]=>
     string(6) "BEFORE"
     ["ACTION"]=>
-    string(27) "update [hi] set [a]=[a]-100"
+    string(31) "update [dba.hi] set [a]=[a]-100"
     ["PRIORITY"]=>
     string(8) "0.000000"
     ["CONDITION_TIME"]=>
@@ -115,19 +115,19 @@ array(3) {
   [1]=>
   array(11) {
     ["NAME"]=>
-    string(10) "tt2_delete"
+    string(14) "dba.tt2_delete"
     ["STATUS"]=>
     string(6) "ACTIVE"
     ["EVENT"]=>
     string(6) "DELETE"
     ["TARGET_CLASS"]=>
-    string(3) "tt2"
+    string(7) "dba.tt2"
     ["TARGET_ATTR"]=>
     string(0) ""
     ["ACTION_TIME"]=>
     string(6) "BEFORE"
     ["ACTION"]=>
-    string(22) "delete  [hi] from [hi]"
+    string(29) "delete  [dba.hi] from [hi]"
     ["PRIORITY"]=>
     string(8) "0.000000"
     ["CONDITION_TIME"]=>
@@ -140,19 +140,19 @@ array(3) {
   [2]=>
   array(11) {
     ["NAME"]=>
-    string(10) "tt1_insert"
+    string(14) "dba.tt1_insert"
     ["STATUS"]=>
     string(6) "ACTIVE"
     ["EVENT"]=>
     string(6) "INSERT"
     ["TARGET_CLASS"]=>
-    string(3) "tt1"
+    string(7) "dba.tt1"
     ["TARGET_ATTR"]=>
     string(0) ""
     ["ACTION_TIME"]=>
     string(5) "AFTER"
     ["ACTION"]=>
-    string(67) "insert into [hi] ([a], [b]) values ([obj].[a],  to_char([obj].[a]))"
+    string(71) "insert into [dba.hi] ([a], [b]) values ([obj].[a],  to_char([obj].[a]))"
     ["PRIORITY"]=>
     string(8) "0.000000"
     ["CONDITION_TIME"]=>

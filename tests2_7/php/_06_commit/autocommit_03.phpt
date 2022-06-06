@@ -31,11 +31,6 @@ $res = cubrid_fetch_array($req, CUBRID_ASSOC);
 var_dump($res);
 
 cubrid_set_autocommit($conn, CUBRID_AUTOCOMMIT_FALSE);
-if (cubrid_get_autocommit($conn)) {
-    printf("Autocommit is ON.\n");
-} else {
-    printf("Autocommit is OFF.\n");
-}
 cubrid_query('UPDATE commit3_tb SET a=2');
 
 cubrid_close($conn);
@@ -64,11 +59,10 @@ array(1) {
   ["a"]=>
   string(1) "1"
 }
-Autocommit is OFF.
 array(1) {
   ["a"]=>
   string(1) "1"
 }
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "commit3_tb". select * from commit3_tb%s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: Unknown class "dba.commit3_tb". select * from [dba.commit3_tb]%s in %s on line %d
 done!

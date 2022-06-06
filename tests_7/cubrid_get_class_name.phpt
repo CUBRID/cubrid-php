@@ -32,5 +32,5 @@ print "done!"
 ?>
 --CLEAN--
 --EXPECTF--
-code
+public.code
 done!

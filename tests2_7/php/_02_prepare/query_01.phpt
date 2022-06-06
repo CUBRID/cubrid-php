@@ -133,7 +133,7 @@ array(4) {
 #####show statement#####
 Array
 (
-    [Table] => query_tb2
+    [Table] => dba.query_tb2
     [Non_unique] => 1
     [Key_name] => index1
     [Seq_in_index] => 1
@@ -150,7 +150,7 @@ Array
 )
 Array
 (
-    [Table] => query_tb2
+    [Table] => dba.query_tb2
     [Non_unique] => 1
     [Key_name] => reverse_index
     [Seq_in_index] => 1
@@ -167,7 +167,7 @@ Array
 )
 Array
 (
-    [Table] => query_tb2
+    [Table] => dba.query_tb2
     [Non_unique] => 0
     [Key_name] => reverse_unique_index
     [Seq_in_index] => 1
@@ -184,7 +184,7 @@ Array
 )
 Array
 (
-    [Table] => query_tb2
+    [Table] => dba.query_tb2
     [Non_unique] => 0
     [Key_name] => unique_index
     [Seq_in_index] => 1

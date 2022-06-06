@@ -66,7 +66,7 @@ require_once("clean_table.inc");
 ?>
 --EXPECTF--
 Warning: Error: DBMS, -493, Syntax: before '  VALUES(?, ?, ?, ?)'
-Unknown class "valid". insert into valid (c1, c2, c3, c4) values ( ?:0 ,  ?:1 ,  ?:%s
+Unknown class "public.valid". insert into [public.valid] (c1, c2, c3, c4) values ( ?:0 ,  ?:1 ,  ?:%s
 array(4) {
   ["c1"]=>
   string(9) "bind test"

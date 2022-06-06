@@ -39,9 +39,9 @@ print "done!";
 --EXPECTF--
 bool(true)
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "unknown_table". select * from unknown_table%s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: Unknown class "dba.unknown_table". select * from [dba.unknown_table]%s in %s on line %d
 bool(true)
 bool(true)
 
-Warning: cubrid_ping(): supplied resource is not a valid CUBRID Connect resource in %s on line %d
+Warning: cubrid_ping(): %d is not a valid CUBRID-Connect resource in %s on line %d
 done!

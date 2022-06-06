@@ -162,7 +162,7 @@ f_name                         varchar                        6
 
 
 Last Column Name:              f_name
-Last Column Table:             code
+Last Column Table:             public.code
 Last Column Type:              varchar
 Last Column Len:               6
 Second Column Flags:           
@@ -171,7 +171,7 @@ Second Column Flags:
 
 ------------ print_field_info --------------------
 name:                          f_name
-table:                         code
+table:                         public.code
 default value:                 "NULL"
 max length:                    0
 not null:                      0
@@ -195,7 +195,7 @@ unit                           varchar                        5
 
 
 Last Column Name:              unit
-Last Column Table:             history
+Last Column Table:             public.history
 Last Column Type:              varchar
 Last Column Len:               5
 Second Column Flags:           not_null primary_key unique_key
@@ -204,7 +204,7 @@ Second Column Flags:           not_null primary_key unique_key
 
 ------------ print_field_info --------------------
 name:                          athlete
-table:                         history
+table:                         public.history 
 default value:                 "NULL"
 max length:                    0
 not null:                      1
