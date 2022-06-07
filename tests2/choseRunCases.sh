@@ -30,7 +30,7 @@ function modifyPort()
 {
     port=`cubrid broker status -b | grep broker1 | awk '{print $4}'`
     cp $1 $1.ori
-    sed -i "s/33000/$port/g" $1
+    sed -i "s/^\$port.*;/\$port = $port;/" $1 
 }
 
 function createDB()

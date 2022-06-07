@@ -64,5 +64,5 @@ array(1) {
   string(1) "1"
 }
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "commit3_tb". select * from commit3_tb%s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: Unknown class "dba.commit3_tb". select * from [dba.commit3_tb]%s in %s on line %d
 done!

@@ -61,7 +61,7 @@ array(3) {
   [0]=>
   array(4) {
     ["CLASS_NAME"]=>
-    string(4) "game"
+    string(11) "public.game"
     ["ATTR_NAME"]=>
     string(12) "athlete_code"
     ["KEY_SEQ"]=>
@@ -72,7 +72,7 @@ array(3) {
   [1]=>
   array(4) {
     ["CLASS_NAME"]=>
-    string(4) "game"
+    string(11) "public.game"
     ["ATTR_NAME"]=>
     string(10) "event_code"
     ["KEY_SEQ"]=>
@@ -83,7 +83,7 @@ array(3) {
   [2]=>
   array(4) {
     ["CLASS_NAME"]=>
-    string(4) "game"
+    string(11) "public.game"
     ["ATTR_NAME"]=>
     string(9) "host_year"
     ["KEY_SEQ"]=>
@@ -117,7 +117,7 @@ array(2) {
   [1]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(7) "athlete"
+    string(14) "public.athlete"
     ["PKCOLUMN_NAME"]=>
     string(4) "code"
     ["FKTABLE_NAME"]=>

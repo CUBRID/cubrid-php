@@ -164,7 +164,7 @@ c4                             double                         29
 
 
 Last Column Name:              c4
-Last Column Table:             prepare_tb
+Last Column Table:             dba.prepare_tb
 Last Column Type:              double
 Last Column Len:               29
 Second Column Flags:           
