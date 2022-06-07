@@ -52,7 +52,7 @@ object(stdClass)#1 (13) {
   ["name"]=>
   string(2) "c2"
   ["table"]=>
-  string(9) "field1_tb"
+  string(13) "dba.field1_tb"
   ["def"]=>
   string(4) "NULL"
   ["max_length"]=>
@@ -89,9 +89,9 @@ Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
 
 ---index > range Field Properties ---
 
-Notice: Trying to get property 'name' of non-object in %s on line %d
+Notice: Trying to get property of non-object in %s on line %d
 name: 
 
-Notice: Trying to get property 'table' of non-object in %s on line %d
+Notice: Trying to get property of non-object in %s on line %d
 table: 
 Finished!

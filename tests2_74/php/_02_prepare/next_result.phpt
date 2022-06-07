@@ -164,7 +164,7 @@ c4                             double                         29
 
 
 Last Column Name:              c4
-Last Column Table:             prepare_tb
+Last Column Table:             dba.prepare_tb
 Last Column Type:              double
 Last Column Len:               29
 Second Column Flags:           
@@ -216,6 +216,6 @@ Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s in 
 [004] [-493] Syntax: In line 1, column 44 before ' this sql statement;'
 Syntax error: unexpected 'no', expecting SELECT or VALUE or VALUES or '(' %s
 
-Warning: cubrid_next_result() expects parameter 1 to be resource, bool given in %s on line %d
+Warning: cubrid_next_result() expects parameter 1 to be resource, boolean given in %s on line %d
 124--there is maybe some error
 Finished!

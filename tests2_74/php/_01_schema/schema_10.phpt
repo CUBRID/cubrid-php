@@ -171,7 +171,7 @@ array(7) {
   [0]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "SELECT"
     ["GRANTABLE"]=>
@@ -180,7 +180,7 @@ array(7) {
   [1]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "INSERT"
     ["GRANTABLE"]=>
@@ -189,7 +189,7 @@ array(7) {
   [2]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "UPDATE"
     ["GRANTABLE"]=>
@@ -198,7 +198,7 @@ array(7) {
   [3]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "DELETE"
     ["GRANTABLE"]=>
@@ -207,7 +207,7 @@ array(7) {
   [4]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(5) "ALTER"
     ["GRANTABLE"]=>
@@ -216,7 +216,7 @@ array(7) {
   [5]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(5) "INDEX"
     ["GRANTABLE"]=>
@@ -225,7 +225,7 @@ array(7) {
   [6]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(7) "EXECUTE"
     ["GRANTABLE"]=>
@@ -237,7 +237,7 @@ array(7) {
   [0]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "SELECT"
     ["GRANTABLE"]=>
@@ -246,7 +246,7 @@ array(7) {
   [1]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "INSERT"
     ["GRANTABLE"]=>
@@ -255,7 +255,7 @@ array(7) {
   [2]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "UPDATE"
     ["GRANTABLE"]=>
@@ -264,7 +264,7 @@ array(7) {
   [3]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(6) "DELETE"
     ["GRANTABLE"]=>
@@ -273,7 +273,7 @@ array(7) {
   [4]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(5) "ALTER"
     ["GRANTABLE"]=>
@@ -282,7 +282,7 @@ array(7) {
   [5]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(5) "INDEX"
     ["GRANTABLE"]=>
@@ -291,7 +291,7 @@ array(7) {
   [6]=>
   array(3) {
     ["CLASS_NAME"]=>
-    string(12) "privilege_tb"
+    string(19) "public.privilege_tb"
     ["PRIVILEGE"]=>
     string(7) "EXECUTE"
     ["GRANTABLE"]=>

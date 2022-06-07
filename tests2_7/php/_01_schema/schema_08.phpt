@@ -23,7 +23,7 @@ cubrid_execute($conn,"CREATE TABLE ssss(album CHAR(10),dsk INTEGER,FOREIGN KEY (
 $schema1 = cubrid_schema($conn,CUBRID_SCH_EXPORTED_KEYS,"aaaa");
 var_dump($schema1);
 
-printf("\ncccc table has been referenced by two talbe as foreign key\n");
+printf("\ncccc table has been referenced by two table as foreign key\n");
 cubrid_execute($conn,"drop table if EXISTS  dddd;");
 cubrid_execute($conn,"drop table if EXISTS  eeee;");
 cubrid_execute($conn,"drop table if EXISTS  cccc;");
@@ -88,7 +88,7 @@ array(1) {
     ["PKCOLUMN_NAME"]=>
     string(3) "uid"
     ["FKTABLE_NAME"]=>
-    string(4) "ssss"
+    string(4) "dba.ssss"
     ["FKCOLUMN_NAME"]=>
     string(3) "dsk"
     ["KEY_SEQ"]=>
@@ -104,7 +104,7 @@ array(1) {
   }
 }
 
-cccc table has been referenced by two talbe as foreign key
+cccc table has been referenced by two table as foreign key
 array(2) {
   [0]=>
   array(9) {
@@ -113,7 +113,7 @@ array(2) {
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
-    string(4) "dddd"
+    string(4) "dba.dddd"
     ["FKCOLUMN_NAME"]=>
     string(5) "album"
     ["KEY_SEQ"]=>
@@ -134,7 +134,7 @@ array(2) {
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
-    string(4) "eeee"
+    string(4) "dba.eeee"
     ["FKCOLUMN_NAME"]=>
     string(3) "aid"
     ["KEY_SEQ"]=>
