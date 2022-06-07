@@ -7009,7 +7009,7 @@ static char **split_string (const char *str, const char *delim, int *n)
     }
 
     for (t = o;; t = NULL) {
-	v = strtok(t, delim);
+	      v = strtok(t, delim);
         if (v == NULL) {
 	    break;
 	}
