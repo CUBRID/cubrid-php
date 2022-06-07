@@ -6994,7 +6994,7 @@ static int str_comp (char *class_name, char *col_name, char *in_col_name)
 static char **split_string (const char *str, const char *delim, int *n)
 {
     char *t, *o;
-    char *save, *v;
+    char *v;
     char **r = NULL;
     char ** realloc_r = NULL;
     int count = 1;
@@ -7009,7 +7009,7 @@ static char **split_string (const char *str, const char *delim, int *n)
     }
 
     for (t = o;; t = NULL) {
-	v = strtok_s (t, delim, &save);
+	v = strtok(t, delim);
         if (v == NULL) {
 	    break;
 	}
