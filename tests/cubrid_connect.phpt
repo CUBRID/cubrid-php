@@ -86,8 +86,8 @@ if (!$conn) {
 
 --CLEAN--
 --EXPECTF--
-Warning: Error: DBMS, %d, Failed to connect to database server, %s
-[007] [%d] Failed to connect to database server, %s
+Warning: Error: DBMS, -%d, Failed to connect to database server, %s
+[007] [-%d] Failed to connect to database server, %s
 
 Warning: Error: DBMS, -171, Incorrect or missing password.%s
 [008] [-171] Incorrect or missing password.%s
