@@ -79,11 +79,11 @@ array(2) {
   [0]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(4) "aaaa"
+    string(8) "dba.aaaa"
     ["PKCOLUMN_NAME"]=>
     string(3) "uid"
     ["FKTABLE_NAME"]=>
-    string(4) "dba.ssss"
+    string(4) "ssss"
     ["FKCOLUMN_NAME"]=>
     string(3) "dsk"
     ["KEY_SEQ"]=>
@@ -100,11 +100,11 @@ array(2) {
   [1]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(5) "album"
+    string(9) "dba.album"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
-    string(4) "dba.ssss"
+    string(4) "ssss"
     ["FKCOLUMN_NAME"]=>
     string(5) "album"
     ["KEY_SEQ"]=>
@@ -125,11 +125,11 @@ array(1) {
   [0]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(4) "cccc"
+    string(8) "dba.cccc"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
-    string(4) "dba.eeee"
+    string(4) "eeee"
     ["FKCOLUMN_NAME"]=>
     string(3) "aid"
     ["KEY_SEQ"]=>

@@ -89,9 +89,9 @@ Warning: Error: CCI, -20013, Column index is out of range in %s on line %d
 
 ---index > range Field Properties ---
 
-Notice: Trying to get property of non-object in %s on line %d
+Notice: Trying to get property 'name' of non-object in %s on line %d
 name: 
 
-Notice: Trying to get property of non-object in %s on line %d
+Notice: Trying to get property 'table' of non-object in %s on line %d
 table: 
 Finished!

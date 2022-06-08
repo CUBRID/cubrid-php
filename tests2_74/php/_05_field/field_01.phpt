@@ -190,73 +190,73 @@ printf("Finished!\n");
 --EXPECTF--
 #####Data type is numeric#####
 Field Table     Field Name      Field Type
-dba.numeric_tb                 smallint_t                     smallint
-dba.numeric_tb                 short_t                        smallint
-dba.numeric_tb                 int_t                          integer
-dba.numeric_tb                 bigint_t                       bigint
-dba.numeric_tb                 decimal_t                      numeric
-dba.numeric_tb                 numeric_t                      numeric
-dba.numeric_tb                 float_t                        float
-dba.numeric_tb                 real_t                         float
-dba.numeric_tb                 monetary_t                     monetary
-dba.numeric_tb                 double_t                       double
+dba.numeric_tb                 smallint_t                     smallint       
+dba.numeric_tb                 short_t                        smallint       
+dba.numeric_tb                 int_t                          integer        
+dba.numeric_tb                 bigint_t                       bigint         
+dba.numeric_tb                 decimal_t                      numeric        
+dba.numeric_tb                 numeric_t                      numeric        
+dba.numeric_tb                 float_t                        float          
+dba.numeric_tb                 real_t                         float          
+dba.numeric_tb                 monetary_t                     monetary       
+dba.numeric_tb                 double_t                       double         
 
 
 #####Data type is character strings#####
 Field Table     Field Name      Field Type
-dba.character_tb               char_t                         char
-dba.character_tb               varchar_t                      varchar
-dba.character_tb               nchar_t                        nchar
-dba.character_tb               ncharvarying_t                 varnchar
+dba.character_tb               char_t                         char           
+dba.character_tb               varchar_t                      varchar        
+dba.character_tb               nchar_t                        nchar          
+dba.character_tb               ncharvarying_t                 varnchar       
 
 
 #####Data type is BLOB/CLOB#####
 Field Table     Field Name      Field Type
-dba.clob_tb                    id_t                           varchar
-dba.clob_tb                    content                        clob
-dba.clob_tb                    image                          blob
+dba.clob_tb                    id_t                           varchar        
+dba.clob_tb                    content                        clob           
+dba.clob_tb                    image                          blob           
 
 
 #####Data type is collection#####
 Field Table     Field Name      Field Type
-dba.collection_tb              schar                          set(char)
-dba.collection_tb              svarchar                       set(varchar)
-dba.collection_tb              snchar                         set(nchar)
-dba.collection_tb              snvchar                        set(varnchar)
-dba.collection_tb              sbit                           set(bit)
-dba.collection_tb              sbvit                          set(varbit)
-dba.collection_tb              snumeric                       set(numeric)
-dba.collection_tb              sinteger                       set(integer)
-dba.collection_tb              ssmallint                      set(smallint)
-dba.collection_tb              smonetary                      set(monetary)
-dba.collection_tb              sfloat                         set(float)
-dba.collection_tb              sreal                          set(float)
-dba.collection_tb              sdouble                        set(double)
-dba.collection_tb              sdate                          set(date)
-dba.collection_tb              stime                          set(time)
-dba.collection_tb              stimestamp                     set(timestamp)
-dba.collection_tb              sset                           set(unknown)
-dba.collection_tb              smultiset                      set(unknown)
-dba.collection_tb              slist                          set(unknown)
-dba.collection_tb              ssequence                      set(unknown)
+dba.collection_tb              schar                          set(char)      
+dba.collection_tb              svarchar                       set(varchar)   
+dba.collection_tb              snchar                         set(nchar)     
+dba.collection_tb              snvchar                        set(varnchar)  
+dba.collection_tb              sbit                           set(bit)       
+dba.collection_tb              sbvit                          set(varbit)    
+dba.collection_tb              snumeric                       set(numeric)   
+dba.collection_tb              sinteger                       set(integer)   
+dba.collection_tb              ssmallint                      set(smallint)  
+dba.collection_tb              smonetary                      set(monetary)  
+dba.collection_tb              sfloat                         set(float)     
+dba.collection_tb              sreal                          set(float)     
+dba.collection_tb              sdouble                        set(double)    
+dba.collection_tb              sdate                          set(date)      
+dba.collection_tb              stime                          set(time)      
+dba.collection_tb              stimestamp                     set(timestamp) 
+dba.collection_tb              sset                           set(unknown)   
+dba.collection_tb              smultiset                      set(unknown)   
+dba.collection_tb              slist                          set(unknown)   
+dba.collection_tb              ssequence                      set(unknown)   
 dba.collection_tb              multiset_t                     multiset(unknown)
 dba.collection_tb              list_t                         sequence(unknown)
 
 
 #####Data type is Date/Time#####
 Field Table     Field Name      Field Type
-dba.date_tb                    date_t                         date
-dba.date_tb                    time_t                         time
-dba.date_tb                    timestamp_t                    timestamp
-dba.date_tb                    datetime_t                     datetime
+dba.date_tb                    date_t                         date           
+dba.date_tb                    time_t                         time           
+dba.date_tb                    timestamp_t                    timestamp      
+dba.date_tb                    datetime_t                     datetime       
 
 
 #####Data type is bit strings#####
 Field Table     Field Name      Field Type
-dba.bit_tb                     bit_t                          bit
-dba.bit_tb                     bit2_t                         bit
-dba.bit_tb                     bitvarying_t                   varbit
-dba.bit_tb                     bitvarying2_t                  varbit
+dba.bit_tb                     bit_t                          bit            
+dba.bit_tb                     bit2_t                         bit            
+dba.bit_tb                     bitvarying_t                   varbit         
+dba.bit_tb                     bitvarying2_t                  varbit         
 
 
 Finished!
