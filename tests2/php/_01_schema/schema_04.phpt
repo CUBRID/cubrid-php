@@ -65,9 +65,9 @@ array(5) {
     ["ATTR_ORDER"]=>
     string(1) "1"
     ["CLASS_NAME"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["IS_KEY"]=>
     string(1) "1"
     ["REMARKS"]=>
@@ -96,9 +96,9 @@ array(5) {
     ["ATTR_ORDER"]=>
     string(1) "2"
     ["CLASS_NAME"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>
@@ -127,9 +127,9 @@ array(5) {
     ["ATTR_ORDER"]=>
     string(1) "3"
     ["CLASS_NAME"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>
@@ -158,9 +158,9 @@ array(5) {
     ["ATTR_ORDER"]=>
     string(1) "4"
     ["CLASS_NAME"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>
@@ -189,9 +189,9 @@ array(5) {
     ["ATTR_ORDER"]=>
     string(1) "5"
     ["CLASS_NAME"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_1"
+    string(12) "dba.schema_1"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>
@@ -222,9 +222,9 @@ array(3) {
     ["ATTR_ORDER"]=>
     string(1) "1"
     ["CLASS_NAME"]=>
-    string(8) "schema_2"
+    string(12) "dba.schema_2"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_2"
+    string(12) "dba.schema_2"
     ["IS_KEY"]=>
     string(1) "1"
     ["REMARKS"]=>
@@ -253,9 +253,9 @@ array(3) {
     ["ATTR_ORDER"]=>
     string(1) "2"
     ["CLASS_NAME"]=>
-    string(8) "schema_2"
+    string(12) "dba.schema_2"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_2"
+    string(12) "dba.schema_2"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>
@@ -284,9 +284,9 @@ array(3) {
     ["ATTR_ORDER"]=>
     string(1) "3"
     ["CLASS_NAME"]=>
-    string(8) "schema_2"
+    string(12) "dba.schema_2"
     ["SOURCE_CLASS"]=>
-    string(8) "schema_2"
+    string(12) "dba.schema_2"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>

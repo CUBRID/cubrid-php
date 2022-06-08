@@ -27,7 +27,7 @@ $schema1 = cubrid_schema($conn,CUBRID_SCH_CROSS_REFERENCE,"album","ssss");
 var_dump($schema1);
 
 
-printf("\ncccc table has been referenced by two talbe as foreign key\n");
+printf("\ncccc table has been referenced by two table as foreign key\n");
 cubrid_execute($conn,"drop table if EXISTS  dddd;");
 cubrid_execute($conn,"drop table if EXISTS  eeee;");
 cubrid_execute($conn,"drop table if EXISTS  cccc;");
@@ -132,7 +132,7 @@ array(1) {
   }
 }
 
-cccc table has been referenced by two talbe as foreign key
+cccc table has been referenced by two table as foreign key
 array(1) {
   [0]=>
   array(9) {

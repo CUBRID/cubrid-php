@@ -74,7 +74,7 @@ object(stdClass)#1 (13) {
   ["name"]=>
   string(2) "c1"
   ["table"]=>
-  string(9) "field2_tb"
+  string(13) "dba.field2_tb"
   ["def"]=>
   string(4) "NULL"
   ["max_length"]=>

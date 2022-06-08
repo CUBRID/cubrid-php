@@ -121,17 +121,17 @@ array(9) {
   [5]=>
   string(16) "12345.6789000000"
   [6]=>
-  string(47) "-340282346638528859811704183484516925440.000000"
+  string(47) "-3402823466385288%d.000000"
   [7]=>
-  string(46) "340282346638528859811704183484516925440.000000"
+  string(46) "3402823466385288%d.000000"
   [8]=>
-  string(57) "-340282346600000016151267322115014000640.0000000000000000"
+  string(57) "-3402823466000000%d.0000000000000000"
 }
 
 
 ---smallint Field Properties ---
 name: smallint_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -148,7 +148,7 @@ cubrid_field_len: 6
 
 ---short Field Properties ---
 name: short_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -165,7 +165,7 @@ cubrid_field_len: 6
 
 ---bigint Field Properties ---
 name: bigint_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -182,7 +182,7 @@ cubrid_field_len: 20
 
 ---decimal Field Properties ---
 name: decimal_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -199,7 +199,7 @@ cubrid_field_len: 17
 
 ---numeric Field Properties ---
 name: numeric_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -216,7 +216,7 @@ cubrid_field_len: 40
 
 ---float Field Properties ---
 name: float_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -233,7 +233,7 @@ cubrid_field_len: 15
 
 ---real Field Properties ---
 name: real_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -250,7 +250,7 @@ cubrid_field_len: 15
 
 ---monetary Field Properties ---
 name: monetary_t
-table: numeric_tb
+table: dba.numeric_tb
 default value: "NULL"
 max lenght: 0
 not null: 0

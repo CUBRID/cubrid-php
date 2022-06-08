@@ -140,8 +140,8 @@ array(2) {
   NULL
 }
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "commit1_tb". select * from commit1_tb%s in %s on line %d
-[001]Expect false, [-493] [Syntax: Unknown class "commit1_tb". select * from commit1_tb%s]
+Warning: Error: DBMS, -493, Syntax: Unknown class "dba.commit1_tb". select * from [dba.commit1_tb]%s in %s on line %d
+[001]Expect false, [-493] [Syntax: Unknown class "dba.commit1_tb". select * from [dba.commit1_tb]%s]
 After rollback:
 array(2) {
   ["a"]=>

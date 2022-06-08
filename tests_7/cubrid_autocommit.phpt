@@ -64,5 +64,5 @@ array(1) {
   string(1) "1"
 }
 
-Warning: Error: DBMS, -493, Syntax: Unknown class "autocommit_test". select * from autocommit_test%s in %s on line %d
+Warning: Error: DBMS, -493, Syntax: Unknown class "public.autocommit_test". select * from [public.autocommit_test]%s in %s on line %d
 done!

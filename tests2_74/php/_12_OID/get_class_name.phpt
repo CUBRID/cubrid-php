@@ -35,5 +35,5 @@ print "done!"
 ?>
 --CLEAN--
 --EXPECTF--
-class_name_tb
+dba.class_name_tb
 done!

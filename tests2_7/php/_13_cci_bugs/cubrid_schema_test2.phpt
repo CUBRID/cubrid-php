@@ -47,9 +47,9 @@ array(3) {
     ["ATTR_ORDER"]=>
     string(1) "1"
     ["CLASS_NAME"]=>
-    string(2) "tb"
+    string(6) "dba.tb"
     ["SOURCE_CLASS"]=>
-    string(2) "tb"
+    string(6) "dba.tb"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>
@@ -78,9 +78,9 @@ array(3) {
     ["ATTR_ORDER"]=>
     string(1) "2"
     ["CLASS_NAME"]=>
-    string(2) "tb"
+    string(6) "dba.tb"
     ["SOURCE_CLASS"]=>
-    string(2) "tb"
+    string(6) "dba.tb"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>
@@ -109,9 +109,9 @@ array(3) {
     ["ATTR_ORDER"]=>
     string(1) "3"
     ["CLASS_NAME"]=>
-    string(2) "tb"
+    string(6) "dba.tb"
     ["SOURCE_CLASS"]=>
-    string(2) "tb"
+    string(6) "dba.tb"
     ["IS_KEY"]=>
     string(1) "0"
     ["REMARKS"]=>

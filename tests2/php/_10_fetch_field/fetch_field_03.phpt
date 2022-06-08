@@ -129,7 +129,7 @@ array(11) {
   [2]=>
   string(1) "1"
   [3]=>
-  string(19) "11.1099999999999994"
+  string(19) "11.109999999999999%d"
   [4]=>
   string(8) "02:10:00"
   [5]=>
@@ -149,7 +149,7 @@ array(11) {
 
 ---string Field Properties ---
 name: c1
-table: fetch_tb
+table: dba.fetch_tb
 default value: "NULL"
 max lenght: 0
 not null: 1
@@ -166,7 +166,7 @@ cubrid_field_len: 1073741823
 
 ---char Field Properties ---
 name: c2
-table: fetch_tb
+table: dba.fetch_tb
 default value: "NULL"
 max lenght: 0
 not null: 1
@@ -183,7 +183,7 @@ cubrid_field_len: 20
 
 ---int Field Properties ---
 name: c3
-table: fetch_tb
+table: dba.fetch_tb
 default value: "-2147483648"
 max lenght: 0
 not null: 0
@@ -200,7 +200,7 @@ cubrid_field_len: 11
 
 ---double Field Properties ---
 name: c4
-table: fetch_tb
+table: dba.fetch_tb
 default value: "22.22"
 max lenght: 0
 not null: 0
@@ -217,7 +217,7 @@ cubrid_field_len: 29
 
 ---time Field Properties ---
 name: c5
-table: fetch_tb
+table: dba.fetch_tb
 default value: "11:59:59 PM"
 max lenght: 0
 not null: 0
@@ -234,7 +234,7 @@ cubrid_field_len: 8
 
 ---date Field Properties ---
 name: c6
-table: fetch_tb
+table: dba.fetch_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -251,7 +251,7 @@ cubrid_field_len: 10
 
 ---timestamp Field Properties ---
 name: c7
-table: fetch_tb
+table: dba.fetch_tb
 default value: "12:14:07 PM 01/19/2038"
 max lenght: 0
 not null: 0
@@ -268,7 +268,7 @@ cubrid_field_len: 23
 
 ---bit Field Properties ---
 name: c8
-table: fetch_tb
+table: dba.fetch_tb
 default value: "NULL"
 max lenght: 0
 not null: 0
@@ -285,7 +285,7 @@ cubrid_field_len: 1
 
 ---numeric Field Properties ---
 name: c9
-table: fetch_tb
+table: dba.fetch_tb
 default value: "NULL"
 max lenght: 0
 not null: 0

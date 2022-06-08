@@ -24,7 +24,7 @@ $schema1 = cubrid_schema($conn,CUBRID_SCH_IMPORTED_KEYS,"ssss");
 var_dump($schema1);
 
 
-printf("\ncccc table has been referenced by two talbe as foreign key\n");
+printf("\ncccc table has been referenced by two table as foreign key\n");
 cubrid_execute($conn,"drop table if EXISTS  dddd;");
 cubrid_execute($conn,"drop table if EXISTS  eeee;");
 cubrid_execute($conn,"drop table if EXISTS  cccc;");
@@ -79,7 +79,7 @@ array(2) {
   [0]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(4) "aaaa"
+    string(8) "dba.aaaa"
     ["PKCOLUMN_NAME"]=>
     string(3) "uid"
     ["FKTABLE_NAME"]=>
@@ -100,7 +100,7 @@ array(2) {
   [1]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(5) "album"
+    string(9) "dba.album"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
@@ -120,12 +120,12 @@ array(2) {
   }
 }
 
-cccc table has been referenced by two talbe as foreign key
+cccc table has been referenced by two table as foreign key
 array(1) {
   [0]=>
   array(9) {
     ["PKTABLE_NAME"]=>
-    string(4) "cccc"
+    string(8) "dba.cccc"
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>

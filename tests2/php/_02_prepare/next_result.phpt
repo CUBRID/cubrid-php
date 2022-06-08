@@ -164,7 +164,7 @@ c4                             double                         29
 
 
 Last Column Name:              c4
-Last Column Table:             prepare_tb
+Last Column Table:             dba.prepare_tb
 Last Column Type:              double
 Last Column Len:               29
 Second Column Flags:           
@@ -175,21 +175,21 @@ Array
     [c1] => string2
     [c2] => char2               
     [c3] => 2
-    [c4] => 222.2222199999999930
+    [c4] => 222.22221999999999%d
 )
 Array
 (
     [c1] => string3
     [c2] => char3               
     [c3] => 3
-    [c4] => 333.3299999999999841
+    [c4] => 333.32999999999998%d
 )
 Array
 (
     [c1] => string4
     [c2] => char4               
     [c3] => 4
-    [c4] => 444.4440000000000168
+    [c4] => 444.4440000000000%d
 )
 
 
@@ -202,7 +202,7 @@ Array
     [c1] => string2
     [c2] => char2               
     [c3] => 2
-    [c4] => 222.2222199999999930
+    [c4] => 222.22221999999999%d
 )
 [003] execute success.
 

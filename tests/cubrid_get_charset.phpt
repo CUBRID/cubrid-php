@@ -25,5 +25,5 @@ print "done!";
 ?>
 --CLEAN--
 --EXPECTF--
-string(9) "iso8859-1"
+string(5) "utf-8"
 done!
