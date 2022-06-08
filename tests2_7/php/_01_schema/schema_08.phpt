@@ -88,7 +88,7 @@ array(1) {
     ["PKCOLUMN_NAME"]=>
     string(3) "uid"
     ["FKTABLE_NAME"]=>
-    string(4) "dba.ssss"
+    string(8) "dba.ssss"
     ["FKCOLUMN_NAME"]=>
     string(3) "dsk"
     ["KEY_SEQ"]=>
@@ -113,7 +113,7 @@ array(2) {
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
-    string(4) "dba.dddd"
+    string(8) "dba.dddd"
     ["FKCOLUMN_NAME"]=>
     string(5) "album"
     ["KEY_SEQ"]=>
@@ -134,7 +134,7 @@ array(2) {
     ["PKCOLUMN_NAME"]=>
     string(2) "id"
     ["FKTABLE_NAME"]=>
-    string(4) "dba.eeee"
+    string(8) "dba.eeee"
     ["FKCOLUMN_NAME"]=>
     string(3) "aid"
     ["KEY_SEQ"]=>
