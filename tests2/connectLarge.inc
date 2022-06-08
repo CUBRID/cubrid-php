@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$port = 33452;
+$port = 33000;
 $db = "largedb";
 $user = "dba";
 $passwd = "";
