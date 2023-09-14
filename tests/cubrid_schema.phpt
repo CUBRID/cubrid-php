@@ -20,6 +20,22 @@ if (!is_null($tmp = @cubrid_schema($conn))) {
     printf("[002] Expecting NULL, got %s/%s\n", gettype($tmp), $tmp);
 }
 
+/* =============================================== */
+/* Code for testing CUBRID_SCH_ATTR_WITH_SYNONYM   */
+if (!$conn = cubrid_connect($host, $port, $db,  "dba", "")) {
+    printf("[003] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
+    $host, $port, $db, "dba");
+}
+
+
+cubrid_execute($conn,"CREATE USER u1;");
+cubrid_execute($conn,"CREATE TABLE u1.t1(col1 int, col2 varchar(10), col3 double);");
+cubrid_execute($conn,"Grant SELECT ON u1.t1 TO public;");
+cubrid_execute($conn,"CREATE synonym public.s1 for u1.t1;");
+
+cubrid_disconnect($conn);
+/* =============================================== */
+
 if (!$conn = cubrid_connect($host, $port, $db,  $user, $passwd)) {
     printf("[003] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
     $host, $port, $db, $user);
@@ -50,6 +66,44 @@ if (($schema = cubrid_schema($conn, CUBRID_SCH_CROSS_REFERENCE, "event", "game")
             cubrid_error_code(), cubrid_error_msg());
 }
 var_dump($schema);
+
+if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "s1", "col1")) === false) {
+    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+            cubrid_error_code(), cubrid_error_msg());
+}
+var_dump($schema);
+
+if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "public.s1", "col1")) === false) {
+    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+            cubrid_error_code(), cubrid_error_msg());
+}
+var_dump($schema);
+
+if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "public.s1", "col%")) === false) {
+    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+            cubrid_error_code(), cubrid_error_msg());
+}
+var_dump($schema);
+
+if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "public.s%", "col%")) === false) {
+    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+            cubrid_error_code(), cubrid_error_msg());
+}
+var_dump($schema);
+
+/* =============================================== */
+/* Code for testing CUBRID_SCH_ATTR_WITH_SYNONYM   */
+if (!$conn = cubrid_connect($host, $port, $db,  "dba", "")) {
+    printf("[003] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
+    $host, $port, $db, "dba");
+}
+
+cubrid_execute($conn,"drop synonym if exists public.s1;");
+cubrid_execute($conn,"drop table if EXISTS u1.t1;");
+cubrid_execute($conn,"DROP USER u1;");
+
+cubrid_disconnect($conn);
+/* =============================================== */
 
 print "done!";
 ?>
@@ -181,5 +235,168 @@ array(1) {
     ["PK_NAME"]=>
     string(13) "pk_event_code"
   }
+}
+array(1) {
+  [0]=>
+  array(14) {
+    ["ATTR_NAME"]=>
+    string(4) "col1"
+    ["DOMAIN"]=>
+    string(1) "8"
+    ["SCALE"]=>
+    string(1) "0"
+    ["PRECISION"]=>
+    string(2) "10"
+    ["INDEXED"]=>
+    string(1) "0"
+    ["NON_NULL"]=>
+    string(1) "0"
+    ["SHARED"]=>
+    string(1) "0"
+    ["UNIQUE"]=>
+    string(1) "0"
+    ["DEFAULT"]=>
+    string(4) "NULL"
+    ["ATTR_ORDER"]=>
+    string(1) "1"
+    ["CLASS_NAME"]=>
+    string(5) "u1.t1"
+    ["SOURCE_CLASS"]=>
+    string(5) "u1.t1"
+    ["IS_KEY"]=>
+    string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
+  }
+}
+array(1) {
+  [0]=>
+  array(14) {
+    ["ATTR_NAME"]=>
+    string(4) "col1"
+    ["DOMAIN"]=>
+    string(1) "8"
+    ["SCALE"]=>
+    string(1) "0"
+    ["PRECISION"]=>
+    string(2) "10"
+    ["INDEXED"]=>
+    string(1) "0"
+    ["NON_NULL"]=>
+    string(1) "0"
+    ["SHARED"]=>
+    string(1) "0"
+    ["UNIQUE"]=>
+    string(1) "0"
+    ["DEFAULT"]=>
+    string(4) "NULL"
+    ["ATTR_ORDER"]=>
+    string(1) "1"
+    ["CLASS_NAME"]=>
+    string(5) "u1.t1"
+    ["SOURCE_CLASS"]=>
+    string(5) "u1.t1"
+    ["IS_KEY"]=>
+    string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
+  }
+}
+array(3) {
+  [0]=>
+  array(14) {
+    ["ATTR_NAME"]=>
+    string(4) "col1"
+    ["DOMAIN"]=>
+    string(1) "8"
+    ["SCALE"]=>
+    string(1) "0"
+    ["PRECISION"]=>
+    string(2) "10"
+    ["INDEXED"]=>
+    string(1) "0"
+    ["NON_NULL"]=>
+    string(1) "0"
+    ["SHARED"]=>
+    string(1) "0"
+    ["UNIQUE"]=>
+    string(1) "0"
+    ["DEFAULT"]=>
+    string(4) "NULL"
+    ["ATTR_ORDER"]=>
+    string(1) "1"
+    ["CLASS_NAME"]=>
+    string(5) "u1.t1"
+    ["SOURCE_CLASS"]=>
+    string(5) "u1.t1"
+    ["IS_KEY"]=>
+    string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
+  }
+  [1]=>
+  array(14) {
+    ["ATTR_NAME"]=>
+    string(4) "col2"
+    ["DOMAIN"]=>
+    string(1) "2"
+    ["SCALE"]=>
+    string(1) "0"
+    ["PRECISION"]=>
+    string(2) "10"
+    ["INDEXED"]=>
+    string(1) "0"
+    ["NON_NULL"]=>
+    string(1) "0"
+    ["SHARED"]=>
+    string(1) "0"
+    ["UNIQUE"]=>
+    string(1) "0"
+    ["DEFAULT"]=>
+    string(4) "NULL"
+    ["ATTR_ORDER"]=>
+    string(1) "2"
+    ["CLASS_NAME"]=>
+    string(5) "u1.t1"
+    ["SOURCE_CLASS"]=>
+    string(5) "u1.t1"
+    ["IS_KEY"]=>
+    string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
+  }
+  [2]=>
+  array(14) {
+    ["ATTR_NAME"]=>
+    string(4) "col3"
+    ["DOMAIN"]=>
+    string(2) "12"
+    ["SCALE"]=>
+    string(1) "0"
+    ["PRECISION"]=>
+    string(2) "15"
+    ["INDEXED"]=>
+    string(1) "0"
+    ["NON_NULL"]=>
+    string(1) "0"
+    ["SHARED"]=>
+    string(1) "0"
+    ["UNIQUE"]=>
+    string(1) "0"
+    ["DEFAULT"]=>
+    string(4) "NULL"
+    ["ATTR_ORDER"]=>
+    string(1) "3"
+    ["CLASS_NAME"]=>
+    string(5) "u1.t1"
+    ["SOURCE_CLASS"]=>
+    string(5) "u1.t1"
+    ["IS_KEY"]=>
+    string(1) "0"
+    ["REMARKS"]=>
+    string(0) ""
+  }
+}
+array(0) {
 }
 done!
