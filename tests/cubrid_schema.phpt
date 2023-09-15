@@ -20,22 +20,6 @@ if (!is_null($tmp = @cubrid_schema($conn))) {
     printf("[002] Expecting NULL, got %s/%s\n", gettype($tmp), $tmp);
 }
 
-/* =============================================== */
-/* Code for testing CUBRID_SCH_ATTR_WITH_SYNONYM   */
-if (!$conn = cubrid_connect($host, $port, $db,  "dba", "")) {
-    printf("[003] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
-    $host, $port, $db, "dba");
-}
-
-
-cubrid_execute($conn,"CREATE USER u1;");
-cubrid_execute($conn,"CREATE TABLE u1.t1(col1 int, col2 varchar(10), col3 double);");
-cubrid_execute($conn,"Grant SELECT ON u1.t1 TO public;");
-cubrid_execute($conn,"CREATE synonym public.s1 for u1.t1;");
-
-cubrid_disconnect($conn);
-/* =============================================== */
-
 if (!$conn = cubrid_connect($host, $port, $db,  $user, $passwd)) {
     printf("[003] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
     $host, $port, $db, $user);
@@ -67,34 +51,72 @@ if (($schema = cubrid_schema($conn, CUBRID_SCH_CROSS_REFERENCE, "event", "game")
 }
 var_dump($schema);
 
+cubrid_disconnect($conn);
+
+/* =============================================== */
+/* Code for testing CUBRID_SCH_ATTR_WITH_SYNONYM   */
+if (!$conn = cubrid_connect($host, $port, $db,  "dba", "")) {
+    printf("[009] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
+    $host, $port, $db, "dba");
+}
+
+
+cubrid_execute($conn,"CREATE USER u1;");
+cubrid_execute($conn,"CREATE TABLE u1.t1(col1 int, col2 varchar(10), col3 double);");
+cubrid_execute($conn,"Grant SELECT ON u1.t1 TO public;");
+cubrid_execute($conn,"CREATE synonym public.s1 for u1.t1;");
+
+cubrid_disconnect($conn);
+/* =============================================== */
+
+if (!$conn = cubrid_connect($host, $port, $db,  $user, $passwd)) {
+    printf("[0010] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
+    $host, $port, $db, $user);
+}
+
 if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "s1", "col1")) === false) {
-    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+    printf("[011] Cannot get schema type CUBRID_SCH_ATTR_WITH_SYNONYM when table name is \"event\", error: [%d]:%s\n", 
             cubrid_error_code(), cubrid_error_msg());
 }
 var_dump($schema);
 
 if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "public.s1", "col1")) === false) {
-    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+    printf("[012] Cannot get schema type CUBRID_SCH_ATTR_WITH_SYNONYM when table name is \"event\", error: [%d]:%s\n", 
             cubrid_error_code(), cubrid_error_msg());
 }
 var_dump($schema);
 
 if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "public.s1", "col%")) === false) {
-    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+    printf("[013] Cannot get schema type CUBRID_SCH_ATTR_WITH_SYNONYM when table name is \"event\", error: [%d]:%s\n", 
             cubrid_error_code(), cubrid_error_msg());
 }
 var_dump($schema);
 
 if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "public.s%", "col%")) === false) {
-    printf("[008] Cannot get schema type CUBRID_SCH_EXPORTED_KEYS when table name is \"event\", error: [%d]:%s\n", 
+    printf("[014] Cannot get schema type CUBRID_SCH_ATTR_WITH_SYNONYM when table name is \"event\", error: [%d]:%s\n", 
             cubrid_error_code(), cubrid_error_msg());
 }
 var_dump($schema);
 
+cubrid_disconnect($conn);
+
+if (!$conn = cubrid_connect($host, $port, $db,  "u1", "")) {
+    printf("[015] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
+    $host, $port, $db, "u1");
+}
+
+if (($schema = cubrid_schema($conn, CUBRID_SCH_ATTR_WITH_SYNONYM, "s1", "col")) === false) {
+    printf("[016] Cannot get schema type CUBRID_SCH_ATTR_WITH_SYNONYM when table name is \"event\", error: [%d]:%s\n", 
+            cubrid_error_code(), cubrid_error_msg());
+}
+var_dump($schema);
+
+cubrid_disconnect($conn);
+
 /* =============================================== */
 /* Code for testing CUBRID_SCH_ATTR_WITH_SYNONYM   */
 if (!$conn = cubrid_connect($host, $port, $db,  "dba", "")) {
-    printf("[003] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
+    printf("[017] Cannot connect to db server using host=%s, port=%d, dbname=%s, user=%s, passwd=***\n",
     $host, $port, $db, "dba");
 }
 
@@ -396,6 +418,8 @@ array(3) {
     ["REMARKS"]=>
     string(0) ""
   }
+}
+array(0) {
 }
 array(0) {
 }
