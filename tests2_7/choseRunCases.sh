@@ -23,7 +23,7 @@ function runLargeDataCases()
 function runAll()
 {
     echo "#####start to run all test cases#####"
-    $phppath/php run-tests.php php > runall_test.log
+    $phppath/php run-tests.php php | tee runall_test.log
     echo "#####finished#####"
 }
 
