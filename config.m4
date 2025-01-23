@@ -9,7 +9,8 @@ PHP_ARG_WITH(cubrid, for CUBRID support,
 
 dnl Check PHP version:
 AC_MSG_CHECKING(PHP version)
-PHP_MAJOR_VERSION=`grep 'PHP_MAJOR_VERSION' $phpincludedir/main/php_version.h | grep -oP '\d+'`
+PHP_MAJOR_VERSION=`$PHP_CONFIG --version | cut -d'.' -f1`
+AC_MSG_RESULT($PHP_MAJOR_VERSION)
 
 if test "$PHP_CUBRID" != "no"; then
 
@@ -89,8 +90,10 @@ if test "$PHP_CUBRID" != "no"; then
 
     PHP_SUBST(CUBRID_SHARED_LIBADD)
     if test "$PHP_MAJOR_VERSION" = "7"; then
+        AC_MSG_NOTICE([Using PHP 7.x source file: php_cubrid7.c])
         PHP_NEW_EXTENSION(cubrid, php_cubrid7.c, $ext_shared)
     else
+        AC_MSG_NOTICE([Using PHP 5.x source file: php_cubrid.c])
         PHP_NEW_EXTENSION(cubrid, php_cubrid.c, $ext_shared)
     fi
 fi
