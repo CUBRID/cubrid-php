@@ -92,7 +92,7 @@ then
 		sshhost=`grep -r sshhost config.properties | tr -d ' ' | cut -d'=' -f2`
 		brokerport=`grep -r brokerport config.properties | tr -d ' ' | cut -d'=' -f2`
 	else
-		sshuser=id
+		sshuser=cubrid
 		sshport=22
 		sshhost=`grep -r "^\$host.*;" connect.inc | tr -d ' ;'  | cut -d'=' -f2`
 		brokerport=`grep -r "^\$port.*;" connect.inc | tr -d ' ;'  | cut -d'=' -f2`
