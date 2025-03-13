@@ -8,8 +8,22 @@ require_once('skipifconnectfailure.inc')
 --FILE--
 <?php
 include_once("connect.inc");
-$conn = cubrid_connect($host, $port, "demodb", $user, $passwd);
-$req = cubrid_execute($conn, "select * from public.game",  CUBRID_INCLUDE_OID);
+$conn = cubrid_connect($host, $port, "phpdb", $user, $passwd);
+
+//drop the class if exist
+$sql = "drop class if exists oidtest";
+$req = cubrid_execute($conn, $sql, CUBRID_INCLUDE_OID);
+
+//create the class
+$sql = "create table oidtest(col1 integer, col2 varchar(100)) DONT_REUSE_OID";
+$req = cubrid_execute($conn, $sql, CUBRID_INCLUDE_OID);
+
+//insert
+$sql = "insert into oidtest values(1, 'aaaaa'), (2, 'bbbbb'), (3, 'aaaaa'), (4, 'aaaaa'), (5, 'aaaaa'), (6, 'aaaaa'), (7, 'aaaaa'), (8, 'aaaaa'), (9, 'aaaaa'), (10, 'aaaaa'), (11, 'aaaaa'),(12, 'aaaaa')";
+$req = cubrid_execute($conn, $sql, CUBRID_INCLUDE_OID);
+
+
+$req = cubrid_execute($conn, "select * from oidtest",  CUBRID_INCLUDE_OID);
 if (!$req) {
     printf("[001] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
 }
@@ -21,8 +35,16 @@ for($i=1;$i<=10;$i++){
    cubrid_move_cursor($req,$i,CUBRID_CURSOR_FIRST);
    $table_name = cubrid_get_class_name($conn, $oid);
    printf("%s \n",$table_name);
-
 }
+
+$res = cubrid_is_instance($conn, $oid);
+if ($res == 1) {
+    printf("Intance pointed by %s exists.\n", $oid);
+} else {
+    printf ("[003] [%d] %s\n", cubrid_errno($conn), cubrid_error($conn));
+}
+
+
 cubrid_close_prepare($req);
 
 printf("\n\n#####negative example#####\n");
@@ -50,20 +72,26 @@ if(FALSE == $table_name3){
 }
 print "\n";
 print "Finished!\n";
+
+//drop the class if exist
+$sql = "drop class if exists oidtest";
+$req = cubrid_execute($conn, $sql, CUBRID_INCLUDE_OID);
+
 ?>
 --CLEAN--
 --EXPECTF--
 #####correct example#####
-public.game 
-public.game 
-public.game 
-public.game 
-public.game 
-public.game 
-public.game 
-public.game 
-public.game 
-public.game 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+dba.oidtest 
+Intance pointed by %s exists.
 
 
 #####negative example#####
