@@ -1,0 +1,27 @@
+{
+    "name": "cubrid/cubrid",
+    "type": "php-ext",
+    "description": "The official CUBRID database driver for PHP",
+    "keywords": ["cubrid", "database", "driver", "extension"],
+    "homepage": "https://www.cubrid.org",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "CUBRID Corporation",
+            "homepage": "https://www.cubrid.org"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/CUBRID/cubrid-php/issues",
+        "source": "https://github.com/CUBRID/cubrid-php",
+        "docs": "https://www.cubrid.org/manual/en/11.4/api/php.html"
+    },
+    "require": {
+        "php": ">=8.3"
+    },
+    "php-ext": {
+        "extension-name": "cubrid",
+        "download-url-method": ["pre-packaged-source", "composer-default"],
+        "os-families": ["linux", "windows"]
+    }
+}

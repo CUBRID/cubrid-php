@@ -4,19 +4,30 @@
 ARG_WITH("cubrid", "CUBRID support", "no");
 
 if (PHP_CUBRID != "no") {
-  cubrid_lib_paths = PHP_PHP_BUILD + "\\lib\\cubrid;";
-  cubrid_include_paths = PHP_PHP_BUILD + "\\include\\cubrid;"
+  // Supported PHP versions on Windows: 8.4 or later
+  if (typeof(PHP_VERSION) != "undefined" && typeof(PHP_MINOR_VERSION) != "undefined" &&
+      parseInt(PHP_VERSION, 10) * 100 + parseInt(PHP_MINOR_VERSION, 10) < 804) {
+    ERROR("The CUBRID PHP extension requires PHP 8.4 or later on Windows");
+  }
+
+  cubrid_lib_paths = "";
+  cubrid_include_paths = "";
+  if (typeof(PHP_PHP_BUILD) != "undefined" && PHP_PHP_BUILD != "no") {
+    cubrid_lib_paths = PHP_PHP_BUILD + "\\lib\\cubrid;";
+    cubrid_include_paths = PHP_PHP_BUILD + "\\include\\cubrid;";
+  }
 
   if (PHP_CUBRID != "yes") {
     cubrid_lib_paths += PHP_CUBRID + "\\lib;";
     cubrid_include_paths += PHP_CUBRID + "\\include;";
   }
 
-  if (CHECK_LIB("cascci.lib", "cubrid", cubrid_lib_paths) && 
-      CHECK_HEADER_ADD_INCLUDE("cas_cci.h", "CFLAGS_CUBRID", cubrid_include_paths)) { 
-    EXTENSION("cubrid", "php_cubrid.c"); 
+  if (CHECK_LIB("cascci.lib", "cubrid", cubrid_lib_paths) &&
+      CHECK_HEADER_ADD_INCLUDE("cas_cci.h", "CFLAGS_CUBRID", cubrid_include_paths)) {
+    EXTENSION("cubrid", "php_cubrid8.c");
+    ADD_FLAG("CFLAGS_CUBRID", "/D WINDOWS");
     AC_DEFINE('HAVE_CUBRID', 1, 'Have CUBRID library');
-  } else { 
+  } else {
     WARNING("cubrid not enabled; libraries and headers not found");
   }
 }

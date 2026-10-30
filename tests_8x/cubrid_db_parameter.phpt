@@ -1,0 +1,98 @@
+--TEST--
+cubrid_db_parameter
+--SKIPIF--
+<?php
+require_once('skipif.inc');
+require_once('skipifconnectfailure.inc');
+?>
+--FILE--
+<?php
+include_once("connect.inc");
+
+$tmp = NULL;
+$conn = cubrid_connect($host, $port, $db, $user, $passwd);
+
+try {
+    $tmp = @cubrid_get_db_parameter();
+} catch (ArgumentCountError | TypeError $e) {
+    $tmp = NULL;
+}
+if (!is_null($tmp)) {
+    printf("[001] Expecting NULL, got %s/%s\n", gettype($tmp), $tmp);
+}
+
+$params = cubrid_get_db_parameter($conn);
+
+var_dump($params);
+
+try {
+    $tmp = @cubrid_set_db_parameter();
+} catch (ArgumentCountError | TypeError $e) {
+    $tmp = NULL;
+}
+if (!is_null($tmp)) {
+    printf("[002] Expecting NULL, got %s/%s\n", gettype($tmp), $tmp);
+}
+
+try {
+    $tmp = @cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL);
+} catch (ArgumentCountError | TypeError $e) {
+    $tmp = NULL;
+}
+if (!is_null($tmp)) {
+    printf("[003] Expecting NULL, got %s/%s\n", gettype($tmp), $tmp);
+}
+
+if (false !== ($tmp = @cubrid_set_db_parameter($conn, 10000, 1))) {
+    printf("[004] Expecting boolean/false, got %s/%s\n", gettype($tmp), $tmp);
+}
+
+cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 50);
+cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, 5);
+
+cubrid_set_db_parameter($conn, CUBRID_PARAM_LOCK_TIMEOUT, 1);
+
+$params_new = cubrid_get_db_parameter($conn);
+
+var_dump($params_new);
+
+cubrid_set_db_parameter($conn, CUBRID_PARAM_ISOLATION_LEVEL, $params['PARAM_ISOLATION_LEVEL']);
+cubrid_set_db_parameter($conn, CUBRID_PARAM_LOCK_TIMEOUT, $params['PARAM_LOCK_TIMEOUT']);
+
+$params_new = cubrid_get_db_parameter($conn);
+
+foreach ($params_new as $param_key => $param_value) {
+    if ($params[$param_key] != $param_value) {
+        printf("[005] Expecting db parameter %s value %d, got %d\n", $param_key, $params[$param_key], $param_value);
+    }
+}
+
+cubrid_close($conn);
+
+print "done!";
+?>
+--CLEAN--
+--EXPECTF--
+array(4) {
+  ["PARAM_ISOLATION_LEVEL"]=>
+  int(4)
+  ["PARAM_LOCK_TIMEOUT"]=>
+  int(-1)
+  ["PARAM_MAX_STRING_LENGTH"]=>
+  int(1073741823)
+  ["PARAM_AUTO_COMMIT"]=>
+  int(1)
+}
+
+Warning: Error: DBMS, -1157, Isolation level value in MVCC must be 'read committed', 'repeatable read' or 'serializable'.%s in %s on line %d
+array(4) {
+  ["PARAM_ISOLATION_LEVEL"]=>
+  int(5)
+  ["PARAM_LOCK_TIMEOUT"]=>
+  int(1)
+  ["PARAM_MAX_STRING_LENGTH"]=>
+  int(1073741823)
+  ["PARAM_AUTO_COMMIT"]=>
+  int(1)
+}
+done!
