@@ -50,6 +50,9 @@ if test "$PHP_CUBRID" != "no"; then
 
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
+            if ! test -f "$CCISRC_DIR/build.sh"; then
+                AC_MSG_ERROR([$CCISRC_DIR is empty or incomplete (cci-src submodule is missing). Use the php_cubrid-<version>-src.tgz release archive, or run 'git submodule update --init' in a git checkout.])
+            fi
             pushd $CCISRC_DIR
             ./build.sh
             popd
@@ -65,6 +68,9 @@ if test "$PHP_CUBRID" != "no"; then
 
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
+            if ! test -f "$CCISRC_DIR/build.sh"; then
+                AC_MSG_ERROR([$CCISRC_DIR is empty or incomplete (cci-src submodule is missing). Use the php_cubrid-<version>-src.tgz release archive, or run 'git submodule update --init' in a git checkout.])
+            fi
             pushd $CCISRC_DIR
             ./build.sh
             popd

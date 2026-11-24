@@ -21,7 +21,7 @@
     },
     "php-ext": {
         "extension-name": "cubrid",
-        "download-url-method": ["pre-packaged-source", "composer-default"],
+        "download-url-method": ["pre-packaged-source"],
         "os-families": ["linux", "windows"]
     }
 }
