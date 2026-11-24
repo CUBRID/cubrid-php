@@ -40,7 +40,7 @@ version_header=php_cubrid_version.h
 version_macro=PHP_CUBRID_VERSION
 # files and directories of the driver to package (relative to the repository root)
 driver_files="config.m4 config.w32 php_cubrid8.c php_cubrid8.h php_cubrid_version.h
-              composer.json LICENSE README.md release-notes.html build-guide.html
+              composer.json LICENSE README.md release-notes.html build-guide.md
               build.sh"
 # -----------------------------------------------------------------------------
 

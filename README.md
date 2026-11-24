@@ -13,7 +13,7 @@ Supported platforms
 | Linux x86_64 | 8.3, 8.4, 8.5 | `php_cubrid-<version>-src.tgz` (built on install) |
 | Windows x64 | 8.4, 8.5 (NTS, TS) | `php_cubrid-<version>-<8.4\|8.5>-<nts\|ts>-vs17-x86_64.zip` |
 
-PHP 8.2 and earlier are not supported by this version; use an earlier driver release for them.
+PHP 8.2 and earlier are not supported by this version.
 The packages are published on [GitHub Releases](https://github.com/CUBRID/cubrid-php/releases)
 with a `.sha256` checksum file each.
 
@@ -70,7 +70,7 @@ cd cubrid-php
 .\build_win.ps1 84       # Windows, PHP 8.4/8.5  -> build_win\84-nts\modules\php_cubrid.dll
 ```
 
-See [build-guide.html](build-guide.html) for the requirements, tests and how to make a release
+See [build-guide.md](build-guide.md) for the requirements, tests and how to make a release
 (`script/release.sh`, `script/release.ps1`).
 
 Documentation

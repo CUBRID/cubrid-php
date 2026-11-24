@@ -16,7 +16,7 @@ CUBRID PHP Driver (`cubrid`) is the official PHP extension (`cubrid_*` functions
 | Linux x86_64 | 8.3, 8.4, 8.5 (NTS, ZTS) | GCC | `cubrid.so` (CCI and OpenSSL linked statically) |
 | Windows x64 | 8.4, 8.5 (NTS, TS) | Visual Studio 2022 (vs17) | `php_cubrid.dll` + `cascci.dll` |
 
-32-bit platforms and ARM64 are not supported. PHP 8.2 and earlier are not supported; use an earlier driver release for them.
+32-bit platforms and ARM64 are not supported. PHP 8.2 and earlier are not supported.
 
 Most users do not need to build the driver: [4. Installing with PIE](#4-installing-with-pie) downloads, builds (Linux) and enables it in one command. See also the CUBRID manual: <https://www.cubrid.org/manual/en/11.4/api/php.html>.
 
