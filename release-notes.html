@@ -1,75 +1,72 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
-<html> 
-  <head> 
-    <style type="text/css">
-      .s1 {font-family: arial, verdana, sans-serif;}
-      .s2 {font-family: "Times New Roman", serif;}
-      .s3 {font-family: Consolas, "Courire New";}
-    </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"> 
-    <title>CUBRID PHP Library release notes</title> 
-  </head> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUBRID PHP Driver Release Notes</title>
+<style>
+  :root { --fg: #1f2328; --muted: #59636e; --bg: #ffffff; --code-bg: #f6f8fa; --border: #d1d9e0; --accent: #0969da; --note-bg: #ddf4ff; --warn-bg: #fff8c5; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg: #e6edf3; --muted: #9198a1; --bg: #0d1117; --code-bg: #161b22; --border: #3d444d; --accent: #4493f8; --note-bg: #0c2d6b; --warn-bg: #3b2e00; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.6 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  main { max-width: 920px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; }
+  h2 { font-size: 1.45em; border-bottom: 1px solid var(--border); padding-bottom: .25em; margin-top: 2em; }
+  h3 { font-size: 1.15em; margin-top: 1.6em; }
+  a { color: var(--accent); }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: .9em; }
+  code { background: var(--code-bg); padding: .1em .35em; border-radius: 4px; }
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; overflow-x: auto; line-height: 1.45; }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code-bg); }
+  .note, .warn { border-radius: 6px; padding: 10px 14px; margin: 1em 0; }
+  .note { background: var(--note-bg); }
+  .warn { background: var(--warn-bg); }
+  .muted { color: var(--muted); }
+  nav ol { padding-left: 1.4em; }
+</style>
+</head>
+<body>
+<main>
 
-<body bgcolor="#ffffff" text="#000000" link="#ff0000" vlink="#a00000" alink="#0000ff"> 
-  
-<h1>CUBRID PHP Library release notes</h1> 
-<hr> 
-<h2>2008 R4.1 Release </h2> 
+<h1>CUBRID PHP Driver Release Notes</h1>
+<p class="muted">Releases: <a href="https://github.com/CUBRID/cubrid-php/releases">https://github.com/CUBRID/cubrid-php/releases</a></p>
 
-<pre class = "s1">
-This release is a major release. Several new features have been added to this version including persistent connecting,
-query timeout and so on. Accordingly new functions are added, and several bugs have been fixed.
-</pre>
+<h2>11.3.0.0001</h2>
 
-<h4>Functionality added:</h4>
+<h3>Supported platforms</h3>
+<table>
+  <tr><th>Platform</th><th>PHP</th></tr>
+  <tr><td>Linux x86_64</td><td>8.3, 8.4, 8.5</td></tr>
+  <tr><td>Windows x64 (Visual Studio 2022, vs17)</td><td>8.4, 8.5 (NTS, TS)</td></tr>
+</table>
+<p>CCI: 11.2.0.0040 (<code>cci-src</code> 9965aa8)</p>
 
-<pre class = "s1">
-The following functions have been added:
-</pre>
-
+<h3>Changes</h3>
 <ul>
-  <li>cubrid_pconnect</li>
-  <li>cubrid_pconnect_with_url</li>
-  <li>cubrid_set_query_timeout</li>
-  <li>cubrid_get_query_timeout</li>
+  <li>Ported the driver to PHP 8 (<code>php_cubrid8.c</code>) and supports PHP 8.3, 8.4 and 8.5.</li>
+  <li>Dropped PHP 5.x and 7.x, and the old Visual Studio project files.</li>
+  <li>Fixed crashes in <code>cubrid_close_request()</code> and <code>cubrid_fetch_object()</code>.</li>
+  <li>Distributed with <a href="https://github.com/php/pie">PIE</a> (<code>pie install cubrid/cubrid</code>) and GitHub Releases instead of PECL.</li>
+  <li>Release packages:
+    <ul>
+      <li>Linux: <code>php_cubrid-11.3.0.0001-src.tgz</code> (source including CCI)</li>
+      <li>Windows: <code>php_cubrid-11.3.0.0001-&lt;8.4|8.5&gt;-&lt;nts|ts&gt;-vs17-x86_64.zip</code> (<code>php_cubrid.dll</code> and <code>cascci.dll</code>)</li>
+      <li>A <code>.sha256</code> checksum file for each package</li>
+    </ul>
+  </li>
+  <li>New build scripts: <code>build.sh</code> (Linux), <code>build_win.ps1</code> (Windows), and release scripts
+      <code>script/release.sh</code> and <code>script/release.ps1</code>. See <code>build-guide.md</code>.</li>
+  <li>Added <code>composer.json</code> (PIE package <code>cubrid/cubrid</code>) and <code>LICENSE</code>; removed the PECL <code>package.xml</code>.</li>
 </ul>
 
-<h4>Changed and Enhanced Features:</h4>
+<h3>Earlier releases</h3>
+<p>Release notes of earlier versions are in the release branches and tags of the repository
+(<code>release/*</code>, <code>RB-*</code>, <code>v*</code>).</p>
 
-<pre class = "s1">
-1.) Reuse the connection established:
-
-    For mysql, if a second call is made to mysql_connect() with the same arguments, no new link will be established,
-    but instead, the connect identifier of the already opened connection will be returned. The new_link parameter
-    modifies this behavior and makes mysql_connect() always open a new connection, even if mysql_connect() was called
-    before with the same parameters. 
-
-    To make compatibility with mysql, we add the new_link parameter in cubrid_connect and cubrid_connect_with_url.
-
-2.) Add persistent connection:
-
-    We add two functions, cubrid_pconnect and cubrid_pconnect_with_url, to provide persistent database connections.
-    The parameters of cubrid_pconnect are same with cubrid_connect, and so do cubrid_pconnect_with_url and
-    cubrid_connect_with_url.
-
-3.) Add functions about getting and setting the query timeout time:
-
-    If database queries are taking too long to perform, and your application is becoming unresponsive, you can
-    configure a timeout for database queries. We add two functions (cubrid_get_query_timeout and 
-    cubrid_set_query_timeout) to get and set the query timeout of database queries.
-
-4.) Add a form of the url parameter for cubrid_connect_with_url function:
-
-    Support the way without "cci:" in url parameter, that is the url become "CUBRID:host:db_name:db_user:......."
- 
-</pre>
-
-<h4>Fixed bugs:</h4> 
-
-<pre class = "s1">
-1.) Fix a bug in cubrid_fetch, cubrid_fetch_row, cubrid_fetch_array and cubrid_fetch_assoc: Modified the return value
-when there are no more data;
-</pre>
-
+</main>
 </body>
 </html>

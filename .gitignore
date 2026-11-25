@@ -1,0 +1,20 @@
+# out-of-tree builds: build_linux/ (build.sh) and build_win/ (build_win.ps1)
+/build_*/
+csql.err
+/tests2_8x/php/**/*.diff
+/tests2_8x/php/**/*.exp
+/tests2_8x/php/**/*.log
+/tests2_8x/php/**/*.out
+/tests2_8x/php/**/*.php
+/tests2_8x/php/**/*.sh
+large.txt
+tests2_8x/largedbFile/
+tests2_8x/connect.inc.ori
+tests2_8x/connectLarge.inc.ori
+tests2_8x/largedbFile_bak/
+tests2_8x/debug.log
+/*/*tests*.log
+.vscode/
+
+# release packages made by script/release.sh / script/release.ps1
+/script/release/

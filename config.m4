@@ -7,12 +7,27 @@ dnl If your extension references something external, use with:
 PHP_ARG_WITH(cubrid, for CUBRID support,
 [  --with-cubrid           Include CUBRID support.], yes)
 
-dnl Check PHP version:
-AC_MSG_CHECKING(PHP version)
-PHP_MAJOR_VERSION=`$PHP_CONFIG --version | cut -d'.' -f1`
-AC_MSG_RESULT($PHP_MAJOR_VERSION)
-
 if test "$PHP_CUBRID" != "no"; then
+
+    dnl Supported PHP versions: 8.3 or later (Windows: 8.4 or later, see config.w32)
+    AC_MSG_CHECKING([for PHP version])
+    cubrid_php_vernum=`$PHP_CONFIG --vernum 2>/dev/null`
+    if test -z "$cubrid_php_vernum"; then
+        for cubrid_ver_h in "$phpincludedir/main/php_version.h" "$abs_srcdir/main/php_version.h"; do
+            if test -r "$cubrid_ver_h"; then
+                cubrid_php_vernum=`sed -n 's/^#define PHP_VERSION_ID \([[0-9]]*\).*/\1/p' "$cubrid_ver_h"`
+                break
+            fi
+        done
+    fi
+    if test -z "$cubrid_php_vernum"; then
+        AC_MSG_RESULT([unknown])
+    else
+        AC_MSG_RESULT([$cubrid_php_vernum])
+        if test "$cubrid_php_vernum" -lt 80300; then
+            AC_MSG_ERROR([The CUBRID PHP extension requires PHP 8.3 or later])
+        fi
+    fi
 
     cubrid_dir=`dirname $0`
     CUBRID_INCDIR=""
@@ -35,6 +50,9 @@ if test "$PHP_CUBRID" != "no"; then
 
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
+            if ! test -f "$CCISRC_DIR/build.sh"; then
+                AC_MSG_ERROR([$CCISRC_DIR is empty or incomplete (cci-src submodule is missing). Use the php_cubrid-<version>-src.tgz release archive, or run 'git submodule update --init' in a git checkout.])
+            fi
             pushd $CCISRC_DIR
             ./build.sh
             popd
@@ -50,6 +68,9 @@ if test "$PHP_CUBRID" != "no"; then
 
         if test "$ac_cv_sizeof_int_p" = "8"; then
     	    AC_MSG_NOTICE([Build static cci lib 64 bits])
+            if ! test -f "$CCISRC_DIR/build.sh"; then
+                AC_MSG_ERROR([$CCISRC_DIR is empty or incomplete (cci-src submodule is missing). Use the php_cubrid-<version>-src.tgz release archive, or run 'git submodule update --init' in a git checkout.])
+            fi
             pushd $CCISRC_DIR
             ./build.sh
             popd
@@ -89,11 +110,5 @@ if test "$PHP_CUBRID" != "no"; then
     LDFLAGS="$LDFLAGS $CUBRID_LIBDIR/libcascci.a -lpthread $cubrid_dir/cci-src/external/openssl/lib/libssl.a $cubrid_dir/cci-src/external/openssl/lib/libcrypto.a"
 
     PHP_SUBST(CUBRID_SHARED_LIBADD)
-    if test "$PHP_MAJOR_VERSION" = "7"; then
-        AC_MSG_NOTICE([Using PHP 7.x source file: php_cubrid7.c])
-        PHP_NEW_EXTENSION(cubrid, php_cubrid7.c, $ext_shared)
-    else
-        AC_MSG_NOTICE([Using PHP 5.x source file: php_cubrid.c])
-        PHP_NEW_EXTENSION(cubrid, php_cubrid.c, $ext_shared)
-    fi
+    PHP_NEW_EXTENSION(cubrid, php_cubrid8.c, $ext_shared)
 fi
